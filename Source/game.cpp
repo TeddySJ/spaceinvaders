@@ -29,6 +29,15 @@ bool pointInCircle(Vector2 circlePos, float radius, Vector2 point) // Uses pytha
 }
 
 
+Game::Game()
+{
+	InitWindow(screenWidth, screenHeight, "SPACE INVADERS");
+	SetTargetFPS(60);
+	resources.Load();
+	InitAudioDevice();
+	auto sound = LoadSound("./hitHurt.ogg");
+}
+
 void Game::Start()
 {
 	// creating walls 
@@ -83,10 +92,25 @@ void Game::Continue()
 	gameState = State::STARTSCREEN;
 }
 
-void Game::Launch()
+void Game::Run()
 {
-	//LOAD SOME RESOURCES HERE
-	resources.Load();
+	while (!WindowShouldClose())    // Detect window close button or ESC key
+	{
+		Update();
+
+		// TODO: Move surrounding render-code into Render()
+		BeginDrawing();
+
+		ClearBackground(BLACK);
+
+		Render();
+
+		EndDrawing();
+	}
+
+	CloseAudioDevice();
+
+	CloseWindow();        // Close window and OpenGL context
 }
 
 void Game::Update()

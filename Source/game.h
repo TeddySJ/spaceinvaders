@@ -126,8 +126,13 @@ struct Background
 
 struct Game
 {
+	static constexpr int screenWidth = 1920;
+	static constexpr int screenHeight = 1080;
+
+	Game();
+
 	// Gamestate
-	State gameState = {};
+	State gameState = State::STARTSCREEN;
 
 	// Score
 	int score;
@@ -154,7 +159,7 @@ struct Game
 	void End();
 
 	void Continue();
-	void Launch();
+	void Run();
 
 	void Update();
 	void Render();
@@ -172,7 +177,7 @@ struct Game
 
 
 	// Entity Storage and Resources
-	Resources resources;
+	Resources resources{};
 
 	Player player;
 
