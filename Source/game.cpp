@@ -9,7 +9,7 @@
 // MATH FUNCTIONS
 float lineLength(Vector2 A, Vector2 B) //Uses pythagoras to calculate the length of a line
 {
-	float length = sqrtf(pow(B.x - A.x, 2) + pow(B.y - A.y, 2));
+	float length = sqrtf(static_cast<float>(pow(B.x - A.x, 2) + pow(B.y - A.y, 2)));
 
 	return length;
 }
@@ -98,8 +98,6 @@ void Game::Update()
 		if (IsKeyReleased(KEY_SPACE))
 		{
 			Start();
-
-
 		}
 
 		break;
@@ -175,7 +173,8 @@ void Game::Update()
 			}
 
 			//ENEMY PROJECTILES HERE
-			for (int i = 0; i < Projectiles.size(); i++)
+			// TODO: There is no good reason why player and enemy projectile should share a vector?
+			for (int i = 0; i < Projectiles.size(); i++) // TODO: This "i" hides the parent "i"
 			{
 				if (Projectiles[i].type == EntityType::ENEMY_PROJECTILE)
 				{
@@ -290,7 +289,7 @@ void Game::Update()
 				int key = GetCharPressed();
 
 				// Check if more characters have been pressed on the same frame
-				while (key > 0)
+				while (key > 0) // TODO: "key = GetCharPressed()"
 				{
 					// NOTE: Only allow keys in range [32..125]
 					if ((key >= 32) && (key <= 125) && (letterCount < 9))

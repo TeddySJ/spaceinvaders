@@ -1,0 +1,49 @@
+
+
+** TOOOO DOOOOS **
+
+* Get acquainted with the code and add comments and TODOs (in-code and here)
+
+
+*** First order ***
+
+* Make Game ultimately responsible for all game-related things (that is, main.cpp should be clean except for top-level exception handling)
+^ Just do this in the quickest way possible at first, without altering ANYTHING else
+
+*** RAIIIIIII ***
+
+* The SoundEffect or even soundsystem is not being used - remove
+
+* Wrap the init and release of the Raylib systems in a handler class
+
+* Create RAII wrapper classes for the textures
+
+*** Responsibility Refactor ***
+
+* Separate out input, update and collision handling from the generic Update()
+
+* Split up Game.h into multiple header-files that define specific things
+
+* Go over two-step initialization and work to initialize everything as tightly as possible
+
+*** Game Flow ***
+
+* Split the game update logic into multiple functions
+
+* Split the render logic into multiple functions
+
+*** Collision System ***
+
+* The collision functionality seems insanely over-engineered! It checks the start and end point of a line by way of circular collision instead of just comparing two circles
+
+* Perhaps a "can collide" interface with a Rectangle of some kind? It should call a provided "on collision"-callback function that handles whatever must be handled
+
+* Use simple collider layers (1 = player, 2 = enemies, 3 (1+2) = walls)
+
+*** State Handling ***
+
+* Should the states be separated? If so, now is the time!
+
+*** WARNINGS AS ERRORS ***
+
+* Turn on Warnings As Errors and enjoy the show!
