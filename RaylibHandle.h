@@ -16,7 +16,7 @@ public:
 	RaylibWindowHandle(int screenWidth, int screenHeight, const std::string_view& title);
 	~RaylibWindowHandle();
 
-	void SetTargetFps(int fps) const;
+	void SetTargetFPS(int fps) const;
 };
 
 class RaylibAudioDeviceHandle

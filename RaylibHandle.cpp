@@ -11,9 +11,9 @@ RaylibWindowHandle::~RaylibWindowHandle()
 	CloseWindow();
 }
 
-void RaylibWindowHandle::SetTargetFps(const int fps) const
+void RaylibWindowHandle::SetTargetFPS(const int fps) const
 {
-	SetTargetFPS(fps);
+	RLAPI::SetTargetFPS(fps);
 }
 
 RaylibAudioDeviceHandle::RaylibAudioDeviceHandle()

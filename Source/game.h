@@ -130,6 +130,7 @@ struct Game
 	static constexpr int screenHeight = 1080;
 
 	RaylibWindowHandle window_handle{screenWidth, screenHeight, "SPACE INVADERS"};
+	RaylibAudioDeviceHandle audio_handle{};
 
 	Game();
 

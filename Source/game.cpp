@@ -31,9 +31,8 @@ bool pointInCircle(Vector2 circlePos, float radius, Vector2 point) // Uses pytha
 
 Game::Game()
 {
-	SetTargetFPS(60);
+	window_handle.SetTargetFPS(60);
 	resources.Load();
-	InitAudioDevice();
 	auto sound = LoadSound("./hitHurt.ogg");
 }
 
@@ -96,7 +95,7 @@ void Game::Run()
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
 		Update();
-
+		
 		// TODO: Move surrounding render-code into Render()
 		BeginDrawing();
 
@@ -106,10 +105,6 @@ void Game::Run()
 
 		EndDrawing();
 	}
-
-	CloseAudioDevice();
-
-	//CloseWindow();        // Close window and OpenGL context
 }
 
 void Game::Update()
