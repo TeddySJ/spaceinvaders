@@ -11,7 +11,7 @@ int main(void)
     }
     catch (...)
     {
-        std::cout << "Exited due to unknown error";
+        std::cout << "Exited due to unspecified error";
     }
 
 

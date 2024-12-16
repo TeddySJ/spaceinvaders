@@ -32,8 +32,6 @@ bool pointInCircle(Vector2 circlePos, float radius, Vector2 point) // Uses pytha
 Game::Game()
 {
 	window_handle.SetTargetFPS(60);
-	resources.Load();
-	auto sound = LoadSound("./hitHurt.ogg");
 }
 
 void Game::Start()
@@ -387,24 +385,24 @@ void Game::Render()
 		DrawText(TextFormat("Lives: %i", player.lives), 50, 70, 40, YELLOW);
 
 		//player rendering 
-		player.Render(resources.shipTextures[player.activeTexture]);
+		player.Render(resources.ship_textures[player.activeTexture]);
 
 		//projectile rendering
 		for (int i = 0; i < Projectiles.size(); i++)
 		{
-			Projectiles[i].Render(resources.laserTexture);
+			Projectiles[i].Render(resources.laser_texture);
 		}
 
 		// wall rendering 
 		for (int i = 0; i < Walls.size(); i++)
 		{
-			Walls[i].Render(resources.barrierTexture); 
+			Walls[i].Render(resources.barrier_texture); 
 		}
 
 		//alien rendering  
 		for (int i = 0; i < Aliens.size(); i++)
 		{
-			Aliens[i].Render(resources.alienTexture);
+			Aliens[i].Render(resources.alien_texture);
 		}
 
 

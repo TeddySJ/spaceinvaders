@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include <string_view>
+#include <vector>
 
 class RaylibWindowHandle
 {
@@ -31,4 +32,24 @@ public:
 	RaylibAudioDeviceHandle();
 	~RaylibAudioDeviceHandle();
 
+};
+
+class SpaceInvadersResourceHandler
+{
+	SpaceInvadersResourceHandler(const SpaceInvadersResourceHandler&) = delete;
+	SpaceInvadersResourceHandler& operator=(const SpaceInvadersResourceHandler&) = delete;
+
+	SpaceInvadersResourceHandler(SpaceInvadersResourceHandler&&) = default;
+	SpaceInvadersResourceHandler& operator=(SpaceInvadersResourceHandler&&) = default;
+
+public:
+	SpaceInvadersResourceHandler();
+	~SpaceInvadersResourceHandler();
+
+	std::vector<Texture2D> ship_textures;
+	Texture2D alien_texture;
+	Texture2D barrier_texture;
+	Texture2D laser_texture;
+
+	Sound hit_sound;
 };

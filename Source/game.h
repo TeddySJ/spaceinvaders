@@ -131,6 +131,7 @@ struct Game
 
 	RaylibWindowHandle window_handle{screenWidth, screenHeight, "SPACE INVADERS"};
 	RaylibAudioDeviceHandle audio_handle{};
+	SpaceInvadersResourceHandler resources{};
 
 	Game();
 
@@ -177,10 +178,6 @@ struct Game
 
 	void LoadLeaderboard();
 	void SaveLeaderboard();
-
-
-	// Entity Storage and Resources
-	Resources resources{};
 
 	Player player;
 
