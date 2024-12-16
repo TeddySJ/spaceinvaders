@@ -4,12 +4,6 @@
 
 * Get acquainted with the code and add comments and TODOs (in-code and here)
 
-
-*** First order ***
-
-* Make Game ultimately responsible for all game-related things (that is, main.cpp should be clean except for top-level exception handling)
-^ Just do this in the quickest way possible at first, without altering ANYTHING else
-
 *** RAIIIIIII ***
 
 * The SoundEffect or even soundsystem is not being used - remove

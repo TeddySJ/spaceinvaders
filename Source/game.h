@@ -1,9 +1,9 @@
 #pragma once
 #include "raylib.h"
+#include "RaylibHandle.h"
 #include <vector>
 #include "Resources.h"
 #include <string>
-
 
 enum struct State
 {
@@ -128,6 +128,8 @@ struct Game
 {
 	static constexpr int screenWidth = 1920;
 	static constexpr int screenHeight = 1080;
+
+	RaylibWindowHandle window_handle{screenWidth, screenHeight, "SPACE INVADERS"};
 
 	Game();
 
