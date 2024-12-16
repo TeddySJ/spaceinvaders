@@ -165,17 +165,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="level.cpp" />
-    <ClCompile Include="RaylibHandle.cpp" />
+    <ClCompile Include="ManagedSound.cpp" />
+    <ClCompile Include="ManagedTexture.cpp" />
     <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Resources.cpp" />
+    <ClCompile Include="SpaceInvaderResourceManager.cpp" />
+    <ClCompile Include="WindowHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="level.h" />
-    <ClInclude Include="RaylibHandle.h" />
+    <ClInclude Include="ManagedSound.h" />
+    <ClInclude Include="ManagedTexture.h" />
     <ClInclude Include="Source\game.h" />
-    <ClInclude Include="Source\Resources.h" />
+    <ClInclude Include="SpaceInvaderResourceManager.h" />
+    <ClInclude Include="WindowHandle.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="refactor_progress.txt" />

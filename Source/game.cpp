@@ -385,24 +385,24 @@ void Game::Render()
 		DrawText(TextFormat("Lives: %i", player.lives), 50, 70, 40, YELLOW);
 
 		//player rendering 
-		player.Render(resources.ship_textures[player.activeTexture]);
+		player.Render(resources.ship_textures[player.activeTexture].GetTexture());
 
 		//projectile rendering
 		for (int i = 0; i < Projectiles.size(); i++)
 		{
-			Projectiles[i].Render(resources.laser_texture);
+			Projectiles[i].Render(resources.laser_texture.GetTexture());
 		}
 
 		// wall rendering 
 		for (int i = 0; i < Walls.size(); i++)
 		{
-			Walls[i].Render(resources.barrier_texture); 
+			Walls[i].Render(resources.barrier_texture.GetTexture());
 		}
 
 		//alien rendering  
 		for (int i = 0; i < Aliens.size(); i++)
 		{
-			Aliens[i].Render(resources.alien_texture);
+			Aliens[i].Render(resources.alien_texture.GetTexture());
 		}
 
 

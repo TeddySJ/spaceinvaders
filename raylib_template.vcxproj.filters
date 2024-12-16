@@ -27,27 +27,45 @@
     <ClCompile Include="Source\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Resources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RaylibHandle.cpp">
+    <ClCompile Include="AudioDeviceHandle.cpp">
       <Filter>Source Files\RaylibHandles</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedSound.cpp">
+      <Filter>Source Files\RaylibHandles</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedTexture.cpp">
+      <Filter>Source Files\RaylibHandles</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowHandle.cpp">
+      <Filter>Source Files\RaylibHandles</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceInvaderResourceManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Resources.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RaylibHandle.h">
+    <ClInclude Include="WindowHandle.h">
+      <Filter>Header Files\RaylibHandles</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioDeviceHandle.h">
+      <Filter>Header Files\RaylibHandles</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceInvaderResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedTexture.h">
+      <Filter>Header Files\RaylibHandles</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedSound.h">
       <Filter>Header Files\RaylibHandles</Filter>
     </ClInclude>
   </ItemGroup>

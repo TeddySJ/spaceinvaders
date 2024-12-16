@@ -1,8 +1,9 @@
 #pragma once
 #include "raylib.h"
-#include "RaylibHandle.h"
+#include "WindowHandle.h"
+#include "AudioDeviceHandle.h"
+#include "SpaceInvaderResourceManager.h"
 #include <vector>
-#include "Resources.h"
 #include <string>
 
 enum struct State
@@ -131,7 +132,7 @@ struct Game
 
 	RaylibWindowHandle window_handle{screenWidth, screenHeight, "SPACE INVADERS"};
 	RaylibAudioDeviceHandle audio_handle{};
-	SpaceInvadersResourceHandler resources{};
+	SpaceInvadersResourceManager resources{};
 
 	Game();
 
