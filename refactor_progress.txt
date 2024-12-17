@@ -39,3 +39,9 @@ X Separate out input, update and collision handling from the generic Update()
 *** WARNINGS AS ERRORS ***
 
 * Turn on Warnings As Errors and enjoy the show!
+
+*** Const and stuff like that! ***
+
+* Try some Const-chasing in the rendering code and see if you can get all/most rendering functions to become const
+
+* Text formatting should use std-formatting instead of c-style
