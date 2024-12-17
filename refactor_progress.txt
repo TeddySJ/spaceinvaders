@@ -12,7 +12,7 @@
 
 X Separate out input, update and collision handling from the generic Update()
 
-* Separate the Render function into its separate states, while also adding in the stuff from Run that should be in Render
+X Separate the Render function into its separate states, while also adding in the stuff from Run that should be in Render
 
 * Split up Game.h into multiple header-files that define specific things
 

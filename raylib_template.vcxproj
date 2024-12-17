@@ -166,7 +166,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioDeviceHandle.cpp" />
-    <ClCompile Include="level.cpp" />
     <ClCompile Include="ManagedSound.cpp" />
     <ClCompile Include="ManagedTexture.cpp" />
     <ClCompile Include="Source\game.cpp" />
@@ -176,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioDeviceHandle.h" />
-    <ClInclude Include="level.h" />
     <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
     <ClInclude Include="Source\game.h" />
