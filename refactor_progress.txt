@@ -14,7 +14,7 @@ X Separate out input, update and collision handling from the generic Update()
 
 X Separate the Render function into its separate states, while also adding in the stuff from Run that should be in Render
 
-* Split up Game.h into multiple header-files that define specific things
+X Split up Game.h into multiple header-files that define specific things
 
 * Go over two-step initialization and work to initialize everything as tightly as possible
 

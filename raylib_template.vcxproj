@@ -165,20 +165,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alien.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="ManagedSound.cpp" />
     <ClCompile Include="ManagedTexture.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="SpaceInvaderResourceManager.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alien.h" />
     <ClInclude Include="AudioDeviceHandle.h" />
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="Highscore.h" />
     <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="SpaceInvaderResourceManager.h" />
+    <ClInclude Include="SpaceInvadersDefinitions.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowHandle.h" />
   </ItemGroup>
   <ItemGroup>
