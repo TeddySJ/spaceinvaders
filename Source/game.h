@@ -167,6 +167,11 @@ struct Game
 	void Run();
 
 	void Update();
+	void UpdateGameplay();
+	void HandleInput();
+	void HandleInput_EndScreen();
+	void HandleCollisions();
+	void PruneEntities();
 	void Render();
 
 	void SpawnAliens();

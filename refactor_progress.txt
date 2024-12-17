@@ -2,19 +2,17 @@
 
 ** TOOOO DOOOOS **
 
-* Get acquainted with the code and add comments and TODOs (in-code and here)
+* Done for now! XOXO
 
 *** RAIIIIIII ***
 
-* The SoundEffect or even soundsystem is not being used - remove
-
-* Wrap the init and release of the Raylib systems in a handler class
-
-* Create RAII wrapper classes for the textures
+* Done for now! XOXO
 
 *** Responsibility Refactor ***
 
-* Separate out input, update and collision handling from the generic Update()
+X Separate out input, update and collision handling from the generic Update()
+
+* Separate the Render function into its separate states, while also adding in the stuff from Run that should be in Render
 
 * Split up Game.h into multiple header-files that define specific things
 
