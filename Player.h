@@ -18,7 +18,8 @@ public:
 
 	EntityType type = EntityType::PLAYER;
 
-	void Initialize();
+	Player();
+
 	void Render(Texture2D texture);
 	void Update();
 };

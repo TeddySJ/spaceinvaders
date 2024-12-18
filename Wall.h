@@ -13,6 +13,8 @@ public:
 	int health = 50;
 	int radius = 60;
 
+	explicit Wall(Vector2 position);
+
 	void Render(Texture2D texture);
 	void Update();
 };

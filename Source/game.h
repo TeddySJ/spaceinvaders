@@ -44,8 +44,8 @@ struct Game
 	int formationWidth = 8;
 	int formationHeight = 5;
 	int alienSpacing = 80;
-	int formationX = 100;
-	int formationY = 50;
+	float formationX = 100;
+	float formationY = 50;
 
 	bool newHighScore = false;
 	
@@ -79,7 +79,7 @@ struct Game
 	void LoadLeaderboard();
 	void SaveLeaderboard();
 
-	Player player;
+	Player player{};
 
 	std::vector<Projectile> Projectiles;
 
@@ -89,7 +89,7 @@ struct Game
 
 	std::vector<HighscoreEntry> Leaderboard = { {"Player 1", 500}, {"Player 2", 400}, {"Player 3", 300}, {"Player 4", 200}, {"Player 5", 100} };
 	
-	Background background;
+	Background background{ 600 };
 
 
 

@@ -16,13 +16,17 @@ X Separate the Render function into its separate states, while also adding in th
 
 X Split up Game.h into multiple header-files that define specific things
 
-* Go over two-step initialization and work to initialize everything as tightly as possible
+* Go over two-step initialization of all objects and work to initialize everything as tightly as possible in constructors (this might end up being several commits)
+> 
 
-*** Game Flow ***
 
-* Split the game update logic into multiple functions
+*** Unify Data Types ***
 
-* Split the render logic into multiple functions
+* Look for screen-positioning related things and find out whether it has to be in float, or could be in int, and use whatever it might need to be for all primitive types: position, rectangles, etc
+^ Also look for redundant information like this, or where it is represented differently in different things (everything should use a Vector2 for position for example)
+^ Do not change anything yet, just gather information!
+
+* Go through it again, refactoring representation as needed
 
 *** Collision System ***
 
@@ -40,8 +44,13 @@ X Split up Game.h into multiple header-files that define specific things
 
 * Turn on Warnings As Errors and enjoy the show!
 
-*** Const and stuff like that! ***
+*** Const, noexcept and stuff like that! ***
+
+* Algorithms! Replace for-loops and such with algorithms when applicapble
 
 * Try some Const-chasing in the rendering code and see if you can get all/most rendering functions to become const
 
 * Text formatting should use std-formatting instead of c-style
+
+* Look for single-argument constructors that can be explicit
+

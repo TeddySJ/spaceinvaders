@@ -1,5 +1,10 @@
 #include "Alien.h"
 
+Alien::Alien(Vector2 position) noexcept
+	: position{ position }
+{
+}
+
 void Alien::Update()
 {
 	int window_width = GetScreenWidth();

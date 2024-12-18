@@ -1,5 +1,10 @@
 #include "Projectile.h"
 
+Projectile::Projectile(Vector2 position, int speed, EntityType type)
+	: position{ position }, speed{ speed }, type{ type }
+{
+}
+
 void Projectile::Update()
 {
 	position.y -= speed;

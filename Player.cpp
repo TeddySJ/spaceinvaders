@@ -1,10 +1,8 @@
 #include "Player.h"
 
-void Player::Initialize()
+Player::Player()
 {
-
-	float window_width = (float)GetScreenWidth();
-	x_pos = window_width / 2;
+	x_pos = static_cast<float>(GetScreenWidth() / 2);
 }
 
 void Player::Update()

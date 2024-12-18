@@ -1,10 +1,22 @@
 #include "Background.h"
 
+Star::Star()
+{
+	// TODO: Replace with a playfield rect
+	initPosition.x = GetRandomValue(-150, GetScreenWidth() + 150);
+	initPosition.y = GetRandomValue(0, GetScreenHeight());
+
+	//random color?
+	// TODO: Implement random color, chosen from a set of static constexpr colors defined in Star.h
+	color = SKYBLUE;
+
+	size = GetRandomValue(1, 4) / 2;
+}
+
 void Star::Update(float starOffset)
 {
 	position.x = initPosition.x + starOffset;
 	position.y = initPosition.y;
-
 }
 
 void Star::Render()
@@ -12,39 +24,26 @@ void Star::Render()
 	DrawCircle((int)position.x, (int)position.y, size, color);
 }
 
-
-void Background::Initialize(int starAmount)
+Background::Background(size_t starAmount)
+	: stars{starAmount}
 {
-	for (int i = 0; i < starAmount; i++)
-	{
-		Star newStar;
-
-		newStar.initPosition.x = GetRandomValue(-150, GetScreenWidth() + 150);
-		newStar.initPosition.y = GetRandomValue(0, GetScreenHeight());
-
-		//random color?
-		newStar.color = SKYBLUE;
-
-		newStar.size = GetRandomValue(1, 4) / 2;
-
-		Stars.push_back(newStar);
-	}
 }
 
 void Background::Update(float offset)
 {
-	for (int i = 0; i < Stars.size(); i++)
+	// TODO: Replace with algorithm
+	for (int i = 0; i < stars.size(); i++)
 	{
-		Stars[i].Update(offset);
+		stars[i].Update(offset);
 	}
-
 }
 
 void Background::Render()
 {
-	for (int i = 0; i < Stars.size(); i++)
+	// TODO: Replace with algorithm
+	for (int i = 0; i < stars.size(); i++)
 	{
-		Stars[i].Render();
+		stars[i].Render();
 	}
 }
 

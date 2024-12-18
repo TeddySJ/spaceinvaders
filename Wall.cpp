@@ -1,5 +1,10 @@
 #include "Wall.h"
 
+Wall::Wall(Vector2 position)
+	: position{ position }
+{
+}
+
 void Wall::Render(Texture2D texture)
 {
 	DrawTexturePro(texture,

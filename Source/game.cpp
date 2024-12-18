@@ -39,30 +39,14 @@ void Game::Start()
 	float window_width = (float)GetScreenWidth();
 	float window_height = (float)GetScreenHeight();
 	float wall_distance = window_width / (wallCount + 1);
+
 	for (int i = 0; i < wallCount; i++)
 	{
-		Wall newWalls;
-		newWalls.position.y = window_height - 250;
-		newWalls.position.x = wall_distance * (i + 1);
-
-		Walls.push_back(newWalls);
-
+		Walls.emplace_back(Vector2{ wall_distance * (i + 1) , window_height - 250 });
 	}
-
-
-	//creating player
-	Player newPlayer;
-	player = newPlayer;
-	player.Initialize();
 
 	//creating aliens
 	SpawnAliens();
-
-
-	//creating background
-	Background newBackground;
-	newBackground.Initialize(600);
-	background = newBackground;
 
 	//reset score
 	score = 0;
@@ -165,12 +149,9 @@ void Game::UpdateGameplay()
 			randomAlienIndex = rand() % Aliens.size();
 		}
 
-		Projectile newProjectile;
-		newProjectile.position = Aliens[randomAlienIndex].position;
-		newProjectile.position.y += 40;
-		newProjectile.speed = -15;
-		newProjectile.type = EntityType::ENEMY_PROJECTILE;
-		Projectiles.push_back(newProjectile);
+		Vector2 v2SpawnPos = Aliens[randomAlienIndex].position;
+		v2SpawnPos.y += 40;
+		Projectiles.emplace_back(v2SpawnPos, -15, EntityType::ENEMY_PROJECTILE);
 		shootTimer = 0;
 	}
 
@@ -191,12 +172,8 @@ void Game::HandleInput()
 		//MAKE PROJECTILE
 		if (IsKeyPressed(KEY_SPACE))
 		{
-			float window_height = (float)GetScreenHeight();
-			Projectile newProjectile;
-			newProjectile.position.x = player.x_pos;
-			newProjectile.position.y = window_height - 130; // TODO: Why is this not relative to the player?
-			newProjectile.type = EntityType::PLAYER_PROJECTILE;
-			Projectiles.push_back(newProjectile);
+			// TODO: Base this on player pos when it has become a Vector2
+			Projectiles.emplace_back(Vector2{ player.x_pos, (float)GetScreenHeight() - 130 }, 15, EntityType::PLAYER_PROJECTILE);
 		}
 	}
 	else if (gameState == State::STARTSCREEN)
@@ -484,15 +461,11 @@ void Game::Render_EndScreen()
 
 void Game::SpawnAliens()
 {
-	for (int row = 0; row < formationHeight; row++) {
-		for (int col = 0; col < formationWidth; col++) {
-			Alien newAlien = Alien();
-			newAlien.active = true;
-			newAlien.position.x = formationX + 450 + (col * alienSpacing);
-			newAlien.position.y = formationY + (row * alienSpacing);
-			Aliens.push_back(newAlien);
-			std::cout << "Find Alien -X:" << newAlien.position.x << std::endl;
-			std::cout << "Find Alien -Y:" << newAlien.position.y << std::endl;
+	for (int row = 0; row < formationHeight; row++) 
+	{
+		for (int col = 0; col < formationWidth; col++) 
+		{
+			Aliens.emplace_back(Vector2{ formationX + 450 + (col * alienSpacing) , formationY + (row * alienSpacing) });
 		}
 	}
 
