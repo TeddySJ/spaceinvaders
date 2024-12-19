@@ -120,7 +120,7 @@ void Game::UpdateGameplay()
 	}
 
 	// Update background with offset
-	playerPos = { player.x_pos, (float)player.player_base_height };
+	playerPos = { player.position.x, (float)player.player_base_height };
 	cornerPos = { 0, (float)player.player_base_height };
 	offset = lineLength(playerPos, cornerPos) * -1;
 	background.Update(offset / 15);
@@ -173,7 +173,7 @@ void Game::HandleInput()
 		if (IsKeyPressed(KEY_SPACE))
 		{
 			// TODO: Base this on player pos when it has become a Vector2
-			Projectiles.emplace_back(Vector2{ player.x_pos, (float)GetScreenHeight() - 130 }, 15, EntityType::PLAYER_PROJECTILE);
+			Projectiles.emplace_back(Vector2{ player.position.x, (float)GetScreenHeight() - 130 }, 15, EntityType::PLAYER_PROJECTILE);
 		}
 	}
 	else if (gameState == State::STARTSCREEN)
@@ -282,7 +282,7 @@ void Game::HandleCollisions()
 		{
 			if (Projectiles[i].type == EntityType::ENEMY_PROJECTILE)
 			{
-				if (CheckCollision({ player.x_pos, GetScreenHeight() - player.player_base_height }, player.radius, Projectiles[i].lineStart, Projectiles[i].lineEnd))
+				if (CheckCollision({ player.position.x, GetScreenHeight() - player.player_base_height }, player.radius, Projectiles[i].lineStart, Projectiles[i].lineEnd))
 				{
 					std::cout << "dead!\n";
 					Projectiles[i].active = false;

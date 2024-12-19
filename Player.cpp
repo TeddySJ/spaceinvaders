@@ -1,8 +1,8 @@
 #include "Player.h"
 
 Player::Player()
+	: position{ static_cast<float>(GetScreenWidth() / 2) , 0}
 {
-	x_pos = static_cast<float>(GetScreenWidth() / 2);
 }
 
 void Player::Update()
@@ -19,15 +19,15 @@ void Player::Update()
 		direction++;
 	}
 
-	x_pos += speed * direction;
+	position.x += speed * direction;
 
-	if (x_pos < 0 + radius)
+	if (position.x < 0 + radius)
 	{
-		x_pos = 0 + radius;
+		position.x = 0 + radius;
 	}
-	else if (x_pos > GetScreenWidth() - radius)
+	else if (position.x > GetScreenWidth() - radius)
 	{
-		x_pos = GetScreenWidth() - radius;
+		position.x = GetScreenWidth() - radius;
 	}
 
 
@@ -60,7 +60,7 @@ void Player::Render(Texture2D texture)
 			352,
 		},
 		{
-			x_pos, window_height - player_base_height,
+			position.x, window_height - player_base_height,
 			100,
 			100,
 		}, { 50, 50 },

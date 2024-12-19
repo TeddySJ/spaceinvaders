@@ -7,7 +7,7 @@ struct Player
 {
 public:
 
-	float x_pos = 0;
+	Vector2 position;
 	float speed = 7;
 	float player_base_height = 70.0f;
 	float radius = 50;

@@ -13,7 +13,6 @@ struct Star
 
 	Star();
 
-	void Update(float starOffset);
 	void Render();
 };
 
