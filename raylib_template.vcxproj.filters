@@ -101,6 +101,9 @@
     <ClInclude Include="SpaceInvadersDefinitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="refactor_progress.txt" />

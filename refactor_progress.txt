@@ -20,21 +20,30 @@ X Go over two-step initialization of all objects and work to initialize everythi
 
 *** Unify Data Types ***
 
-* Look for screen-positioning related things and find out whether it has to be in float, or could be in int, and use whatever it might need to be for all primitive types: position, rectangles, etc
+X Look for screen-positioning related things and find out whether it has to be in float, or could be in int, and use whatever it might need to be for all primitive types: position, rectangles, etc
 ^ Also look for redundant information like this, or where it is represented differently in different things (everything should use a Vector2 for position for example)
 ^ Do not change anything yet, just gather information!
 
-* Go through it again, refactoring representation as needed
+>> NOTE: using float where it's an option seems to be most compatible with Raylib
+
+X Go through it again, refactoring representation as needed
 
 *** Redundancy reduction / responsibility correction ***
 
 * Look for redundant fields, or fields that are misused, and make notes
+> Alien.Color
+> Alien.type
+> Let's use a bounding_rect for position and size! All rendering must be 
 
 * Create a Playfield rectangle that can be sent to entities that need it (to calculate boundaries)
 
 *** Collision System ***
 
-* The collision functionality seems insanely over-engineered! It checks the start and end point of a line by way of circular collision instead of just comparing two circles
+* The collision functionality seems insanely over-engineered! It checks the start and end point of a line by way of circular collision instead of just comparing two circles (or two boxes..)
+
+> Alright, I think this is the "collision system" I'll use: each collideable object has a "GetCollisionRect" and an OnCollision function
+
+
 
 * Perhaps a "can collide" interface with a Rectangle of some kind? It should call a provided "on collision"-callback function that handles whatever must be handled
 
@@ -51,6 +60,7 @@ X Go over two-step initialization of all objects and work to initialize everythi
 *** Const, noexcept and stuff like that! ***
 
 * Algorithms! Replace for-loops and such with algorithms when applicapble
+> std::erase_if(enemies, [](const auto& e) { return !e.IsActive(); }); (for erasing inactive enemies)
 
 * Try some Const-chasing in the rendering code and see if you can get all/most rendering functions to become const
 

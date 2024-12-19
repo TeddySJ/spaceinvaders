@@ -183,6 +183,7 @@
     <ClInclude Include="Alien.h" />
     <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="CollisionInterface.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
