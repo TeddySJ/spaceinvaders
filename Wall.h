@@ -12,7 +12,6 @@ public:
 	bool active;
 	Color color;
 	int health = 50;
-	int radius = 60;
 
 	Vector2 collider_size{ 140, 20 };
 

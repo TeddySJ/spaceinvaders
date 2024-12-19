@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <algorithm>
 
 Player::Player()
 	: position{ static_cast<float>(GetScreenWidth() / 2) , GetScreenHeight() - player_base_height }
@@ -42,14 +43,8 @@ void Player::Update()
 
 	position.x += speed * direction;
 
-	if (position.x < 0 + radius)
-	{
-		position.x = 0 + radius;
-	}
-	else if (position.x > GetScreenWidth() - radius)
-	{
-		position.x = GetScreenWidth() - radius;
-	}
+	const auto half_collider = collider_size.x / 2;
+	position.x = std::clamp(position.x, 0 + half_collider, GetScreenWidth() - half_collider);
 
 
 	//Determine frame for animation

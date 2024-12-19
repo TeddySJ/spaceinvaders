@@ -10,7 +10,6 @@ public:
 
 	Color color = WHITE;
 	Vector2 position;
-	float radius = 30;
 	Vector2 collider_size{60, 30};
 	int speed = 2;
 

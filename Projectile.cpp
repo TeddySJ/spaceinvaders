@@ -7,14 +7,7 @@ Projectile::Projectile(Vector2 position, int speed, EntityType type)
 
 void Projectile::Update()
 {
-	position.y -= speed;
-
-	// UPDATE LINE POSITION
-	lineStart.y = position.y - 15;
-	lineEnd.y = position.y + 15;
-
-	lineStart.x = position.x;
-	lineEnd.x = position.x;
+	position.y += speed;
 
 	if (position.y < 0 || position.y > 1500)
 	{

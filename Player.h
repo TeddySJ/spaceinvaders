@@ -12,7 +12,6 @@ public:
 	Vector2 position;
 	float speed = 7;
 	Vector2 collider_size{ 60, 30 };
-	float radius = 50;
 	int lives = 3;
 	int direction = 0;
 	int activeTexture = 0;
