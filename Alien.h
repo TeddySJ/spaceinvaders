@@ -11,7 +11,7 @@ public:
 	Color color = WHITE;
 	Vector2 position;
 	float radius = 30;
-	Vector2 size{30, 30};
+	Vector2 collider_size{60, 30};
 	int speed = 2;
 
 	bool active = true;
@@ -24,6 +24,6 @@ public:
 	void Update();
 	void Render(Texture2D texture);
 
-	Rectangle GetCollisionRect() const override { return {position.x - size.x / 2, position.y - size.y / 2, size.x, size.y}; }
-	void OnCollision() override { active = false; }
+	Rectangle GetCollisionRect() const override;
+	void OnCollision() override;
 };

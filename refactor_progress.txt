@@ -33,7 +33,6 @@ X Go through it again, refactoring representation as needed
 * Look for redundant fields, or fields that are misused, and make notes
 > Alien.Color
 > Alien.type
-> Let's use a bounding_rect for position and size! All rendering must be 
 
 * Create a Playfield rectangle that can be sent to entities that need it (to calculate boundaries)
 
@@ -41,9 +40,10 @@ X Go through it again, refactoring representation as needed
 
 * The collision functionality seems insanely over-engineered! It checks the start and end point of a line by way of circular collision instead of just comparing two circles (or two boxes..)
 
-> Alright, I think this is the "collision system" I'll use: each collideable object has a "GetCollisionRect" and an OnCollision function
-
-
+X Alright, I think this is the "collision system" I'll use: each collideable object has a "GetCollisionRect" and an OnCollision function
+> Separate the projectile lists so player and enemy projectiles are separate, for collision purposes
+> Do all the different collision checks!
+> There are bugs related to the fact that different things are scaled differently, I think?
 
 * Perhaps a "can collide" interface with a Rectangle of some kind? It should call a provided "on collision"-callback function that handles whatever must be handled
 

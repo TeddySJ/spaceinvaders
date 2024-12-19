@@ -54,3 +54,13 @@ void Alien::Render(Texture2D texture)
 		0,
 		WHITE);
 }
+
+Rectangle Alien::GetCollisionRect() const
+{
+	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
+}
+
+void Alien::OnCollision()
+{
+	active = false;
+}

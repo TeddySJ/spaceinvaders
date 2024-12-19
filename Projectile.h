@@ -13,7 +13,7 @@ public:
 	bool active = true;
 	EntityType type;
 
-	Vector2 size{ 5, 10 };
+	Vector2 collider_size{ 10, 20 };
 
 	// LINE WILL UPDATE WITH POSITION FOR CALCULATIONS
 	Vector2 lineStart = { 0, 0 };
@@ -24,6 +24,6 @@ public:
 	void Update();
 	void Render(Texture2D texture);
 
-	Rectangle GetCollisionRect() const override { return { position.x - size.x / 2, position.y - size.y / 2, size.x, size.y }; }
-	void OnCollision() override { active = false; }
+	Rectangle GetCollisionRect() const override;
+	void OnCollision() override;
 };

@@ -39,3 +39,13 @@ void Wall::Update()
 
 
 }
+
+Rectangle Wall::GetCollisionRect() const
+{
+	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
+}
+
+void Wall::OnCollision()
+{
+	health--;
+}

@@ -1,9 +1,30 @@
 #include "Player.h"
 
 Player::Player()
-	: position{ static_cast<float>(GetScreenWidth() / 2) , 0}
+	: position{ static_cast<float>(GetScreenWidth() / 2) , GetScreenHeight() - player_base_height }
 {
 }
+
+void Player::Render(Texture2D texture)
+{
+	float window_height = GetScreenHeight();
+
+	DrawTexturePro(texture,
+		{
+			0,
+			0,
+			352,
+			352,
+		},
+		{
+			position.x, window_height - player_base_height,
+			100,
+			100,
+		}, { 50, 50 },
+		0,
+		WHITE);
+}
+
 
 void Player::Update()
 {
@@ -48,22 +69,13 @@ void Player::Update()
 
 }
 
-void Player::Render(Texture2D texture)
+Rectangle Player::GetCollisionRect() const
 {
-	float window_height = GetScreenHeight();
+	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
+}
 
-	DrawTexturePro(texture,
-		{
-			0,
-			0,
-			352,
-			352,
-		},
-		{
-			position.x, window_height - player_base_height,
-			100,
-			100,
-		}, { 50, 50 },
-		0,
-		WHITE);
+
+void Player::OnCollision()
+{
+	lives--;
 }
