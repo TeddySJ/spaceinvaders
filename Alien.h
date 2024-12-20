@@ -8,19 +8,21 @@ struct Alien : ICollidable
 {
 public:
 
-	Color color = WHITE;
+	static constexpr float speed = 2;
+	static constexpr Vector2 collider_size{ 60, 30 };
+	static constexpr Vector2 render_size{ 100, 100 };
+	static constexpr Vector2 render_offset { 50, 50 };
+	static constexpr float row_height = 50;
+
 	Vector2 position;
-	Vector2 collider_size{60, 30};
-	int speed = 2;
 
 	bool active = true;
-	bool moveRight = true;
-
-	EntityType type = EntityType::ENEMY;
+	float x_direction = 1;
 
 	explicit Alien(Vector2 position) noexcept;
 
 	void Update();
+	void MoveToNextRow();
 	void Render(Texture2D texture);
 
 	Rectangle GetCollisionRect() const override;
