@@ -166,6 +166,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Highscore.cpp" />
@@ -181,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionInterface.h" />

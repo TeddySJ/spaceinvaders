@@ -442,7 +442,7 @@ void Game::SpawnAliens()
 	{
 		for (int col = 0; col < formationWidth; col++) 
 		{
-			aliens.emplace_back(Vector2{ formationX + 450 + (col * alienSpacing) , formationY + (row * alienSpacing) });
+			aliens.emplace_back(resources, Vector2{ formationX + 450 + (col * alienSpacing) , formationY + (row * alienSpacing) });
 		}
 	}
 

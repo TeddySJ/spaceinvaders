@@ -1,7 +1,12 @@
 #include "Alien.h"
 
-Alien::Alien(Vector2 position) noexcept
-	: position{ position }
+static constexpr Vector2 RENDER_SIZE{ 100, 100 };
+static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
+
+Alien::Alien(SpaceInvadersResourceManager& resources, Vector2 position) noexcept
+	:
+	position{ position }, 
+	animation{ resources, "./Assets/Alien.png", RENDER_SIZE, RENDER_OFFSET }
 {
 }
 
@@ -21,24 +26,9 @@ void Alien::MoveToNextRow()
 	x_direction *= -1;
 }
 
-void Alien::Render(const Texture2D& texture)
-{
-	DrawTexturePro(texture,
-		GetTextureBoundsAsRectangle(texture),
-		{
-			position.x,
-			position.y,
-			render_size.x,
-			render_size.y,
-		}, 
-		{ render_offset.x , render_offset.y },
-		0,
-		WHITE);
-}
-
 void Alien::Render(SpaceInvadersResourceManager& resources)
 {
-	Render(resources.GetTexture2D(texture_path));
+	animation.Render(resources, position);
 }
 
 Rectangle Alien::GetCollisionRect() const

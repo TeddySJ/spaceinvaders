@@ -82,3 +82,4 @@ X Prototype this system in parallell to the existing one, test with Alien as tha
 
 * Look for single-argument constructors that can be explicit
 
+* Add "final" to all non-inherited classes
