@@ -52,9 +52,16 @@ X Do all the different collision checks!
 
 *** Rendering ***
 
-* Look over in what way the entities should be responsible for the resources needed for their rendering! Is it shared_ptr time?
+* Plan: make it so the resource manager is interacted with via string_views instead of owning textures as data members
+^ This allows for game objects or render classes to know about a texture as a string instead of as a more complex resource
+^ The resource manager is then passed along the render calls to where it is needed
 
-* 
+X Prototype this system in parallell to the existing one, test with Alien as that class is already tightened and pretty clean
+
+* Create an Animation class that holds a string to a texture, cell width/height, number of frames, ticks per frame, a target rectangle, and an offset!
+^ Let Alien implement this Animation class and be rendered by it
+
+* Implement it on Wall and Projectile
 
 *** State Handling ***
 

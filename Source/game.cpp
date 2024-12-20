@@ -364,7 +364,8 @@ void Game::Render_Gameplay()
 	//alien rendering  
 	for (int i = 0; i < aliens.size(); i++)
 	{
-		aliens[i].Render(resources.alien_texture.GetTexture());
+		//aliens[i].Render(resources.alien_texture.GetTexture());
+		aliens[i].Render(resources);
 	}
 }
 

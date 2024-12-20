@@ -21,7 +21,7 @@ void Alien::MoveToNextRow()
 	x_direction *= -1;
 }
 
-void Alien::Render(Texture2D texture)
+void Alien::Render(const Texture2D& texture)
 {
 	DrawTexturePro(texture,
 		GetTextureBoundsAsRectangle(texture),
@@ -34,6 +34,11 @@ void Alien::Render(Texture2D texture)
 		{ render_offset.x , render_offset.y },
 		0,
 		WHITE);
+}
+
+void Alien::Render(SpaceInvadersResourceManager& resources)
+{
+	Render(resources.GetTexture2D(texture_path));
 }
 
 Rectangle Alien::GetCollisionRect() const
