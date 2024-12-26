@@ -157,7 +157,7 @@ void Game::UpdateGameplay()
 
 		Vector2 v2SpawnPos = aliens[randomAlienIndex].position;
 		v2SpawnPos.y += 40;
-		enemy_projectiles.emplace_back(v2SpawnPos, 15, EntityType::ENEMY_PROJECTILE);
+		enemy_projectiles.emplace_back(resources, v2SpawnPos, 15, EntityType::ENEMY_PROJECTILE);
 		shootTimer = 0;
 	}
 
@@ -179,7 +179,7 @@ void Game::HandleInput()
 		if (IsKeyPressed(KEY_SPACE))
 		{
 			// TODO: Base this on player pos when it has become a Vector2
-			player_projectiles.emplace_back(Vector2{ player.position.x, (float)GetScreenHeight() - 130 }, -15, EntityType::PLAYER_PROJECTILE);
+			player_projectiles.emplace_back(resources, Vector2{ player.position.x, (float)GetScreenHeight() - 130 }, -15, EntityType::PLAYER_PROJECTILE);
 		}
 	}
 	else if (gameState == State::STARTSCREEN)
@@ -347,12 +347,12 @@ void Game::Render_Gameplay()
 	//projectile rendering
 	for (int i = 0; i < player_projectiles.size(); i++)
 	{
-		player_projectiles[i].Render(resources.laser_texture.GetTexture());
+		player_projectiles[i].Render(resources);
 	}
 
 	for (int i = 0; i < enemy_projectiles.size(); i++)
 	{
-		enemy_projectiles[i].Render(resources.laser_texture.GetTexture());
+		enemy_projectiles[i].Render(resources);
 	}
 
 	// wall rendering 

@@ -1,7 +1,13 @@
 #include "Projectile.h"
 
-Projectile::Projectile(Vector2 position, int speed, EntityType type)
-	: position{ position }, speed{ speed }, type{ type }
+static constexpr Vector2 RENDER_SIZE{ 50, 50};
+static constexpr Vector2 RENDER_OFFSET{ 25, 25 };
+static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Laser.png";
+
+Projectile::Projectile(SpaceInvadersResourceManager& resources, Vector2 position, int speed, EntityType type)
+	: position{ position },
+	sprite{ PROJECTILE_TEXTURE_PATH, GetTextureSizeFromPath(resources, PROJECTILE_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET },
+	speed{ speed }, type{ type }
 {
 }
 
@@ -15,24 +21,9 @@ void Projectile::Update()
 	}
 }
 
-void Projectile::Render(Texture2D texture)
+void Projectile::Render(SpaceInvadersResourceManager& resources)
 {
-	//DrawCircle((int)position.x, (int)position.y, 10, RED);
-	DrawTexturePro(texture,
-		{
-			0,
-			0,
-			176,
-			176,
-		},
-		{
-			position.x,
-			position.y,
-			50,
-			50,
-		}, { 25 , 25 },
-		0,
-		WHITE);
+	SpriteRenderer::Render(resources, sprite, position);
 }
 
 Rectangle Projectile::GetCollisionRect() const

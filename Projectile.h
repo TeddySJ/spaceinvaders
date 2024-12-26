@@ -3,6 +3,8 @@
 #include "raylib.h"
 #include "SpaceInvadersDefinitions.h"
 #include "CollisionInterface.h"
+#include "Sprite.h"
+#include "SpriteRenderer.h"
 
 struct Projectile : ICollidable
 {
@@ -13,12 +15,14 @@ public:
 	bool active = true;
 	EntityType type;
 
+	Sprite sprite;
+
 	Vector2 collider_size{ 10, 20 };
 
-	Projectile(Vector2 position, int speed, EntityType type);
+	Projectile(SpaceInvadersResourceManager& resources, Vector2 position, int speed, EntityType type);
 
 	void Update();
-	void Render(Texture2D texture);
+	void Render(SpaceInvadersResourceManager& resources);
 
 	Rectangle GetCollisionRect() const override;
 	void OnCollision() override;
