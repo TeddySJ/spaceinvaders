@@ -2,11 +2,12 @@
 
 static constexpr Vector2 RENDER_SIZE{ 100, 100 };
 static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
+static constexpr std::string_view ALIEN_TEXTURE_PATH = "./Assets/Alien.png";
 
 Alien::Alien(SpaceInvadersResourceManager& resources, Vector2 position) noexcept
 	:
 	position{ position }, 
-	animation{ resources, "./Assets/Alien.png", RENDER_SIZE, RENDER_OFFSET }
+	sprite{ ALIEN_TEXTURE_PATH, GetTextureSizeFromPath(resources, ALIEN_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET }
 {
 }
 
@@ -28,8 +29,8 @@ void Alien::MoveToNextRow()
 
 void Alien::Render(SpaceInvadersResourceManager& resources)
 {
-	animation.Render(resources, position);
-}
+	SpriteRenderer::Render(resources, sprite, position);
+}	
 
 Rectangle Alien::GetCollisionRect() const
 {

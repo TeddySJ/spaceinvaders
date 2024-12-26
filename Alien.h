@@ -4,7 +4,8 @@
 #include "SpaceInvadersDefinitions.h"
 #include "CollisionInterface.h"
 #include "SpaceInvaderResourceManager.h"
-#include "Animation.h"
+#include "Sprite.h"
+#include "SpriteRenderer.h"
 
 struct Alien : ICollidable
 {
@@ -15,8 +16,8 @@ public:
 
 	static constexpr Vector2 collider_size{ 60, 30 };
 
-	Animation animation;
 	Vector2 position;
+	Sprite sprite;
 
 	bool active = true;
 	float x_direction = 1;

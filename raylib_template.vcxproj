@@ -166,7 +166,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
-    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Highscore.cpp" />
@@ -177,12 +177,14 @@
     <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="SpaceInvaderResourceManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowHandle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
-    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="AnimatedSpriteRenderer.h" />
     <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionInterface.h" />
@@ -194,6 +196,8 @@
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="SpaceInvaderResourceManager.h" />
     <ClInclude Include="SpaceInvadersDefinitions.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowHandle.h" />
   </ItemGroup>

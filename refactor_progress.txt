@@ -58,8 +58,10 @@ X Do all the different collision checks!
 
 X Prototype this system in parallell to the existing one, test with Alien as that class is already tightened and pretty clean
 
-* Create an Animation class that holds a string to a texture, cell width/height, number of frames, ticks per frame, a target rectangle, and an offset!
+X Create an Animation class that holds a string to a texture, cell width/height, number of frames, ticks per frame, a target rectangle, and an offset!
 ^ Let Alien implement this Animation class and be rendered by it
+
+* Refactor again so Animation becomes SpriteAnimation, and a separate class that is a SpriteRenderer
 
 * Implement it on Wall and Projectile
 
