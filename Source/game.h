@@ -28,26 +28,12 @@ struct Game
 
 	Game();
 
-	// Score
-	int score;
-
-	//Aliens shooting
-	float shootTimer = 0;
-
 	void Run();
 
 	void Update();
-	void UpdateGameplay();
 	void HandleInput();
-	void HandleInput_EndScreen();
-
 	void Render();
-	void Render_StartScreen();
-	void Render_Gameplay();
-	void Render_EndScreen();
 
 	void ChangeState(std::unique_ptr<GameState> new_state);
 	std::unique_ptr<GameState> current_state;
-
-
 };
