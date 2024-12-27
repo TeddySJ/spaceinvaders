@@ -1,33 +1,19 @@
 #include "Background.h"
 
-Star::Star()
+// TODO: Replace GetScreenWidth etc with a playfield rect
+Background::Star::Star()
+	: position{ static_cast<float>(GetRandomValue(-150, GetScreenWidth() + 150)) , static_cast<float>(GetRandomValue(0, GetScreenHeight())) }, size{ static_cast<float>(GetRandomValue(1, 2)) }
 {
-	// TODO: Replace with a playfield rect
-	position.x = GetRandomValue(-150, GetScreenWidth() + 150);
-	position.y = GetRandomValue(0, GetScreenHeight());
-
-	//random color?
-	// TODO: Implement random color, chosen from a set of static constexpr colors defined in Star.h
-	color = SKYBLUE;
-
-	size = GetRandomValue(1, 4) / 2;
 }
 
-void Star::Render()
+void Background::Star::Render()
 {
-	DrawCircle((int)position.x, (int)position.y, size, color);
+	DrawCircle(static_cast<int>(position.x), static_cast<int>(position.y), size, color);
 }
 
 Background::Background(size_t starAmount)
 	: stars{starAmount}
 {
-	// TODO: Since the background is static, could this whole setup be constexpr?
-}
-
-void Background::Update(float offset)
-{
-	// TODO: Update will be removed both from here and Render)
-	
 }
 
 void Background::Render()

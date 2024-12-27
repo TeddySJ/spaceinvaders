@@ -126,8 +126,6 @@ void Game::UpdateGameplay()
 	playerPos = { player.position.x, (float)player.player_base_height };
 	cornerPos = { 0, (float)player.player_base_height };
 	offset = lineLength(playerPos, cornerPos) * -1;
-	background.Update(offset / 15);
-
 
 	for (int i = 0; i < player_projectiles.size(); i++)
 	{

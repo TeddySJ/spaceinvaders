@@ -63,9 +63,9 @@ X Create an Animation class that holds a string to a texture, cell width/height,
 
 X Refactor again so Animation becomes AnimatedSprite, inheriting from Sprite and a separate class that is a SpriteRenderer / AnimatedSpriteRenderer
 
-* Implement the static Sprite on Wall and Projectile
+X Implement the static Sprite on Wall and Projectile
 
-* Finish the AnimatedSprite and implement it on Player
+X Finish the AnimatedSprite and implement it on Player
 
 * Create a "DotRenderer" to support the rendering of the background, and then just have the background hold the positions and sizes (dots) required
 
