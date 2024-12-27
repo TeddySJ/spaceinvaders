@@ -404,3 +404,8 @@ bool Game::CheckCollision(Vector2 circlePos, float circleRadius, Vector2 lineSta
 	}
 
 }
+
+void Game::ChangeState(std::unique_ptr<GameState> new_state)
+{
+	current_state = std::move(new_state);
+}

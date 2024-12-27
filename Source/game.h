@@ -12,6 +12,8 @@
 #include "SpaceInvadersDefinitions.h"
 #include <vector>
 #include <string>
+#include <GameState.h>
+#include <memory>
 
 struct Game
 {
@@ -54,6 +56,9 @@ struct Game
 	void SpawnAliens();
 
 	bool CheckCollision(Vector2 circlePos, float circleRadius, Vector2 lineTop, Vector2 lineBottom);
+
+	void ChangeState(std::unique_ptr<GameState> new_state);
+	std::unique_ptr<GameState> current_state;
 
 	HighscoreManager highscore_manager;
 

@@ -170,6 +170,7 @@
     <ClCompile Include="AnimatedSpriteRenderer.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="ManagedSound.cpp" />
     <ClCompile Include="ManagedTexture.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionInterface.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
