@@ -1,10 +1,15 @@
 #include "Highscore.h"
 #include "raylib.h"
 #include <fstream>
+#include <iostream>
+#include <filesystem>
 
 HighscoreManager::HighscoreManager()
 {
-
+	if (!LoadHighscoresFromDisk())
+	{
+		entries = { {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0} };
+	}
 }
 
 void HighscoreManager::Enter(int score)
@@ -31,40 +36,52 @@ void HighscoreManager::RenderList() const
 	}
 }
 
-void HighscoreManager::LoadLeaderboard()
+bool HighscoreManager::LoadHighscoresFromDisk()
 {
-	// CLEAR LEADERBOARD
+	if (!std::filesystem::exists(HIGHSCORE_FILE_PATH))
+	{
+		return false;
+	}
 
-	// OPEN FILE
-
-	// READ DATA
-
-	// WRITE DATA ONTO LEADERBOARD
-
-	//CLOSE FILE
-}
-
-void HighscoreManager::SaveLeaderboard()
-{
-	// SAVE LEADERBOARD AS ARRAY
-
-// OPEN FILE
-	std::fstream file;
-
-	file.open("Leaderboard");
+	std::ifstream file{ HIGHSCORE_FILE_PATH };
 
 	if (!file)
 	{
+		return false;
 	}
-	else
+
+	std::string line;
+
+	while (std::getline(file, line)) 
 	{
+		ReadEntryFromLine(line);
 	}
-	// CLEAR FILE
 
-	// WRITE ARRAY DATA INTO FILE
+	return true;
+}
 
-	// CLOSE FILE
+void HighscoreManager::ReadEntryFromLine(std::string line)
+{
+	size_t comma = line.find(',');
+	if (comma != std::string::npos)
+	{
+		entries.emplace_back(line.substr(0, comma), std::stoi(line.substr(comma + 1)));
+	}
+}
 
+void HighscoreManager::SaveHighscoresToDisk() const
+{
+	std::ofstream file{ HIGHSCORE_FILE_PATH };
+
+	if (!file)
+	{
+		throw std::exception(); // TODO: Improve exception
+	}
+
+	for (const auto& entry : entries) 
+	{
+		file << entry.name << ',' << entry.score << '\n';
+	}
 }
 
 void HighscoreManager::InsertNewHighscore(const std::string& name, int score)
@@ -79,6 +96,8 @@ void HighscoreManager::InsertNewHighscore(const std::string& name, int score)
 
 	while (entries.size() > 5)
 		entries.pop_back();
+
+	SaveHighscoresToDisk();
 }
 
 void HighscoreManager::NewHighscoreInput()

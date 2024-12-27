@@ -1,0 +1,5 @@
+Mostron,900
+majs,700
+Empty,0
+Empty,0
+Empty,0

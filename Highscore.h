@@ -14,13 +14,14 @@ public:
 	};
 
 	static constexpr uint8_t NAME_MAX_LENGTH = 9;
+	static constexpr auto HIGHSCORE_FILE_PATH = "highscore.txt";
 
 	static constexpr bool IsValidHighscoreInput(int key)
 	{
 		return key >= 32 && key <= 125;
 	}
 
-	std::vector<HighscoreEntry> entries = { {"Player 1", 500}, {"Player 2", 400}, {"Player 3", 300}, {"Player 4", 200}, {"Player 5", 100} };
+	std::vector<HighscoreEntry> entries{};
 
 	bool entering_new_highscore = false;
 	std::string enter_name = "";
@@ -42,7 +43,9 @@ public:
 
 	void RenderList() const;
 
-	void LoadLeaderboard();
+	bool LoadHighscoresFromDisk();
 	
-	void SaveLeaderboard();
+	void ReadEntryFromLine(std::string line);
+
+	void SaveHighscoresToDisk() const;
 };

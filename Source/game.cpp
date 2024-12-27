@@ -72,7 +72,6 @@ void Game::End()
 
 void Game::Continue()
 {
-	highscore_manager.SaveLeaderboard();
 	gameState = State::STARTSCREEN;
 }
 

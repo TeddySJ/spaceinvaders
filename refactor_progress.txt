@@ -73,9 +73,9 @@ X Do some basic clean up! That is, separate things properly into their .h and .c
 
 *** High Scores ***
 
-* Refactor highscore input to be less obscure: just let the player type in their name immediately, remove mouse involvement
+X Refactor highscore input to be less obscure: just let the player type in their name immediately, remove mouse involvement
 
-* Finish implementing high score saving functionality
+X Finish implementing high score saving functionality
 
 * Saving
 
