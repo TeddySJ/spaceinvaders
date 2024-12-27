@@ -3,6 +3,8 @@
 #include "raylib.h"
 #include "SpaceInvadersDefinitions.h"
 #include "CollisionInterface.h"
+#include "AnimatedSprite.h"
+#include "AnimatedSpriteRenderer.h"
 
 struct Player : ICollidable
 {
@@ -17,11 +19,14 @@ public:
 	int activeTexture = 0;
 	float timer = 0;
 
+	AnimatedSprite animated_sprite;
+	AnimatedSpriteRenderer animated_sprite_renderer;
+
 	EntityType type = EntityType::PLAYER;
 
-	Player();
+	Player(SpaceInvadersResourceManager& resources);
 
-	void Render(Texture2D texture);
+	void Render(SpaceInvadersResourceManager& resources);
 	void Update();
 
 	Rectangle GetCollisionRect() const override;

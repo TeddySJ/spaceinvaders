@@ -342,7 +342,7 @@ void Game::Render_Gameplay()
 	DrawText(TextFormat("Lives: %i", player.lives), 50, 70, 40, YELLOW);
 
 	//player rendering 
-	player.Render(resources.ship_textures[player.activeTexture].GetTexture());
+	player.Render(resources);
 
 	//projectile rendering
 	for (int i = 0; i < player_projectiles.size(); i++)

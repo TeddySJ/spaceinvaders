@@ -79,7 +79,7 @@ struct Game
 	void LoadLeaderboard();
 	void SaveLeaderboard();
 
-	Player player{};
+	Player player{resources};
 
 	std::vector<Projectile> player_projectiles;
 	std::vector<Projectile> enemy_projectiles;
