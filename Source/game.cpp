@@ -35,11 +35,6 @@ Game::Game()
 	window_handle.SetTargetFPS(60);
 }
 
-void Game::Continue()
-{
-	current_state->QueueStateChange(std::make_unique<TransitionToStartScreen>());
-}
-
 void Game::Run()
 {
 	while (!WindowShouldClose())
@@ -86,20 +81,13 @@ void Game::HandleInput()
 	}
 	else if (current_state->StateAsEnum == State::ENDSCREEN)
 	{
-		HandleInput_EndScreen();
+		//HandleInput_EndScreen();
 	}
 }
 
 void Game::HandleInput_EndScreen()
 {
-	if (highscore_manager.entering_new_highscore)
-	{
-		highscore_manager.NewHighscoreInput();
-	}
-	else if (IsKeyReleased(KEY_ENTER))
-	{
-		Continue();
-	}
+	
 }
 
 void Game::Render()
@@ -119,7 +107,7 @@ void Game::Render()
 	}
 	else if (current_state->StateAsEnum == State::ENDSCREEN)
 	{
-		Render_EndScreen();
+		//Render_EndScreen();
 	}
 
 	EndDrawing();
@@ -140,14 +128,7 @@ void Game::Render_Gameplay()
 
 void Game::Render_EndScreen()
 {
-	if (highscore_manager.entering_new_highscore)
-	{
-		highscore_manager.RenderNameEntry();
-	}
-	else 
-	{
-		highscore_manager.RenderList();
-	}
+	
 }
 
 void Game::ChangeState(std::unique_ptr<GameState> new_state)

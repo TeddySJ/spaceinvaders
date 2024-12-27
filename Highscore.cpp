@@ -4,17 +4,19 @@
 #include <iostream>
 #include <filesystem>
 
-HighscoreManager::HighscoreManager()
+HighscoreManager::HighscoreManager(int score)
+	: score_from_game{ score }
 {
 	if (!LoadHighscoresFromDisk())
 	{
 		entries = { {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0} };
 	}
+
+	CheckScore();
 }
 
-void HighscoreManager::Enter(int score)
+void HighscoreManager::CheckScore()
 {
-	score_from_game = score;
 	entering_new_highscore = ScoreMakesTheList(score_from_game);
 }
 

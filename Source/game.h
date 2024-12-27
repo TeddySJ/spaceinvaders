@@ -34,7 +34,6 @@ struct Game
 	//Aliens shooting
 	float shootTimer = 0;
 
-	void Continue();
 	void Run();
 
 	void Update();
@@ -47,11 +46,8 @@ struct Game
 	void Render_Gameplay();
 	void Render_EndScreen();
 
-	void SpawnAliens();
-
 	void ChangeState(std::unique_ptr<GameState> new_state);
 	std::unique_ptr<GameState> current_state;
 
-	HighscoreManager highscore_manager;
 
 };

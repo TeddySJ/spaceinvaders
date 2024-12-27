@@ -29,9 +29,9 @@ public:
 
 	Rectangle textBox = { 600, 500, 225, 50 };
 
-	HighscoreManager();
+	HighscoreManager(int score);
 
-	void Enter(int score);
+	void CheckScore();
 	
 	bool ScoreMakesTheList(int score) const noexcept;
 

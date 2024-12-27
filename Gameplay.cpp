@@ -139,15 +139,7 @@ void Gameplay::Update(SpaceInvadersResourceManager& resources)
 
 void Gameplay::End()
 {
-	//SAVE SCORE AND UPDATE SCOREBOARD
-	player_projectiles.clear();
-	enemy_projectiles.clear();
-	walls.clear();
-	aliens.clear();
-	//highscore_manager.Enter(score);
-	score = 0;
-	player.lives = 3;
-	QueueStateChange(std::make_unique<TransitionToPostGame>());
+	QueueStateChange(std::make_unique<TransitionToPostGame>(score));
 }
 
 void Gameplay::HandleCollisions()

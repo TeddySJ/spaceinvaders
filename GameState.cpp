@@ -53,9 +53,14 @@ std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersRes
 	return std::make_unique<Gameplay>(resources);
 }
 
+TransitionToPostGame::TransitionToPostGame(int score)
+	: score{ score }
+{
+}
+
 std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources)
 {
-	return std::make_unique<PostGame>();
+	return std::make_unique<PostGame>(score);
 }
 
 std::unique_ptr<GameState> TransitionToStartScreen::ConstructState(SpaceInvadersResourceManager& resources)
