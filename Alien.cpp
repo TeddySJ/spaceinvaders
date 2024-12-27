@@ -29,7 +29,7 @@ void Alien::MoveToNextRow()
 
 void Alien::Render(SpaceInvadersResourceManager& resources)
 {
-	SpriteRenderer::Render(resources, sprite, position);
+	sprite_renderer.Render(resources, sprite, position);
 }	
 
 Rectangle Alien::GetCollisionRect() const

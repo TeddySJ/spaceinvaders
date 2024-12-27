@@ -16,6 +16,7 @@ public:
 	EntityType type;
 
 	Sprite sprite;
+	SpriteRenderer sprite_renderer;
 
 	Vector2 collider_size{ 10, 20 };
 

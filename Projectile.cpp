@@ -23,7 +23,7 @@ void Projectile::Update()
 
 void Projectile::Render(SpaceInvadersResourceManager& resources)
 {
-	SpriteRenderer::Render(resources, sprite, position);
+	sprite_renderer.Render(resources, sprite, position);
 }
 
 Rectangle Projectile::GetCollisionRect() const

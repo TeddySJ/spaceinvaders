@@ -52,9 +52,9 @@ X Do all the different collision checks!
 
 *** Rendering ***
 
-* Plan: make it so the resource manager is interacted with via string_views instead of owning textures as data members
+X Plan: make it so the resource manager is interacted with via string_views instead of owning textures as data members
 ^ This allows for game objects or render classes to know about a texture as a string instead of as a more complex resource
-^ The resource manager is then passed along the render calls to where it is needed
+^ The resource manager is then passed along the render calls to where it is needed (dependency injection!)
 
 X Prototype this system in parallell to the existing one, test with Alien as that class is already tightened and pretty clean
 
@@ -67,9 +67,9 @@ X Implement the static Sprite on Wall and Projectile
 
 X Finish the AnimatedSprite and implement it on Player
 
-* Create a "DotRenderer" to support the rendering of the background, and then just have the background hold the positions and sizes (dots) required
+X Refactor Background
 
-* Do some basic clean up! That is, separate things properly into their .h and .cpp classes etc
+X Do some basic clean up! That is, separate things properly into their .h and .cpp classes etc
 
 *** State Handling ***
 

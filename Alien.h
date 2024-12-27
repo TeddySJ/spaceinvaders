@@ -18,6 +18,7 @@ public:
 
 	Vector2 position;
 	Sprite sprite;
+	SpriteRenderer sprite_renderer;
 
 	bool active = true;
 	float x_direction = 1;

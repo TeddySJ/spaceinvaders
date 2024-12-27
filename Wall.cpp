@@ -12,7 +12,7 @@ Wall::Wall(SpaceInvadersResourceManager& resources, Vector2 position)
 
 void Wall::Render(SpaceInvadersResourceManager& resources)
 {
-	SpriteRenderer::Render(resources, sprite, position);
+	sprite_renderer.Render(resources, sprite, position);
 	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED); // TODO: Use std::format
 }
 

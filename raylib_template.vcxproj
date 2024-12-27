@@ -179,6 +179,7 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="SpaceInvaderResourceManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowHandle.cpp" />
   </ItemGroup>

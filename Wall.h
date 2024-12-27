@@ -16,6 +16,7 @@ public:
 	int health = 50;
 
 	Sprite sprite;
+	SpriteRenderer sprite_renderer;
 
 	Vector2 collider_size{ 140, 20 };
 
