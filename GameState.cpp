@@ -7,7 +7,7 @@ GameState::GameState(State AsEnum)
 {
 }
 
-void GameState::Render(const SpaceInvadersResourceManager&)
+void GameState::Render(SpaceInvadersResourceManager&)
 {
 }
 
@@ -15,7 +15,7 @@ void GameState::HandleInput()
 {
 }
 
-void GameState::Update()
+void GameState::Update(SpaceInvadersResourceManager&)
 {
 }
 
@@ -34,7 +34,7 @@ StartScreen::StartScreen()
 {
 }
 
-void StartScreen::Render(const SpaceInvadersResourceManager& resources)
+void StartScreen::Render(SpaceInvadersResourceManager& resources)
 {
 	DrawText("SPACE INVADERS", 200, 100, 160, YELLOW);
 	DrawText("PRESS SPACE TO BEGIN", 200, 350, 40, YELLOW);

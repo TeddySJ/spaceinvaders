@@ -34,9 +34,6 @@ struct Game
 	//Aliens shooting
 	float shootTimer = 0;
 
-	void Start();
-	void End();
-
 	void Continue();
 	void Run();
 
@@ -44,8 +41,6 @@ struct Game
 	void UpdateGameplay();
 	void HandleInput();
 	void HandleInput_EndScreen();
-	void HandleCollisions();
-	void PruneEntities();
 
 	void Render();
 	void Render_StartScreen();
@@ -59,11 +54,4 @@ struct Game
 
 	HighscoreManager highscore_manager;
 
-	Player player{resources};
-
-	std::vector<Projectile> player_projectiles;
-	std::vector<Projectile> enemy_projectiles;
-	std::vector<Wall> walls;
-	std::vector<Alien> aliens;
-	Background background{ 600 };
 };

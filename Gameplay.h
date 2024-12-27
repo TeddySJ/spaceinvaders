@@ -21,10 +21,17 @@ public:
 	std::vector<Projectile> enemy_projectiles;
 	std::vector<Wall> walls;
 	std::vector<Alien> aliens;
+	Background background{ 600 };
 
 	Player player;
+	bool player_shot_queued = false;
 
-	void Render(const SpaceInvadersResourceManager& resources) override;
+	void Render(SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
-	void Update() override;
+	void Update(SpaceInvadersResourceManager& resources) override;
+
+	void End();
+	void HandleCollisions();
+	void PruneEntities();
+	void SpawnAliens(SpaceInvadersResourceManager& resources);
 };

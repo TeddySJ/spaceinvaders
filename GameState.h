@@ -8,14 +8,14 @@ class IRenderable
 {
 public:
 	virtual ~IRenderable() = default;
-	virtual void Render(const SpaceInvadersResourceManager& resources) = 0;
+	virtual void Render(SpaceInvadersResourceManager& resources) = 0;
 };
 
 class IUpdateable
 {
 public:
 	virtual ~IUpdateable() = default;
-	virtual void Update() = 0;
+	virtual void Update(SpaceInvadersResourceManager& resources) = 0;
 };
 
 class ICanHandleInput
@@ -36,9 +36,9 @@ public:
 
 	State StateAsEnum; // TODO: Refactor this away when no longer needed
 
-	void Render(const SpaceInvadersResourceManager& resources) override;
+	void Render(SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
-	void Update() override;
+	void Update(SpaceInvadersResourceManager& resources) override;
 
 	std::optional<std::unique_ptr<StateChangeTransition>> next_state;
 
@@ -77,6 +77,6 @@ class StartScreen : public GameState
 public:
 	StartScreen();
 
-	void Render(const SpaceInvadersResourceManager& resources) override;
+	void Render(SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
 };

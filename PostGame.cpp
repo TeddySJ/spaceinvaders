@@ -5,7 +5,7 @@ PostGame::PostGame()
 {
 }
 
-void PostGame::Render(const SpaceInvadersResourceManager& resources)
+void PostGame::Render(SpaceInvadersResourceManager& resources)
 {
 }
 
