@@ -71,9 +71,21 @@ X Refactor Background
 
 X Do some basic clean up! That is, separate things properly into their .h and .cpp classes etc
 
+*** High Scores ***
+
+* Refactor highscore input to be less obscure: just let the player type in their name immediately, remove mouse involvement
+
+* Finish implementing high score saving functionality
+
+* Saving
+
+* Loading
+
 *** State Handling ***
 
 * Should the states be separated? If so, now is the time!
+
+> I think I should let the gameplay state directly handle things like alien spawning, score incrementation and alien shooting (at least for now)
 
 *** WARNINGS AS ERRORS ***
 

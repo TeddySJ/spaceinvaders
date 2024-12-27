@@ -193,58 +193,24 @@ void Game::HandleInput()
 	}
 }
 
-void Game::HandleInput_EndScreen() // TODO: Refactor
+void Game::HandleInput_EndScreen()
 {
 	if (newHighScore)
 	{
-		// TODO: Why would we want to involve the mouse here? Just have the textbox be constantly on - but first of course ask Ulf if we are allowed to change this behavior!
-		if (CheckCollisionPointRec(GetMousePosition(), textBox)) mouseOnText = true;
-		else mouseOnText = false;
-
-		if (mouseOnText)
+		while (int key = GetCharPressed())
 		{
-			// Set the window's cursor to the I-Beam
-			SetMouseCursor(MOUSE_CURSOR_IBEAM);
-
-			// Get char pressed on the queue
-			int key = GetCharPressed();
-
-			// Check if more characters have been pressed on the same frame
-			while (key > 0) // TODO: "key = GetCharPressed()"
+			if (HighscoreEntry::IsValidHighscoreInput(key) && name.length() < HighscoreEntry::NAME_MAX_LENGTH)
 			{
-				// NOTE: Only allow keys in range [32..125]
-				if ((key >= 32) && (key <= 125) && (letterCount < 9))
-				{
-					name[letterCount] = (char)key;
-					name[letterCount + 1] = '\0'; // Add null terminator at the end of the string.
-					letterCount++;
-				}
-
-				key = GetCharPressed();  // Check next character in the queue
-			}
-
-			//Remove chars 
-			if (IsKeyPressed(KEY_BACKSPACE))
-			{
-				letterCount--;
-				if (letterCount < 0) letterCount = 0;
-				name[letterCount] = '\0';
+				name += (char)key;
 			}
 		}
-		else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
 
-		if (mouseOnText)
+		if (IsKeyPressed(KEY_BACKSPACE) && name.length() > 0)
 		{
-			framesCounter++;
-		}
-		else
-		{
-			framesCounter = 0;
+			name = name.substr(0, name.length() - 1);
 		}
 
-		// If the name is right legth and enter is pressed, exit screen by setting highscore to false and add 
-		// name + score to scoreboard
-		if (letterCount > 0 && letterCount < 9 && IsKeyReleased(KEY_ENTER))
+		if (name.length() > 0 && IsKeyReleased(KEY_ENTER))
 		{
 			std::string nameEntry(name);
 
@@ -373,9 +339,6 @@ void Game::Render_EndScreen()
 	{
 		DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
 
-		// BELOW CODE IS FOR NAME INPUT RENDER
-		DrawText("PLACE MOUSE OVER INPUT BOX!", 600, 400, 20, YELLOW);
-
 		DrawRectangleRec(textBox, LIGHTGRAY);
 		if (mouseOnText)
 		{
@@ -387,33 +350,10 @@ void Game::Render_EndScreen()
 			DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
 		}
 
-		//Draw the name being typed out
-		DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+		DrawText(name.data(), (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+		DrawText(TextFormat("INPUT CHARS: %i/%i", name.length(), HighscoreEntry::NAME_MAX_LENGTH), 600, 600, 20, YELLOW);
 
-		//Draw the text explaining how many characters are used
-		DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, 8), 600, 600, 20, YELLOW);
-
-		if (mouseOnText)
-		{
-			if (letterCount < 9)
-			{
-				// Draw blinking underscore char
-				if (((framesCounter / 20) % 2) == 0)
-				{
-					DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
-				}
-
-			}
-			else
-			{
-				//Name needs to be shorter
-				DrawText("Press BACKSPACE to delete chars...", 600, 650, 20, YELLOW);
-			}
-
-		}
-
-		// Explain how to continue when name is input
-		if (letterCount > 0 && letterCount < 9)
+		if (name.length() > 0)
 		{
 			DrawText("PRESS ENTER TO CONTINUE", 600, 800, 40, YELLOW);
 		}
