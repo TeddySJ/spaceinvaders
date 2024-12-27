@@ -65,13 +65,12 @@ void Game::End()
 	highscore_manager.Enter(score);
 	score = 0;
 	player.lives = 3;
-	current_state->QueueStateChange(std::make_unique<PostGame>());
+	current_state->QueueStateChange(std::make_unique<TransitionToPostGame>());
 }
 
 void Game::Continue()
 {
-	current_state->StateAsEnum = State::STARTSCREEN;
-	current_state->QueueStateChange(std::make_unique<StartScreen>());
+	current_state->QueueStateChange(std::make_unique<TransitionToStartScreen>());
 }
 
 void Game::Run()
@@ -97,7 +96,7 @@ void Game::Update()
 
 	if (current_state->StateShouldChange())
 	{
-		ChangeState(std::move(current_state->next_state.value()));
+		ChangeState(std::move(current_state->next_state.value()->ConstructState(resources))); // TODO: Refactor to follow law of demeter
 	}
 }
 

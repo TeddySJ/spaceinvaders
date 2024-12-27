@@ -170,11 +170,13 @@
     <ClCompile Include="AnimatedSpriteRenderer.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Highscore.cpp" />
     <ClCompile Include="ManagedSound.cpp" />
     <ClCompile Include="ManagedTexture.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PostGame.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -191,11 +193,13 @@
     <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionInterface.h" />
+    <ClInclude Include="Gameplay.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Highscore.h" />
     <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PostGame.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="SpaceInvaderResourceManager.h" />

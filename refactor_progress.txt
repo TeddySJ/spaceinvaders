@@ -77,15 +77,15 @@ X Refactor highscore input to be less obscure: just let the player type in their
 
 X Finish implementing high score saving functionality
 
-* Saving
+X Saving
 
-* Loading
+X Loading
 
 *** State Handling ***
 
-* Should the states be separated? If so, now is the time!
-
 > I think I should let the gameplay state directly handle things like alien spawning, score incrementation and alien shooting (at least for now)
+
+* Move everything related to gameplay (including init) into the Gameplay state class
 
 *** WARNINGS AS ERRORS ***
 

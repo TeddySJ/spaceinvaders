@@ -1,4 +1,6 @@
 #include "GameState.h"
+#include "Gameplay.h"
+#include "PostGame.h"
 
 GameState::GameState(State AsEnum)
 	: StateAsEnum{ AsEnum }
@@ -17,7 +19,7 @@ void GameState::Update()
 {
 }
 
-void GameState::QueueStateChange(std::unique_ptr<GameState> new_state)
+void GameState::QueueStateChange(std::unique_ptr<StateChangeTransition> new_state)
 {
 	next_state = std::move(new_state);
 }
@@ -42,37 +44,21 @@ void StartScreen::HandleInput()
 {
 	if (IsKeyReleased(KEY_SPACE))
 	{
-		next_state = std::make_unique<Gameplay>();
+		next_state = std::make_unique<TransitionToGameplay>();
 	}
 }
 
-Gameplay::Gameplay()
-	: GameState{ State::GAMEPLAY }
+std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersResourceManager& resources)
 {
+	return std::make_unique<Gameplay>(resources);
 }
 
-void Gameplay::Render(const SpaceInvadersResourceManager& resources)
+std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources)
 {
+	return std::make_unique<PostGame>();
 }
 
-void Gameplay::HandleInput()
+std::unique_ptr<GameState> TransitionToStartScreen::ConstructState(SpaceInvadersResourceManager& resources)
 {
-	
-}
-
-void Gameplay::Update()
-{
-}
-
-PostGame::PostGame()
-	: GameState{ State::ENDSCREEN }
-{
-}
-
-void PostGame::Render(const SpaceInvadersResourceManager& resources)
-{
-}
-
-void PostGame::HandleInput()
-{
+	return std::make_unique<StartScreen>();
 }

@@ -13,6 +13,8 @@
 #include <vector>
 #include <string>
 #include <GameState.h>
+#include <Gameplay.h>
+#include <PostGame.h>
 #include <memory>
 
 struct Game
