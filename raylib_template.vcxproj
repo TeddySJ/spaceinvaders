@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="AnimatedSpriteRenderer.cpp" />
     <ClCompile Include="AudioDeviceHandle.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Highscore.cpp" />
