@@ -1,5 +1,6 @@
 #include "Highscore.h"
 #include "raylib.h"
+#include <fstream>
 
 HighscoreManager::HighscoreManager()
 {
@@ -28,6 +29,42 @@ void HighscoreManager::RenderList() const
 		DrawText(entries[i].name.data(), 50, 140 + (i * 40), 40, YELLOW);
 		DrawText(TextFormat("%i", entries[i].score), 350, 140 + (i * 40), 40, YELLOW); // TODO: Use std::format
 	}
+}
+
+void HighscoreManager::LoadLeaderboard()
+{
+	// CLEAR LEADERBOARD
+
+	// OPEN FILE
+
+	// READ DATA
+
+	// WRITE DATA ONTO LEADERBOARD
+
+	//CLOSE FILE
+}
+
+void HighscoreManager::SaveLeaderboard()
+{
+	// SAVE LEADERBOARD AS ARRAY
+
+// OPEN FILE
+	std::fstream file;
+
+	file.open("Leaderboard");
+
+	if (!file)
+	{
+	}
+	else
+	{
+	}
+	// CLEAR FILE
+
+	// WRITE ARRAY DATA INTO FILE
+
+	// CLOSE FILE
+
 }
 
 void HighscoreManager::InsertNewHighscore(const std::string& name, int score)

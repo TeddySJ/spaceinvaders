@@ -41,4 +41,8 @@ public:
 	void RenderNameEntry() const;
 
 	void RenderList() const;
+
+	void LoadLeaderboard();
+	
+	void SaveLeaderboard();
 };

@@ -39,6 +39,7 @@ void Game::Start()
 	// creating walls 
 	float window_width = (float)GetScreenWidth();
 	float window_height = (float)GetScreenHeight();
+	int wallCount = 5;
 	float wall_distance = window_width / (wallCount + 1);
 
 	for (int i = 0; i < wallCount; i++)
@@ -71,7 +72,7 @@ void Game::End()
 
 void Game::Continue()
 {
-	SaveLeaderboard();
+	highscore_manager.SaveLeaderboard();
 	gameState = State::STARTSCREEN;
 }
 
@@ -122,11 +123,6 @@ void Game::UpdateGameplay()
 	{
 		SpawnAliens();
 	}
-
-	// Update background with offset
-	playerPos = { player.position.x, (float)player.player_base_height };
-	cornerPos = { 0, (float)player.player_base_height };
-	offset = lineLength(playerPos, cornerPos) * -1;
 
 	for (int i = 0; i < player_projectiles.size(); i++)
 	{
@@ -328,6 +324,13 @@ void Game::Render_EndScreen()
 
 void Game::SpawnAliens()
 {
+	// TODO: Move these to constexpr somewhere
+	int formationWidth = 8;
+	int formationHeight = 5;
+	int alienSpacing = 80;
+	float formationX = 100;
+	float formationY = 50;
+
 	for (int row = 0; row < formationHeight; row++) 
 	{
 		for (int col = 0; col < formationWidth; col++) 
@@ -337,45 +340,6 @@ void Game::SpawnAliens()
 	}
 
 }
-
-void Game::LoadLeaderboard()
-{
-	// CLEAR LEADERBOARD
-
-	// OPEN FILE
-
-	// READ DATA
-
-	// WRITE DATA ONTO LEADERBOARD
-
-	//CLOSE FILE
-}
-
-void Game::SaveLeaderboard()
-{
-	// SAVE LEADERBOARD AS ARRAY
-
-	// OPEN FILE
-	std::fstream file;
-
-	file.open("Leaderboard");
-
-	if (!file)
-	{
-		std::cout << "file not found \n";
-
-	}
-	else
-	{
-		std::cout << "file found \n";
-	}
-	// CLEAR FILE
-
-	// WRITE ARRAY DATA INTO FILE
-
-	// CLOSE FILE
-}
-
 
 bool Game::CheckCollision(Vector2 circlePos, float circleRadius, Vector2 lineStart, Vector2 lineEnd)
 {
