@@ -61,9 +61,15 @@ X Prototype this system in parallell to the existing one, test with Alien as tha
 X Create an Animation class that holds a string to a texture, cell width/height, number of frames, ticks per frame, a target rectangle, and an offset!
 ^ Let Alien implement this Animation class and be rendered by it
 
-* Refactor again so Animation becomes SpriteAnimation, and a separate class that is a SpriteRenderer
+X Refactor again so Animation becomes AnimatedSprite, inheriting from Sprite and a separate class that is a SpriteRenderer / AnimatedSpriteRenderer
 
-* Implement it on Wall and Projectile
+* Implement the static Sprite on Wall and Projectile
+
+* Finish the AnimatedSprite and implement it on Player
+
+* Create a "DotRenderer" to support the rendering of the background, and then just have the background hold the positions and sizes (dots) required
+
+* Do some basic clean up! That is, separate things properly into their .h and .cpp classes etc
 
 *** State Handling ***
 

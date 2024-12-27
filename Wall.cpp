@@ -1,31 +1,19 @@
 #include "Wall.h"
 
-Wall::Wall(Vector2 position)
-	: position{ position }
+static constexpr Vector2 RENDER_SIZE{ 200, 200 };
+static constexpr Vector2 RENDER_OFFSET{ 100, 100 };
+static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Barrier.png";
+
+Wall::Wall(SpaceInvadersResourceManager& resources, Vector2 position)
+	: position{ position },
+	sprite{ PROJECTILE_TEXTURE_PATH, GetTextureSizeFromPath(resources, PROJECTILE_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET }
 {
 }
 
-void Wall::Render(Texture2D texture)
+void Wall::Render(SpaceInvadersResourceManager& resources)
 {
-	DrawTexturePro(texture,
-		{
-			0,
-			0,
-			704,
-			704,
-		},
-		{
-			position.x,
-			position.y,
-			200,
-			200,
-		}, { 100 , 100 },
-		0,
-		WHITE);
-
-
-	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED);
-
+	SpriteRenderer::Render(resources, sprite, position);
+	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED); // TODO: Use std::format
 }
 
 void Wall::Update()

@@ -43,7 +43,7 @@ void Game::Start()
 
 	for (int i = 0; i < wallCount; i++)
 	{
-		walls.emplace_back(Vector2{ wall_distance * (i + 1) , window_height - 250 });
+		walls.emplace_back(resources, Vector2{ wall_distance * (i + 1) , window_height - 250 });
 	}
 
 	//creating aliens
@@ -358,7 +358,7 @@ void Game::Render_Gameplay()
 	// wall rendering 
 	for (int i = 0; i < walls.size(); i++)
 	{
-		walls[i].Render(resources.barrier_texture.GetTexture());
+		walls[i].Render(resources);
 	}
 
 	//alien rendering  

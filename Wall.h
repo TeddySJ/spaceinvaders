@@ -3,6 +3,8 @@
 #include "raylib.h"
 #include "SpaceInvadersDefinitions.h"
 #include "CollisionInterface.h"
+#include "Sprite.h"
+#include "SpriteRenderer.h"
 
 struct Wall : ICollidable
 {
@@ -13,11 +15,13 @@ public:
 	Color color;
 	int health = 50;
 
+	Sprite sprite;
+
 	Vector2 collider_size{ 140, 20 };
 
-	explicit Wall(Vector2 position);
+	Wall(SpaceInvadersResourceManager& resources, Vector2 position);
 
-	void Render(Texture2D texture);
+	void Render(SpaceInvadersResourceManager& resources);
 	void Update();
 
 	Rectangle GetCollisionRect() const override;
