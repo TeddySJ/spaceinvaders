@@ -63,7 +63,8 @@ void Game::End()
 	enemy_projectiles.clear();
 	walls.clear();
 	aliens.clear();
-	newHighScore = CheckNewHighScore();
+	highscore_manager.Enter(score);
+	score = 0;
 	player.lives = 3;
 	gameState = State::ENDSCREEN;
 }
@@ -195,29 +196,9 @@ void Game::HandleInput()
 
 void Game::HandleInput_EndScreen()
 {
-	if (newHighScore)
+	if (highscore_manager.entering_new_highscore)
 	{
-		while (int key = GetCharPressed())
-		{
-			if (HighscoreEntry::IsValidHighscoreInput(key) && name.length() < HighscoreEntry::NAME_MAX_LENGTH)
-			{
-				name += (char)key;
-			}
-		}
-
-		if (IsKeyPressed(KEY_BACKSPACE) && name.length() > 0)
-		{
-			name = name.substr(0, name.length() - 1);
-		}
-
-		if (name.length() > 0 && IsKeyReleased(KEY_ENTER))
-		{
-			std::string nameEntry(name);
-
-			InsertNewHighScore(nameEntry);
-
-			newHighScore = false;
-		}
+		highscore_manager.NewHighscoreInput();
 	}
 	else if (IsKeyReleased(KEY_ENTER))
 	{
@@ -335,42 +316,13 @@ void Game::Render_Gameplay()
 
 void Game::Render_EndScreen()
 {
-	if (newHighScore)
+	if (highscore_manager.entering_new_highscore)
 	{
-		DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
-
-		DrawRectangleRec(textBox, LIGHTGRAY);
-		if (mouseOnText)
-		{
-			// HOVER CONFIRMIATION
-			DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
-		}
-		else
-		{
-			DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
-		}
-
-		DrawText(name.data(), (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
-		DrawText(TextFormat("INPUT CHARS: %i/%i", name.length(), HighscoreEntry::NAME_MAX_LENGTH), 600, 600, 20, YELLOW);
-
-		if (name.length() > 0)
-		{
-			DrawText("PRESS ENTER TO CONTINUE", 600, 800, 40, YELLOW);
-		}
-
+		highscore_manager.RenderNameEntry();
 	}
-	else {
-		// If no highscore or name is entered, show scoreboard and call it a day
-		DrawText("PRESS ENTER TO CONTINUE", 600, 200, 40, YELLOW);
-
-		DrawText("LEADERBOARD", 50, 100, 40, YELLOW);
-
-		for (int i = 0; i < Leaderboard.size(); i++)
-		{
-			char* tempNameDisplay = Leaderboard[i].name.data();
-			DrawText(tempNameDisplay, 50, 140 + (i * 40), 40, YELLOW);
-			DrawText(TextFormat("%i", Leaderboard[i].score), 350, 140 + (i * 40), 40, YELLOW);
-		}
+	else 
+	{
+		highscore_manager.RenderList();
 	}
 }
 
@@ -384,37 +336,6 @@ void Game::SpawnAliens()
 		}
 	}
 
-}
-
-bool Game::CheckNewHighScore()
-{
-	if (score > Leaderboard[4].score)
-	{
-		return true;
-	}
-
-	return false;
-}
-
-void Game::InsertNewHighScore(std::string name)
-{
-	HighscoreEntry newData;
-	newData.name = name;
-	newData.score = score;
-
-	for (int i = 0; i < Leaderboard.size(); i++)
-	{
-		if (newData.score > Leaderboard[i].score)
-		{
-
-			Leaderboard.insert(Leaderboard.begin() + i, newData);
-
-			Leaderboard.pop_back();
-
-			i = Leaderboard.size();
-
-		}
-	}
 }
 
 void Game::LoadLeaderboard()

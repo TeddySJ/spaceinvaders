@@ -13,8 +13,6 @@
 #include <vector>
 #include <string>
 
-
-
 struct Game
 {
 	static constexpr int screenWidth = 1920;
@@ -47,9 +45,6 @@ struct Game
 	float formationX = 100;
 	float formationY = 50;
 
-	bool newHighScore = false;
-	
-
 	void Start();
 	void End();
 
@@ -72,10 +67,6 @@ struct Game
 
 	bool CheckCollision(Vector2 circlePos, float circleRadius, Vector2 lineTop, Vector2 lineBottom);
 
-	bool CheckNewHighScore();
-
-	void InsertNewHighScore(std::string name);
-
 	void LoadLeaderboard();
 	void SaveLeaderboard();
 
@@ -86,24 +77,14 @@ struct Game
 	std::vector<Wall> walls;
 	std::vector<Alien> aliens;
 
-	std::vector<HighscoreEntry> Leaderboard = { {"Player 1", 500}, {"Player 2", 400}, {"Player 3", 300}, {"Player 4", 200}, {"Player 5", 100} };
-	
 	Background background{ 600 };
 
-
+	HighscoreManager highscore_manager;
 
 	Vector2 playerPos;
 	Vector2 alienPos; 
 	Vector2 cornerPos;
 	float offset;
-
-
-
-	//TEXTBOX ENTER
-	std::string name = "";
-
-	Rectangle textBox = { 600, 500, 225, 50 };
-	bool mouseOnText = false;
 
 	int framesCounter = 0;
 
