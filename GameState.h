@@ -1,9 +1,8 @@
 #pragma once
 #include "SpaceInvaderResourceManager.h"
+#include "SpaceInvadersDefinitions.h"
 #include <memory>
 #include <optional>
-
-class GameStateManager;
 
 class IRenderable
 {
@@ -30,7 +29,10 @@ class GameState : public IRenderable, public IUpdateable, public ICanHandleInput
 {
 public:
 
+	GameState(State AsEnum);
 	~GameState() override = default;
+
+	State StateAsEnum; // TODO: Refactor this away when no longer needed
 
 	void Render(const SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
@@ -41,16 +43,20 @@ public:
 	bool StateShouldChange();
 };
 
-class PreGame : public GameState
+class StartScreen : public GameState
 {
 public:
+	StartScreen();
+
 	void Render(const SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
 };
 
-class InGame : public GameState
+class Gameplay : public GameState
 {
 public:
+	Gameplay();
+
 	void Render(const SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
 	void Update() override;
@@ -58,6 +64,9 @@ public:
 
 class PostGame : public GameState
 {
+public:
+	PostGame();
+
 	void Render(const SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
 };

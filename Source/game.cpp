@@ -30,7 +30,7 @@ bool pointInCircle(Vector2 circlePos, float radius, Vector2 point) // Uses pytha
 }
 
 Game::Game()
-	: current_state{ std::make_unique<PreGame>() }
+	: current_state{ std::make_unique<StartScreen>() }
 {
 	window_handle.SetTargetFPS(60);
 }
@@ -53,9 +53,6 @@ void Game::Start()
 
 	//reset score
 	score = 0;
-
-	gameState = State::GAMEPLAY;
-
 }
 
 void Game::End()
@@ -68,12 +65,13 @@ void Game::End()
 	highscore_manager.Enter(score);
 	score = 0;
 	player.lives = 3;
-	gameState = State::ENDSCREEN;
+	current_state->QueueStateChange(std::make_unique<PostGame>());
 }
 
 void Game::Continue()
 {
-	gameState = State::STARTSCREEN;
+	current_state->StateAsEnum = State::STARTSCREEN;
+	current_state->QueueStateChange(std::make_unique<StartScreen>());
 }
 
 void Game::Run()
@@ -90,15 +88,16 @@ void Game::Run()
 
 void Game::Update()
 {
+	current_state->Update();
+
+	if (current_state->StateAsEnum == State::GAMEPLAY)
+	{
+		UpdateGameplay();
+	}
+
 	if (current_state->StateShouldChange())
 	{
 		ChangeState(std::move(current_state->next_state.value()));
-	}
-	current_state->Update();
-
-	if (gameState == State::GAMEPLAY)
-	{
-		UpdateGameplay();
 	}
 }
 
@@ -171,7 +170,7 @@ void Game::HandleInput()
 {
 	current_state->HandleInput();
 
-	if (gameState == State::GAMEPLAY)
+	if (current_state->StateAsEnum == State::GAMEPLAY)
 	{
 		if (IsKeyReleased(KEY_Q))
 		{
@@ -185,14 +184,14 @@ void Game::HandleInput()
 			player_projectiles.emplace_back(resources, Vector2{ player.position.x, (float)GetScreenHeight() - 130 }, -15, EntityType::PLAYER_PROJECTILE);
 		}
 	}
-	else if (gameState == State::STARTSCREEN)
+	else if (current_state->StateAsEnum == State::STARTSCREEN)
 	{
 		if (IsKeyReleased(KEY_SPACE))
 		{
 			Start();
 		}
 	}
-	else if (gameState == State::ENDSCREEN)
+	else if (current_state->StateAsEnum == State::ENDSCREEN)
 	{
 		HandleInput_EndScreen();
 	}
@@ -259,15 +258,15 @@ void Game::Render()
 
 	current_state->Render(resources);
 
-	if (gameState == State::STARTSCREEN)
+	if (current_state->StateAsEnum == State::STARTSCREEN)
 	{
 		//Render_StartScreen();
 	}
-	else if (gameState == State::GAMEPLAY)
+	else if (current_state->StateAsEnum == State::GAMEPLAY)
 	{
 		Render_Gameplay();
 	}
-	else if (gameState == State::ENDSCREEN)
+	else if (current_state->StateAsEnum == State::ENDSCREEN)
 	{
 		Render_EndScreen();
 	}

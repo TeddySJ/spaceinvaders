@@ -1,5 +1,10 @@
 #include "GameState.h"
 
+GameState::GameState(State AsEnum)
+	: StateAsEnum{ AsEnum }
+{
+}
+
 void GameState::Render(const SpaceInvadersResourceManager&)
 {
 }
@@ -22,30 +27,52 @@ bool GameState::StateShouldChange()
 	return next_state.has_value();
 }
 
-void PreGame::Render(const SpaceInvadersResourceManager& resources)
+StartScreen::StartScreen()
+	: GameState{State::STARTSCREEN}
+{
+}
+
+void StartScreen::Render(const SpaceInvadersResourceManager& resources)
 {
 	DrawText("SPACE INVADERS", 200, 100, 160, YELLOW);
 	DrawText("PRESS SPACE TO BEGIN", 200, 350, 40, YELLOW);
 }
 
-void PreGame::HandleInput()
+void StartScreen::HandleInput()
 {
-	if (IsKeyReleased(KEY_A))
+	if (IsKeyReleased(KEY_SPACE))
 	{
-		next_state = std::make_unique<InGame>();
+		next_state = std::make_unique<Gameplay>();
 	}
 }
 
-void InGame::Render(const SpaceInvadersResourceManager& resources)
+Gameplay::Gameplay()
+	: GameState{ State::GAMEPLAY }
 {
-	DrawText("SPEEECH INVADERS", 100, 200, 160, YELLOW);
 }
 
-void InGame::HandleInput()
+void Gameplay::Render(const SpaceInvadersResourceManager& resources)
+{
+}
+
+void Gameplay::HandleInput()
 {
 	
 }
 
-void InGame::Update()
+void Gameplay::Update()
+{
+}
+
+PostGame::PostGame()
+	: GameState{ State::ENDSCREEN }
+{
+}
+
+void PostGame::Render(const SpaceInvadersResourceManager& resources)
+{
+}
+
+void PostGame::HandleInput()
 {
 }

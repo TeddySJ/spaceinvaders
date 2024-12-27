@@ -26,9 +26,6 @@ struct Game
 
 	Game();
 
-	// Gamestate
-	State gameState = State::STARTSCREEN;
-
 	// Score
 	int score;
 
