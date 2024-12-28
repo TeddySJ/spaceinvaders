@@ -4,43 +4,22 @@
 #include <memory>
 #include <optional>
 
-class IRenderable
-{
-public:
-	virtual ~IRenderable() = default;
-	virtual void Render(const SpaceInvadersResourceManager& resources) const = 0;
-};
-
-class IUpdateable
-{
-public:
-	virtual ~IUpdateable() = default;
-	virtual void Update() = 0;
-};
-
-class ICanHandleInput
-{
-public:
-	virtual ~ICanHandleInput() = default;
-	virtual void HandleInput() = 0;
-};
-
 class StateChangeTransition;
 
-class GameState : public IRenderable, public IUpdateable, public ICanHandleInput
+class GameState
 {
 public:
+	virtual ~GameState() = default;
 
-	~GameState() override = default;
-
-	void Render(const SpaceInvadersResourceManager& resources) const override;
-	void HandleInput() override;
-	void Update() override;
+	virtual void Render(const SpaceInvadersResourceManager& resources) const;
+	virtual void HandleInput();
+	virtual void Update();
 
 	bool StateShouldChange();
 	const StateChangeTransition& GetStateTransition() const;
 
 protected:
+	GameState() = default;
 	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state);
 
 private:
