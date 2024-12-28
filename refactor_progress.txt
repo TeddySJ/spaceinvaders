@@ -83,9 +83,9 @@ X Loading
 
 *** State Handling ***
 
-> I think I should let the gameplay state directly handle things like alien spawning, score incrementation and alien shooting (at least for now)
+X Move all heavy lifting from Game into different states
 
-* Move everything related to gameplay (including init) into the Gameplay state class
+* 
 
 *** WARNINGS AS ERRORS ***
 
