@@ -12,13 +12,13 @@ struct Background
 		float size;
 		Color color = SKYBLUE;
 
-		Star();
-		void Render() const;
+		Star() noexcept;
+		void Render() const noexcept;
 	};
 
 	std::vector<Star> stars;
 
-	explicit Background(size_t starAmount);
+	explicit Background(size_t starAmount) noexcept;
 
-	void Render() const;
+	void Render() const noexcept;
 };

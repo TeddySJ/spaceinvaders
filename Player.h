@@ -32,12 +32,12 @@ public:
 	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
 	AnimatedSpriteRenderer animated_sprite_renderer{};
 
-	Player();
+	Player() noexcept;
 
 	void Render(const SpaceInvadersResourceManager& resources) const;
 	void Update();
-	void SetDirection(float new_direction);
+	void SetDirection(float new_direction) noexcept;
 
-	Rectangle GetCollisionRect() const override;
+	Rectangle GetCollisionRect() const noexcept override;
 	void OnCollision() override;
 };

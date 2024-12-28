@@ -28,12 +28,12 @@ public:
 	bool active = true;
 	float x_direction = 1;
 
-	Alien(Vector2 position) noexcept;
+	explicit Alien(Vector2 position) noexcept;
 
-	void Update();
-	void MoveToNextRow();
+	void Update() noexcept;
+	void MoveToNextRow() noexcept;
 	void Render(const SpaceInvadersResourceManager& resources) const;
 
-	Rectangle GetCollisionRect() const override;
-	void OnCollision() override;
+	Rectangle GetCollisionRect() const noexcept override;
+	void OnCollision() noexcept override;
 };

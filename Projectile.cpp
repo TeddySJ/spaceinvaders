@@ -1,6 +1,6 @@
 #include "Projectile.h"
 
-Projectile::Projectile(Vector2 position, int speed)
+Projectile::Projectile(Vector2 position, float speed) noexcept
 	: position{ position }, speed{ speed }
 {
 }
@@ -20,12 +20,12 @@ void Projectile::Render(const SpaceInvadersResourceManager& resources) const
 	sprite_renderer.Render(resources, sprite, position);
 }
 
-Rectangle Projectile::GetCollisionRect() const
+Rectangle Projectile::GetCollisionRect() const noexcept
 {
-	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
+	return { position.x - COLLIDER_SIZE.x / 2, position.y - COLLIDER_SIZE.y / 2, COLLIDER_SIZE.x, COLLIDER_SIZE.y };
 }
 
-void Projectile::OnCollision()
+void Projectile::OnCollision() noexcept
 {
 	active = false;
 }

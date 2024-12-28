@@ -7,7 +7,7 @@ Alien::Alien(Vector2 position) noexcept
 {
 }
 
-void Alien::Update()
+void Alien::Update() noexcept
 {
 	position.x += speed * x_direction;
 
@@ -17,7 +17,7 @@ void Alien::Update()
 	}
 }
 
-void Alien::MoveToNextRow()
+void Alien::MoveToNextRow() noexcept
 {
 	position.y += row_height;
 	x_direction *= -1;
@@ -28,12 +28,12 @@ void Alien::Render(const SpaceInvadersResourceManager& resources) const
 	sprite_renderer.Render(resources, sprite, position);
 }	
 
-Rectangle Alien::GetCollisionRect() const
+Rectangle Alien::GetCollisionRect() const noexcept
 {
 	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
 }
 
-void Alien::OnCollision()
+void Alien::OnCollision() noexcept
 {
 	active = false;
 }

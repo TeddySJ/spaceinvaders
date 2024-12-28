@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-Wall::Wall(Vector2 position)
+Wall::Wall(Vector2 position) noexcept
 	: position{ position }
 {
 }
@@ -11,12 +11,12 @@ void Wall::Render(const SpaceInvadersResourceManager& resources) const
 	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED); // TODO: Use std::format
 }
 
-Rectangle Wall::GetCollisionRect() const
+Rectangle Wall::GetCollisionRect() const noexcept
 {
-	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
+	return { position.x - COLLIDER_SIZE.x / 2, position.y - COLLIDER_SIZE.y / 2, COLLIDER_SIZE.x, COLLIDER_SIZE.y };
 }
 
-void Wall::OnCollision()
+void Wall::OnCollision() noexcept
 {
 	if (--health == 0)
 	{
