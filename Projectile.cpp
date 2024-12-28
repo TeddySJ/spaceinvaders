@@ -15,7 +15,7 @@ void Projectile::Update()
 	}
 }
 
-void Projectile::Render(SpaceInvadersResourceManager& resources)
+void Projectile::Render(const SpaceInvadersResourceManager& resources) const
 {
 	sprite_renderer.Render(resources, sprite, position);
 }

@@ -9,7 +9,7 @@ public:
 
 	HighscoreManager highscore_manager;
 
-	void Render(SpaceInvadersResourceManager& resources) override;
+	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
 	void Continue();
 
@@ -21,5 +21,5 @@ public:
 	TransitionToPostGame(int score);
 	int score;
 
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const override;
+	std::unique_ptr<GameState> ConstructState() const override;
 };

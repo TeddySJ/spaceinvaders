@@ -3,7 +3,7 @@
 #include "PostGame.h"
 
 
-void GameState::Render(SpaceInvadersResourceManager&)
+void GameState::Render(const SpaceInvadersResourceManager&) const
 {
 }
 
@@ -11,7 +11,7 @@ void GameState::HandleInput()
 {
 }
 
-void GameState::Update(SpaceInvadersResourceManager&)
+void GameState::Update()
 {
 }
 

@@ -1,4 +1,5 @@
 #include "Background.h"
+#include <ranges>
 
 // TODO: Replace GetScreenWidth etc with a playfield rect
 Background::Star::Star()
@@ -6,7 +7,7 @@ Background::Star::Star()
 {
 }
 
-void Background::Star::Render()
+void Background::Star::Render() const
 {
 	DrawCircle(static_cast<int>(position.x), static_cast<int>(position.y), size, color);
 }
@@ -16,12 +17,11 @@ Background::Background(size_t starAmount)
 {
 }
 
-void Background::Render()
+void Background::Render() const
 {
-	// TODO: Replace with algorithm
-	for (int i = 0; i < stars.size(); i++)
+	for (const auto& star : stars)
 	{
-		stars[i].Render();
+		star.Render();
 	}
 }
 

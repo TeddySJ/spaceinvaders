@@ -12,7 +12,7 @@
 class Gameplay : public GameState
 {
 public:
-	Gameplay(SpaceInvadersResourceManager& resources);
+	Gameplay();
 
 	struct AlienFormationConfig {
 		int width = 8;
@@ -34,24 +34,24 @@ public:
 	Player player{};
 	bool player_shot_queued = false;
 
-	void Render(SpaceInvadersResourceManager& resources) override;
+	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
-	void Update(SpaceInvadersResourceManager& resources) override;
+	void Update() override;
 
-	void UpdateAliensShooting(SpaceInvadersResourceManager& resources);
+	void UpdateAliensShooting();
 
 	bool CheckGameOverCriteria() const;
 
 	void GameOver();
 	void HandleCollisions();
 	void PruneEntities();
-	void SpawnAliens(SpaceInvadersResourceManager& resources);
-	void SpawnWalls(SpaceInvadersResourceManager& resources);
+	void SpawnAliens();
+	void SpawnWalls();
 };
 
 class TransitionToGameplay : public StateChangeTransition
 {
 public:
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const override;
+	std::unique_ptr<GameState> ConstructState() const override;
 };
 

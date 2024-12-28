@@ -1,6 +1,6 @@
 #include "AnimatedSpriteRenderer.h"
 
-void AnimatedSpriteRenderer::Render(SpaceInvadersResourceManager& resources, const AnimatedSprite& sprite, Vector2 position) const
+void AnimatedSpriteRenderer::Render(const SpaceInvadersResourceManager& resources, const AnimatedSprite& sprite, Vector2 position) const
 {
 	DrawTexturePro(resources.GetTexture2D(sprite.texture_path),
 		GetAnimatedSpriteSourceRectangle(sprite, current_frame),

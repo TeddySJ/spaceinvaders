@@ -33,7 +33,7 @@ public:
 
 	Player();
 
-	void Render(SpaceInvadersResourceManager& resources);
+	void Render(const SpaceInvadersResourceManager& resources) const;
 	void Update();
 
 	Rectangle GetCollisionRect() const override;

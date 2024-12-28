@@ -18,7 +18,3 @@ public:
 Rectangle GetSpriteSourceRectangle(const Sprite& sprite);
 
 Rectangle GetSpriteTargetRectangle(const Sprite& sprite, Vector2 position);
-
-Vector2 GetTextureSizeFromLoadedTexture(const Texture2D& texture);
-
-Vector2 GetTextureSizeFromPath(SpaceInvadersResourceManager& resources, const std::string_view& texture_path);

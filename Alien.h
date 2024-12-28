@@ -32,7 +32,7 @@ public:
 
 	void Update();
 	void MoveToNextRow();
-	void Render(SpaceInvadersResourceManager& resources);
+	void Render(const SpaceInvadersResourceManager& resources) const;
 
 	Rectangle GetCollisionRect() const override;
 	void OnCollision() override;

@@ -8,14 +8,14 @@ class IRenderable
 {
 public:
 	virtual ~IRenderable() = default;
-	virtual void Render(SpaceInvadersResourceManager& resources) = 0;
+	virtual void Render(const SpaceInvadersResourceManager& resources) const = 0;
 };
 
 class IUpdateable
 {
 public:
 	virtual ~IUpdateable() = default;
-	virtual void Update(SpaceInvadersResourceManager& resources) = 0;
+	virtual void Update() = 0;
 };
 
 class ICanHandleInput
@@ -33,9 +33,9 @@ public:
 
 	~GameState() override = default;
 
-	void Render(SpaceInvadersResourceManager& resources) override;
+	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
-	void Update(SpaceInvadersResourceManager& resources) override;
+	void Update() override;
 
 	bool StateShouldChange();
 	const StateChangeTransition& GetStateTransition() const;
@@ -52,5 +52,5 @@ class StateChangeTransition
 public:
 	virtual ~StateChangeTransition() = default;
 
-	virtual std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const = 0;
+	virtual std::unique_ptr<GameState> ConstructState() const = 0;
 };

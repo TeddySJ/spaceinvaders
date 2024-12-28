@@ -27,7 +27,7 @@ void Game::Run()
 
 void Game::Update()
 {
-	current_state->Update(resources);
+	current_state->Update();
 
 	if (current_state->StateShouldChange())
 	{
@@ -52,5 +52,5 @@ void Game::Render()
 
 void Game::ChangeState(const StateChangeTransition& new_state)
 {
-	current_state = new_state.ConstructState(resources);
+	current_state = new_state.ConstructState();
 }

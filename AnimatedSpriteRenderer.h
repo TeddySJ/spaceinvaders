@@ -8,5 +8,5 @@ public:
 	double time_accumulated;
 
 	void Update(const AnimatedSprite& sprite, double delta_time) noexcept;
-	void Render(SpaceInvadersResourceManager& resources, const AnimatedSprite& sprite, Vector2 position) const;
+	void Render(const SpaceInvadersResourceManager& resources, const AnimatedSprite& sprite, Vector2 position) const;
 };

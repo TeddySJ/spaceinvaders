@@ -89,8 +89,7 @@ X Move all heavy lifting from Game into different states
 
 *** Lessen dependency on the resource manager ***
 
-* Refactor so that Alien, Player, Projectile, etc does not need the resource manager to be constructed
-^ Bite into the sour apple and just have a texture size saved in config somewhere!
+X Refactor so that Alien, Player, Projectile, etc does not need the resource manager to be constructed
 
 * Refactor so that the resource manager has a method that fetches a texture without loading it (throwing if the texture has not been preloaded)
 

@@ -14,13 +14,3 @@ Rectangle GetSpriteTargetRectangle(const Sprite& sprite, Vector2 position)
 {
 	return { position.x, position.y, sprite.render_size.x, sprite.render_size.y };
 }
-
-Vector2 GetTextureSizeFromLoadedTexture(const Texture2D& texture)
-{
-	return { static_cast<float>(texture.width), static_cast<float>(texture.height) };
-}
-
-Vector2 GetTextureSizeFromPath(SpaceInvadersResourceManager& resources, const std::string_view& texture_path)
-{
-	return GetTextureSizeFromLoadedTexture(resources.GetTexture2D(texture_path));
-}

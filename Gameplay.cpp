@@ -4,13 +4,13 @@
 #include <random>
 #include <ranges>
 
-Gameplay::Gameplay(SpaceInvadersResourceManager& resources)
+Gameplay::Gameplay()
 {
-	SpawnWalls(resources);
-	SpawnAliens(resources);
+	SpawnWalls();
+	SpawnAliens();
 }
 
-void Gameplay::Render(SpaceInvadersResourceManager& resources)
+void Gameplay::Render(const SpaceInvadersResourceManager& resources) const
 {
 	background.Render();
 
@@ -54,7 +54,7 @@ void Gameplay::HandleInput()
 	}
 }
 
-void Gameplay::Update(SpaceInvadersResourceManager& resources)
+void Gameplay::Update()
 {
 	player.Update();
 
@@ -68,7 +68,7 @@ void Gameplay::Update(SpaceInvadersResourceManager& resources)
 	std::ranges::for_each(player_projectiles, &Projectile::Update);
 	std::ranges::for_each(enemy_projectiles, &Projectile::Update);
 
-	UpdateAliensShooting(resources);
+	UpdateAliensShooting();
 
 	HandleCollisions();
 
@@ -76,7 +76,7 @@ void Gameplay::Update(SpaceInvadersResourceManager& resources)
 
 	if (aliens.empty())
 	{
-		SpawnAliens(resources);
+		SpawnAliens();
 	}
 
 	if (CheckGameOverCriteria())
@@ -85,7 +85,7 @@ void Gameplay::Update(SpaceInvadersResourceManager& resources)
 	}
 }
 
-void Gameplay::UpdateAliensShooting(SpaceInvadersResourceManager& resources)
+void Gameplay::UpdateAliensShooting()
 {
 	shootTimer += 1;
 	if (shootTimer == 60)
@@ -135,7 +135,7 @@ void Gameplay::PruneEntities()
 	score += 100 * removed_aliens;
 }
 
-void Gameplay::SpawnAliens(SpaceInvadersResourceManager& resources)
+void Gameplay::SpawnAliens()
 {
 	const AlienFormationConfig alien_formation_config{};
 
@@ -148,7 +148,7 @@ void Gameplay::SpawnAliens(SpaceInvadersResourceManager& resources)
 	}
 }
 
-void Gameplay::SpawnWalls(SpaceInvadersResourceManager& resources)
+void Gameplay::SpawnWalls()
 {
 	auto window_width = static_cast<float>(GetScreenWidth());
 	auto window_height = static_cast<float>(GetScreenHeight());
@@ -161,7 +161,7 @@ void Gameplay::SpawnWalls(SpaceInvadersResourceManager& resources)
 	}
 }
 
-std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersResourceManager& resources) const
+std::unique_ptr<GameState> TransitionToGameplay::ConstructState() const
 {
-	return std::make_unique<Gameplay>(resources);
+	return std::make_unique<Gameplay>();
 }

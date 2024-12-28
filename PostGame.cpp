@@ -6,7 +6,7 @@ PostGame::PostGame(int score)
 {
 }
 
-void PostGame::Render(SpaceInvadersResourceManager& resources)
+void PostGame::Render(const SpaceInvadersResourceManager& resources) const
 {
 	if (highscore_manager.entering_new_highscore)
 	{
@@ -35,7 +35,7 @@ void PostGame::Continue()
 	QueueStateChange(std::make_unique<TransitionToStartScreen>());
 }
 
-std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources) const
+std::unique_ptr<GameState> TransitionToPostGame::ConstructState() const
 {
 	return std::make_unique<PostGame>(score);
 }

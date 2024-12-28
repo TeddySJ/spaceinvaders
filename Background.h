@@ -13,12 +13,12 @@ struct Background
 		Color color = SKYBLUE;
 
 		Star();
-		void Render();
+		void Render() const;
 	};
 
 	std::vector<Star> stars;
 
 	explicit Background(size_t starAmount);
 
-	void Render();
+	void Render() const;
 };

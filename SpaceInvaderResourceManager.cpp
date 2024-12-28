@@ -2,19 +2,23 @@
 
 SpaceInvadersResourceManager::SpaceInvadersResourceManager()
 {
-	PreloadTexture("./Assets/Alien.png");
-	PreloadTexture("./Assets/ship_spritesheet.png");
-	PreloadTexture("./Assets/Barrier.png");
-	PreloadTexture("./Assets/Laser.png");
+	LoadTexture("./Assets/Alien.png");
+	LoadTexture("./Assets/ship_spritesheet.png");
+	LoadTexture("./Assets/Barrier.png");
+	LoadTexture("./Assets/Laser.png");
 }
 
-const Texture2D& SpaceInvadersResourceManager::GetTexture2D(const std::string_view& path)
+const Texture2D& SpaceInvadersResourceManager::GetTexture2D(const std::string_view& path) const
 {
-	auto [it, inserted] = textures.try_emplace(path, path);
-	return it->second.GetTexture();
+	if (!textures.contains(path))
+	{
+		throw std::exception(); // TODO: Improve exception
+	}
+
+	return textures.at(path).GetTexture();
 }
 
-const void SpaceInvadersResourceManager::PreloadTexture(const std::string_view& path)
+void SpaceInvadersResourceManager::LoadTexture(const std::string_view& path)
 {
 	textures.try_emplace(path, path);
 }

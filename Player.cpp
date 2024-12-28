@@ -7,7 +7,7 @@ Player::Player()
 {
 }
 
-void Player::Render(SpaceInvadersResourceManager& resources)
+void Player::Render(const SpaceInvadersResourceManager& resources) const
 {
 	animated_sprite_renderer.Render(resources, animated_sprite, position);
 }

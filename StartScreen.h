@@ -6,12 +6,12 @@
 class StartScreen : public GameState
 {
 public:
-	void Render(SpaceInvadersResourceManager& resources) override;
+	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
 };
 
 class TransitionToStartScreen : public StateChangeTransition
 {
 public:
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const override;
+	std::unique_ptr<GameState> ConstructState() const override;
 };
