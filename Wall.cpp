@@ -1,12 +1,7 @@
 #include "Wall.h"
 
-static constexpr Vector2 RENDER_SIZE{ 200, 200 };
-static constexpr Vector2 RENDER_OFFSET{ 100, 100 };
-static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Barrier.png";
-
-Wall::Wall(SpaceInvadersResourceManager& resources, Vector2 position)
-	: position{ position },
-	sprite{ PROJECTILE_TEXTURE_PATH, GetTextureSizeFromPath(resources, PROJECTILE_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET }
+Wall::Wall(Vector2 position)
+	: position{ position }
 {
 }
 

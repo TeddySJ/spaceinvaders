@@ -15,12 +15,17 @@ public:
 	bool active = true;
 	EntityType type;
 
-	Sprite sprite;
+	static constexpr Vector2 RENDER_SIZE{ 50, 50 };
+	static constexpr Vector2 RENDER_OFFSET{ 25, 25 };
+	static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Laser.png";
+	static constexpr Vector2 TEXTURE_SIZE{ 176, 176 };
+
+	Sprite sprite{ PROJECTILE_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET };
 	SpriteRenderer sprite_renderer;
 
 	Vector2 collider_size{ 10, 20 };
 
-	Projectile(SpaceInvadersResourceManager& resources, Vector2 position, int speed, EntityType type);
+	Projectile(Vector2 position, int speed, EntityType type);
 
 	void Update();
 	void Render(SpaceInvadersResourceManager& resources);

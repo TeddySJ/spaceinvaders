@@ -19,12 +19,19 @@ public:
 	int activeTexture = 0;
 	float timer = 0;
 
-	AnimatedSprite animated_sprite;
-	AnimatedSpriteRenderer animated_sprite_renderer;
+	static constexpr Vector2 RENDER_SIZE{ 100, 100 };
+	static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
+	static constexpr std::string_view PLAYER_TEXTURE_PATH = "./Assets/ship_spritesheet.png";
+	static constexpr Vector2 TEXTURE_SIZE{ 1056, 352 };
+	static constexpr uint16_t ANIMATION_FRAMES = 3;
+	static constexpr double SECONDS_PER_FRAME = 0.1;
+
+	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
+	AnimatedSpriteRenderer animated_sprite_renderer{};
 
 	EntityType type = EntityType::PLAYER;
 
-	Player(SpaceInvadersResourceManager& resources);
+	Player();
 
 	void Render(SpaceInvadersResourceManager& resources);
 	void Update();

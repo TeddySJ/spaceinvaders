@@ -1,13 +1,9 @@
 #include "Player.h"
 #include <algorithm>
 
-static constexpr Vector2 RENDER_SIZE{ 100, 100 };
-static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
-static constexpr std::string_view PLAYER_TEXTURE_PATH = "./Assets/ship_spritesheet.png";
 
-Player::Player(SpaceInvadersResourceManager& resources)
-	: position{ static_cast<float>(GetScreenWidth() / 2) , GetScreenHeight() - player_base_height },
-	animated_sprite{ PLAYER_TEXTURE_PATH, GetTextureSizeFromPath(resources, PLAYER_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET, 3, 0.1  }
+Player::Player()
+	: position{ static_cast<float>(GetScreenWidth() / 2) , GetScreenHeight() - player_base_height }
 {
 }
 

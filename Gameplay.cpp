@@ -5,7 +5,6 @@
 #include <ranges>
 
 Gameplay::Gameplay(SpaceInvadersResourceManager& resources)
-	: player{ resources }
 {
 	SpawnWalls(resources);
 	SpawnAliens(resources);
@@ -61,7 +60,7 @@ void Gameplay::Update(SpaceInvadersResourceManager& resources)
 
 	if (player_shot_queued)
 	{
-		player_projectiles.emplace_back(resources, player.position, -15, EntityType::PLAYER_PROJECTILE);
+		player_projectiles.emplace_back(player.position, -15, EntityType::PLAYER_PROJECTILE);
 		player_shot_queued = false;
 	}
 
@@ -92,7 +91,7 @@ void Gameplay::UpdateAliensShooting(SpaceInvadersResourceManager& resources)
 	if (shootTimer == 60)
 	{
 		int randomAlienIndex = std::rand() % aliens.size();
-		enemy_projectiles.emplace_back(resources, aliens[randomAlienIndex].position, 15, EntityType::ENEMY_PROJECTILE);
+		enemy_projectiles.emplace_back(aliens[randomAlienIndex].position, 15, EntityType::ENEMY_PROJECTILE);
 		shootTimer = 0;
 	}
 }
@@ -144,7 +143,7 @@ void Gameplay::SpawnAliens(SpaceInvadersResourceManager& resources)
 	{
 		for (int col : std::views::iota(0, alien_formation_config.width)) 
 		{
-			aliens.emplace_back(resources, Vector2{alien_formation_config.start_x + (col * alien_formation_config.spacing), alien_formation_config.start_y + (row * alien_formation_config.spacing)});
+			aliens.emplace_back(Vector2{alien_formation_config.start_x + (col * alien_formation_config.spacing), alien_formation_config.start_y + (row * alien_formation_config.spacing)});
 		}
 	}
 }
@@ -158,7 +157,7 @@ void Gameplay::SpawnWalls(SpaceInvadersResourceManager& resources)
 
 	for (int i : std::views::iota(0, wallCount))
 	{
-		walls.emplace_back(resources, Vector2{ wall_distance * (i + 1) , window_height - 250 });
+		walls.emplace_back(Vector2{ wall_distance * (i + 1) , window_height - 250 });
 	}
 }
 

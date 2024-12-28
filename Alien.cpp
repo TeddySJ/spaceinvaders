@@ -1,13 +1,9 @@
 #include "Alien.h"
 
-static constexpr Vector2 RENDER_SIZE{ 100, 100 };
-static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
-static constexpr std::string_view ALIEN_TEXTURE_PATH = "./Assets/Alien.png";
 
-Alien::Alien(SpaceInvadersResourceManager& resources, Vector2 position) noexcept
+Alien::Alien(Vector2 position) noexcept
 	:
-	position{ position }, 
-	sprite{ ALIEN_TEXTURE_PATH, GetTextureSizeFromPath(resources, ALIEN_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET }
+	position{ position }
 {
 }
 

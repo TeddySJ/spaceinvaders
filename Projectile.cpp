@@ -1,13 +1,7 @@
 #include "Projectile.h"
 
-static constexpr Vector2 RENDER_SIZE{ 50, 50};
-static constexpr Vector2 RENDER_OFFSET{ 25, 25 };
-static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Laser.png";
-
-Projectile::Projectile(SpaceInvadersResourceManager& resources, Vector2 position, int speed, EntityType type)
-	: position{ position },
-	sprite{ PROJECTILE_TEXTURE_PATH, GetTextureSizeFromPath(resources, PROJECTILE_TEXTURE_PATH), RENDER_SIZE, RENDER_OFFSET },
-	speed{ speed }, type{ type }
+Projectile::Projectile(Vector2 position, int speed, EntityType type)
+	: position{ position }, speed{ speed }, type{ type }
 {
 }
 

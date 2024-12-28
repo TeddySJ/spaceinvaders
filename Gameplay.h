@@ -31,7 +31,7 @@ public:
 	std::vector<Alien> aliens;
 	Background background{ 600 };
 
-	Player player;
+	Player player{};
 	bool player_shot_queued = false;
 
 	void Render(SpaceInvadersResourceManager& resources) override;
