@@ -35,7 +35,7 @@ void PostGame::Continue()
 	QueueStateChange(std::make_unique<TransitionToStartScreen>());
 }
 
-std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources)
+std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources) const
 {
 	return std::make_unique<PostGame>(score);
 }

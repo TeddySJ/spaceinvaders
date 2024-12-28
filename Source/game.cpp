@@ -31,7 +31,7 @@ void Game::Update()
 
 	if (current_state->StateShouldChange())
 	{
-		ChangeState(std::move(current_state->next_state.value()->ConstructState(resources))); // TODO: Refactor to follow law of demeter
+		ChangeState(current_state->GetStateTransition());
 	}
 }
 
@@ -50,7 +50,7 @@ void Game::Render()
 	EndDrawing();
 }
 
-void Game::ChangeState(std::unique_ptr<GameState> new_state)
+void Game::ChangeState(const StateChangeTransition& new_state)
 {
-	current_state = std::move(new_state);
+	current_state = new_state.ConstructState(resources);
 }

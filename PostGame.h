@@ -21,5 +21,5 @@ public:
 	TransitionToPostGame(int score);
 	int score;
 
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
+	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const override;
 };

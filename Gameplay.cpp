@@ -204,7 +204,7 @@ void Gameplay::SpawnAliens(SpaceInvadersResourceManager& resources)
 
 }
 
-std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersResourceManager& resources)
+std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersResourceManager& resources) const
 {
 	return std::make_unique<Gameplay>(resources);
 }

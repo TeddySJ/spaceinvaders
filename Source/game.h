@@ -34,6 +34,6 @@ struct Game
 	void HandleInput();
 	void Render();
 
-	void ChangeState(std::unique_ptr<GameState> new_state);
+	void ChangeState(const StateChangeTransition& new_state);
 	std::unique_ptr<GameState> current_state;
 };

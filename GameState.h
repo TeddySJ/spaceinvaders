@@ -37,9 +37,14 @@ public:
 	void HandleInput() override;
 	void Update(SpaceInvadersResourceManager& resources) override;
 
-	std::optional<std::unique_ptr<StateChangeTransition>> next_state;
-	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state);
 	bool StateShouldChange();
+	const StateChangeTransition& GetStateTransition() const;
+
+protected:
+	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state);
+
+private:
+	std::optional<std::unique_ptr<StateChangeTransition>> next_state;
 };
 
 class StateChangeTransition
@@ -47,5 +52,5 @@ class StateChangeTransition
 public:
 	virtual ~StateChangeTransition() = default;
 
-	virtual std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) = 0;
+	virtual std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const = 0;
 };

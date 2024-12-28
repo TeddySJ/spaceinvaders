@@ -10,11 +10,11 @@ void StartScreen::HandleInput()
 {
 	if (IsKeyReleased(KEY_SPACE))
 	{
-		next_state = std::make_unique<TransitionToGameplay>();
+		QueueStateChange(std::make_unique<TransitionToGameplay>());
 	}
 }
 
-std::unique_ptr<GameState> TransitionToStartScreen::ConstructState(SpaceInvadersResourceManager& resources)
+std::unique_ptr<GameState> TransitionToStartScreen::ConstructState(SpaceInvadersResourceManager& resources) const
 {
 	return std::make_unique<StartScreen>();
 }

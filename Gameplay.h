@@ -39,6 +39,6 @@ public:
 class TransitionToGameplay : public StateChangeTransition
 {
 public:
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
+	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) const override;
 };
 

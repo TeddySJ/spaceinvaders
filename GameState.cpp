@@ -25,3 +25,13 @@ bool GameState::StateShouldChange()
 	return next_state.has_value();
 }
 
+const StateChangeTransition& GameState::GetStateTransition() const
+{
+	if (!next_state.has_value())
+	{
+		throw std::exception(); // TODO: Improve exception
+	}
+
+	return *next_state.value();
+}
+
