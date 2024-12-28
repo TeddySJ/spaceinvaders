@@ -14,6 +14,14 @@ class Gameplay : public GameState
 public:
 	Gameplay(SpaceInvadersResourceManager& resources);
 
+	struct AlienFormationConfig {
+		int width = 8;
+		int height = 5;
+		int spacing = 80;
+		float start_x = 550;
+		float start_y = 50;
+	};
+
 	int score;
 	float shootTimer = 0;
 
@@ -30,10 +38,15 @@ public:
 	void HandleInput() override;
 	void Update(SpaceInvadersResourceManager& resources) override;
 
-	void End();
+	void UpdateAliensShooting(SpaceInvadersResourceManager& resources);
+
+	bool CheckGameOverCriteria() const;
+
+	void GameOver();
 	void HandleCollisions();
 	void PruneEntities();
 	void SpawnAliens(SpaceInvadersResourceManager& resources);
+	void SpawnWalls(SpaceInvadersResourceManager& resources);
 };
 
 class TransitionToGameplay : public StateChangeTransition

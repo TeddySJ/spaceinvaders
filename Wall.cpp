@@ -16,18 +16,6 @@ void Wall::Render(SpaceInvadersResourceManager& resources)
 	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED); // TODO: Use std::format
 }
 
-void Wall::Update()
-{
-
-	// set walls as inactive when out of health
-	if (health < 1)
-	{
-		active = false;
-	}
-
-
-}
-
 Rectangle Wall::GetCollisionRect() const
 {
 	return { position.x - collider_size.x / 2, position.y - collider_size.y / 2, collider_size.x, collider_size.y };
@@ -35,5 +23,8 @@ Rectangle Wall::GetCollisionRect() const
 
 void Wall::OnCollision()
 {
-	health--;
+	if (--health == 0)
+	{
+		active = false;
+	}
 }

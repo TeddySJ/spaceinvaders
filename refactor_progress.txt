@@ -87,6 +87,12 @@ X Move all heavy lifting from Game into different states
 
 * 
 
+*** Lessen dependency on the resource manager ***
+
+* Refactor so that Alien, Player, Projectile, etc does not need the resource manager to be constructed
+
+* Refactor so that the resource manager has a method that fetches a texture without loading it (throwing if the texture has not been preloaded)
+
 *** WARNINGS AS ERRORS ***
 
 * Turn on Warnings As Errors and enjoy the show!
@@ -94,7 +100,7 @@ X Move all heavy lifting from Game into different states
 *** Const, noexcept and stuff like that! ***
 
 * Algorithms! Replace for-loops and such with algorithms when applicapble
-> std::erase_if(enemies, [](const auto& e) { return !e.IsActive(); }); (for erasing inactive enemies)
+X Gameplay.cpp
 
 * Try some Const-chasing in the rendering code and see if you can get all/most rendering functions to become const
 

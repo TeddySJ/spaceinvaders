@@ -23,7 +23,6 @@ public:
 	Wall(SpaceInvadersResourceManager& resources, Vector2 position);
 
 	void Render(SpaceInvadersResourceManager& resources);
-	void Update();
 
 	Rectangle GetCollisionRect() const override;
 	void OnCollision() override;
