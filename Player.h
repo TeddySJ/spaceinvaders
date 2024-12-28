@@ -9,16 +9,7 @@
 struct Player : ICollidable
 {
 public:
-
-	float player_base_height = 70.0f;
-	Vector2 position;
-	float speed = 7;
-	Vector2 collider_size{ 60, 30 };
-	int lives = 3;
-	int direction = 0;
-	int activeTexture = 0;
-	float timer = 0;
-
+	
 	static constexpr Vector2 RENDER_SIZE{ 100, 100 };
 	static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
 	static constexpr std::string_view PLAYER_TEXTURE_PATH = "./Assets/ship_spritesheet.png";
@@ -26,12 +17,23 @@ public:
 	static constexpr uint16_t ANIMATION_FRAMES = 3;
 	static constexpr double SECONDS_PER_FRAME = 0.1;
 
+	static constexpr float PLAYER_DISTANCE_FROM_BOTTOM = 70;
+	static constexpr float PLAYER_SPEED = 7;
+
+	static constexpr Vector2 COLLIDER_SIZE{ 60, 30 };
+
+	Rectangle playfield_rect;
+	Vector2 position;
+	float direction = 0;
+	int lives = 3;
+
 	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
 	AnimatedSpriteRenderer animated_sprite_renderer{};
 
 	Player();
 
 	void Render(const SpaceInvadersResourceManager& resources) const;
+	void Input() noexcept;
 	void Update();
 
 	Rectangle GetCollisionRect() const override;

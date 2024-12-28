@@ -47,6 +47,8 @@ void Gameplay::HandleInput()
 		GameOver();
 	}
 
+	player.Input();
+
 	if (IsKeyPressed(KEY_SPACE))
 	{
 		player_projectiles.emplace_back(player.position, -15);

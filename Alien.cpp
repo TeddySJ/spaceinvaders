@@ -11,7 +11,7 @@ void Alien::Update()
 {
 	position.x += speed * x_direction;
 
-	if (!IsInRange(position.x, 0, GetScreenWidth()))
+	if (!SpaceInvaderUtils::IsInRange(position.x, 0, GetScreenWidth()))
 	{
 		MoveToNextRow();
 	}
