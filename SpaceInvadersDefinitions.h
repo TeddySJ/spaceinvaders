@@ -1,13 +1,6 @@
 #pragma once
 #include "raylib.h"
 
-enum struct State
-{
-	STARTSCREEN,
-	GAMEPLAY,
-	ENDSCREEN
-};
-
 enum struct EntityType
 {
 	PLAYER,

@@ -183,6 +183,7 @@
     <ClCompile Include="SpaceInvaderResourceManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowHandle.cpp" />
   </ItemGroup>
@@ -206,6 +207,7 @@
     <ClInclude Include="SpaceInvadersDefinitions.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowHandle.h" />
   </ItemGroup>

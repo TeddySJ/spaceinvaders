@@ -1,7 +1,8 @@
 #include "Gameplay.h"
+#include "PostGame.h"
 
 Gameplay::Gameplay(SpaceInvadersResourceManager& resources)
-	: GameState{ State::GAMEPLAY }, player{ resources }
+	: player{ resources }
 {
 	float window_width = (float)GetScreenWidth();
 	float window_height = (float)GetScreenHeight();
@@ -201,4 +202,9 @@ void Gameplay::SpawnAliens(SpaceInvadersResourceManager& resources)
 		}
 	}
 
+}
+
+std::unique_ptr<GameState> TransitionToGameplay::ConstructState(SpaceInvadersResourceManager& resources)
+{
+	return std::make_unique<Gameplay>(resources);
 }

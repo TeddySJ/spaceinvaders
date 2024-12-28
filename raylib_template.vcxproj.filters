@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{bb2c7c0a-87fd-496b-a71c-6d29ef223ac1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\StateManagement">
+      <UniqueIdentifier>{dbb2bd9b-3765-4dad-b208-af171272a70c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StateManagement">
+      <UniqueIdentifier>{5c9f124c-c658-421d-a24d-6f3c351a7a8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -77,6 +83,18 @@
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay.cpp">
+      <Filter>Source Files\StateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\StateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="PostGame.cpp">
+      <Filter>Source Files\StateManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScreen.cpp">
+      <Filter>Source Files\StateManagement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +151,18 @@
     </ClInclude>
     <ClInclude Include="SpriteRenderer.h">
       <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="PostGame.h">
+      <Filter>Header Files\StateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files\StateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameplay.h">
+      <Filter>Header Files\StateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScreen.h">
+      <Filter>Header Files\StateManagement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

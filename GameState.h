@@ -31,17 +31,13 @@ class GameState : public IRenderable, public IUpdateable, public ICanHandleInput
 {
 public:
 
-	GameState(State AsEnum);
 	~GameState() override = default;
-
-	State StateAsEnum; // TODO: Refactor this away when no longer needed
 
 	void Render(SpaceInvadersResourceManager& resources) override;
 	void HandleInput() override;
 	void Update(SpaceInvadersResourceManager& resources) override;
 
 	std::optional<std::unique_ptr<StateChangeTransition>> next_state;
-
 	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state);
 	bool StateShouldChange();
 };
@@ -52,34 +48,4 @@ public:
 	virtual ~StateChangeTransition() = default;
 
 	virtual std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) = 0;
-};
-
-class TransitionToGameplay : public StateChangeTransition
-{
-public:
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
-};
-
-class TransitionToPostGame : public StateChangeTransition
-{
-public:
-	TransitionToPostGame(int score);
-	int score;
-
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
-};
-
-class TransitionToStartScreen : public StateChangeTransition
-{
-public:
-	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
-};
-
-class StartScreen : public GameState
-{
-public:
-	StartScreen();
-
-	void Render(SpaceInvadersResourceManager& resources) override;
-	void HandleInput() override;
 };

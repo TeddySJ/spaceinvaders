@@ -35,3 +35,10 @@ public:
 	void PruneEntities();
 	void SpawnAliens(SpaceInvadersResourceManager& resources);
 };
+
+class TransitionToGameplay : public StateChangeTransition
+{
+public:
+	std::unique_ptr<GameState> ConstructState(SpaceInvadersResourceManager& resources) override;
+};
+

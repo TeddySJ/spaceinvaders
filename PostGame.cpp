@@ -1,7 +1,8 @@
 #include "PostGame.h"
+#include "StartScreen.h"
 
 PostGame::PostGame(int score)
-	: GameState{ State::ENDSCREEN }, highscore_manager{ score }
+	: highscore_manager{ score }
 {
 }
 
@@ -32,4 +33,14 @@ void PostGame::HandleInput()
 void PostGame::Continue()
 {
 	QueueStateChange(std::make_unique<TransitionToStartScreen>());
+}
+
+std::unique_ptr<GameState> TransitionToPostGame::ConstructState(SpaceInvadersResourceManager& resources)
+{
+	return std::make_unique<PostGame>(score);
+}
+
+TransitionToPostGame::TransitionToPostGame(int score)
+	: score{ score }
+{
 }
