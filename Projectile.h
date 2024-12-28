@@ -6,9 +6,20 @@
 #include "Sprite.h"
 #include "SpriteRenderer.h"
 
-struct Projectile : ICollidable
+class Projectile : public ICollidable
 {
 public:
+	Projectile(Vector2 position, float speed) noexcept;
+
+	void Update();
+	void Render(const SpaceInvadersResourceManager& resources) const;
+
+	Rectangle GetCollisionRect() const noexcept override;
+	void OnCollision() noexcept override;
+
+	bool IsActive() const noexcept;
+
+private:
 	static constexpr Vector2 RENDER_SIZE{ 50, 50 };
 	static constexpr Vector2 RENDER_OFFSET{ 25, 25 };
 	static constexpr std::string_view PROJECTILE_TEXTURE_PATH = "./Assets/Laser.png";
@@ -21,12 +32,4 @@ public:
 	Vector2 position;
 	float speed;
 	bool active = true;
-
-	Projectile(Vector2 position, float speed) noexcept;
-
-	void Update();
-	void Render(const SpaceInvadersResourceManager& resources) const;
-
-	Rectangle GetCollisionRect() const noexcept override;
-	void OnCollision() noexcept override;
 };

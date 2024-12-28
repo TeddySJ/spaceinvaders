@@ -14,6 +14,11 @@ class Gameplay : public GameState
 public:
 	Gameplay();
 
+	void Render(const SpaceInvadersResourceManager& resources) const override;
+	void HandleInput() override;
+	void Update() override;
+
+private:
 	struct AlienFormationConfig {
 		int width = 8;
 		int height = 5;
@@ -32,10 +37,6 @@ public:
 	Background background{ 600 };
 
 	Player player{};
-
-	void Render(const SpaceInvadersResourceManager& resources) const override;
-	void HandleInput() override;
-	void Update() override;
 
 	void UpdateAliensShooting();
 

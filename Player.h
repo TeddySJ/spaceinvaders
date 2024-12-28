@@ -7,10 +7,23 @@
 #include "AnimatedSpriteRenderer.h"
 #include <functional>
 
-struct Player : ICollidable
+class Player : public ICollidable
 {
 public:
-	
+	Player() noexcept;
+
+	void Render(const SpaceInvadersResourceManager& resources) const;
+	void Update();
+	void SetDirection(float new_direction) noexcept;
+
+	Rectangle GetCollisionRect() const noexcept override;
+	void OnCollision() noexcept override;
+
+	Vector2 GetPosition() const noexcept;
+	bool IsDead() const noexcept;
+	int GetLives() const noexcept;
+
+private:
 	static constexpr Vector2 RENDER_SIZE{ 100, 100 };
 	static constexpr Vector2 RENDER_OFFSET{ 50, 50 };
 	static constexpr std::string_view PLAYER_TEXTURE_PATH = "./Assets/ship_spritesheet.png";
@@ -24,20 +37,11 @@ public:
 
 	static constexpr Vector2 COLLIDER_SIZE{ 60, 30 };
 
+	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
+	AnimatedSpriteRenderer animated_sprite_renderer{};
+
 	Rectangle playfield_rect;
 	Vector2 position;
 	float direction = 0;
 	int lives = 3;
-
-	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
-	AnimatedSpriteRenderer animated_sprite_renderer{};
-
-	Player() noexcept;
-
-	void Render(const SpaceInvadersResourceManager& resources) const;
-	void Update();
-	void SetDirection(float new_direction) noexcept;
-
-	Rectangle GetCollisionRect() const noexcept override;
-	void OnCollision() override;
 };

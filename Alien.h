@@ -7,7 +7,7 @@
 #include "Sprite.h"
 #include "SpriteRenderer.h"
 
-struct Alien : ICollidable
+class Alien : public ICollidable
 {
 public:
 
@@ -21,13 +21,6 @@ public:
 	static constexpr std::string_view ALIEN_TEXTURE_PATH = "./Assets/Alien.png";
 	static constexpr Vector2 TEXTURE_SIZE{ 352, 352 };
 
-	Vector2 position;
-	Sprite sprite{ ALIEN_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET };
-	SpriteRenderer sprite_renderer{};
-
-	bool active = true;
-	float x_direction = 1;
-
 	explicit Alien(Vector2 position) noexcept;
 
 	void Update() noexcept;
@@ -36,4 +29,15 @@ public:
 
 	Rectangle GetCollisionRect() const noexcept override;
 	void OnCollision() noexcept override;
+
+	bool IsActive() const noexcept;
+	Vector2 GetPosition() const noexcept;
+
+private:
+	Vector2 position;
+	Sprite sprite{ ALIEN_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET };
+	SpriteRenderer sprite_renderer{};
+
+	int health = 1;
+	float x_direction = 1;
 };

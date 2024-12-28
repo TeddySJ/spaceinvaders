@@ -15,7 +15,7 @@ HighscoreManager::HighscoreManager(int score)
 	CheckScore();
 }
 
-void HighscoreManager::CheckScore()
+void HighscoreManager::CheckScore() noexcept
 {
 	entering_new_highscore = ScoreMakesTheList(score_from_game);
 }
@@ -25,7 +25,7 @@ bool HighscoreManager::ScoreMakesTheList(int score) const noexcept
 	return score > entries.back().score;
 }
 
-void HighscoreManager::RenderList() const
+void HighscoreManager::RenderList() const noexcept
 {
 	DrawText("PRESS ENTER TO CONTINUE", 600, 200, 40, YELLOW);
 
@@ -36,6 +36,27 @@ void HighscoreManager::RenderList() const
 		DrawText(entries[i].name.data(), 50, 140 + (i * 40), 40, YELLOW);
 		DrawText(TextFormat("%i", entries[i].score), 350, 140 + (i * 40), 40, YELLOW); // TODO: Use std::format
 	}
+}
+
+void HighscoreManager::RenderNameEntry() const noexcept
+{
+	DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
+
+	DrawRectangleRec(text_box_background, LIGHTGRAY);
+	DrawRectangleLines((int)text_box_background.x, (int)text_box_background.y, (int)text_box_background.width, (int)text_box_background.height, DARKGRAY);
+
+	DrawText(enter_name.data(), (int)text_box_background.x + 5, (int)text_box_background.y + 8, 40, MAROON);
+	DrawText(TextFormat("INPUT CHARS: %i/%i", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH), 600, 600, 20, YELLOW);
+
+	if (enter_name.length() > 0)
+	{
+		DrawText("PRESS ENTER TO CONTINUE", 600, 800, 40, YELLOW);
+	}
+}
+
+bool HighscoreManager::IsInNameEntry() const noexcept
+{
+	return entering_new_highscore;
 }
 
 bool HighscoreManager::LoadHighscoresFromDisk()
@@ -62,7 +83,7 @@ bool HighscoreManager::LoadHighscoresFromDisk()
 	return true;
 }
 
-void HighscoreManager::ReadEntryFromLine(std::string line)
+void HighscoreManager::ReadEntryFromLine(const std::string& line)
 {
 	size_t comma = line.find(',');
 	if (comma != std::string::npos)
@@ -121,23 +142,6 @@ void HighscoreManager::NewHighscoreInput()
 	{
 		InsertNewHighscore(enter_name, score_from_game);
 		entering_new_highscore = false;
-	}
-
-}
-
-void HighscoreManager::RenderNameEntry() const
-{
-	DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
-
-	DrawRectangleRec(textBox, LIGHTGRAY);
-	DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
-
-	DrawText(enter_name.data(), (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
-	DrawText(TextFormat("INPUT CHARS: %i/%i", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH), 600, 600, 20, YELLOW);
-
-	if (enter_name.length() > 0)
-	{
-		DrawText("PRESS ENTER TO CONTINUE", 600, 800, 40, YELLOW);
 	}
 
 }

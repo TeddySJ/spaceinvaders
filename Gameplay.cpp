@@ -15,7 +15,7 @@ void Gameplay::Render(const SpaceInvadersResourceManager& resources) const
 	background.Render();
 
 	DrawText(std::format("Score: {}", score).c_str(), 50, 20, 40, YELLOW);
-	DrawText(std::format("Lives: {}", player.lives).c_str(), 50, 70, 40, YELLOW);
+	DrawText(std::format("Lives: {}", player.GetLives()).c_str(), 50, 70, 40, YELLOW);
 
 	player.Render(resources);
 
@@ -62,7 +62,7 @@ void Gameplay::HandleInput()
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
-		player_projectiles.emplace_back(player.position, -15);
+		player_projectiles.emplace_back(player.GetPosition(), -15);
 	}
 }
 
@@ -97,20 +97,20 @@ void Gameplay::UpdateAliensShooting()
 	if (shootTimer == 60)
 	{
 		int randomAlienIndex = std::rand() % aliens.size();
-		enemy_projectiles.emplace_back(aliens[randomAlienIndex].position, 15);
+		enemy_projectiles.emplace_back(aliens[randomAlienIndex].GetPosition(), 15);
 		shootTimer = 0;
 	}
 }
 
 bool Gameplay::CheckGameOverCriteria() const
 {
-	if (player.lives <= 0)
+	if (player.IsDead())
 	{
 		return true;
 	}
 	
 	if (std::ranges::any_of(aliens, [this](const auto& alien)
-		{ return alien.position.y >= player.position.y; }))
+		{ return alien.GetPosition().y >= player.GetPosition().y; }))
 	{
 		return true;
 	}
@@ -133,11 +133,11 @@ void Gameplay::HandleCollisions()
 
 void Gameplay::PruneEntities()
 {
-	std::erase_if(player_projectiles, [](const auto& e) { return !e.active; });
-	std::erase_if(enemy_projectiles, [](const auto& e) { return !e.active; });
-	std::erase_if(walls, [](const auto& e) { return !e.active; });
+	std::erase_if(player_projectiles, [](const auto& e) { return !e.IsActive(); });
+	std::erase_if(enemy_projectiles, [](const auto& e) { return !e.IsActive(); });
+	std::erase_if(walls, [](const auto& e) { return !e.IsActive(); });
 
-	size_t removed_aliens = std::erase_if(aliens, [](const auto& e) { return !e.active; });
+	size_t removed_aliens = std::erase_if(aliens, [](const auto& e) { return !e.IsActive(); });
 	score += 100 * removed_aliens;
 }
 

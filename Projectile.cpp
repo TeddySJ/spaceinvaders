@@ -29,3 +29,8 @@ void Projectile::OnCollision() noexcept
 {
 	active = false;
 }
+
+bool Projectile::IsActive() const noexcept
+{
+	return active;
+}

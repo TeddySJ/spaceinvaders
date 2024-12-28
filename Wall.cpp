@@ -18,8 +18,10 @@ Rectangle Wall::GetCollisionRect() const noexcept
 
 void Wall::OnCollision() noexcept
 {
-	if (--health == 0)
-	{
-		active = false;
-	}
+	--health;
+}
+
+bool Wall::IsActive() const noexcept
+{
+	return health > 0;
 }

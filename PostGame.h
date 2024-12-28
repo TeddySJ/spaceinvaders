@@ -5,21 +5,24 @@
 class PostGame : public GameState
 {
 public:
-	PostGame(int score);
-
-	HighscoreManager highscore_manager;
+	explicit PostGame(int score) noexcept;
 
 	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
-	void Continue();
+
+private:
+	HighscoreManager highscore_manager;
+	void GoToStartScreen();
 
 };
 
 class TransitionToPostGame : public StateChangeTransition
 {
 public:
-	TransitionToPostGame(int score);
-	int score;
+	explicit TransitionToPostGame(int score) noexcept;
 
 	std::unique_ptr<GameState> ConstructState() const override;
+private:
+	int score;
+
 };

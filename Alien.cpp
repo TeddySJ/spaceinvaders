@@ -35,5 +35,15 @@ Rectangle Alien::GetCollisionRect() const noexcept
 
 void Alien::OnCollision() noexcept
 {
-	active = false;
+	--health;
+}
+
+bool Alien::IsActive() const noexcept
+{
+	return health > 0;
+}
+
+Vector2 Alien::GetPosition() const noexcept
+{
+	return position;
 }

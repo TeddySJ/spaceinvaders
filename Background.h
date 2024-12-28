@@ -4,8 +4,13 @@
 #include "SpaceInvadersDefinitions.h"
 #include <vector>
 
-struct Background
+class Background
 {
+public:
+	explicit Background(size_t starAmount) noexcept;
+	void Render() const noexcept;
+
+private:
 	struct Star
 	{
 		Vector2 position;
@@ -18,7 +23,4 @@ struct Background
 
 	std::vector<Star> stars;
 
-	explicit Background(size_t starAmount) noexcept;
-
-	void Render() const noexcept;
 };

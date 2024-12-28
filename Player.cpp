@@ -38,3 +38,18 @@ void Player::OnCollision() noexcept
 {
 	lives -= 1;
 }
+
+Vector2 Player::GetPosition() const noexcept
+{
+	return position;
+}
+
+bool Player::IsDead() const noexcept
+{
+	return lives <= 0;
+}
+
+int Player::GetLives() const noexcept
+{
+	return lives;
+}
