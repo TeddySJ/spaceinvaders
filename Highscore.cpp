@@ -27,7 +27,7 @@ bool HighscoreManager::ScoreMakesTheList(size_t score) const noexcept
 	return score > entries.back().score;
 }
 
-void HighscoreManager::RenderList() const noexcept
+void HighscoreManager::RenderList() const
 {
 	DrawText("PRESS ENTER TO CONTINUE", 600, 200, 40, YELLOW);
 
@@ -40,14 +40,14 @@ void HighscoreManager::RenderList() const noexcept
 	}
 }
 
-void HighscoreManager::RenderNameEntry() const noexcept
+void HighscoreManager::RenderNameEntry() const
 {
 	DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
 
 	DrawRectangleRec(text_box_background, LIGHTGRAY);
-	DrawRectangleLines((int)text_box_background.x, (int)text_box_background.y, (int)text_box_background.width, (int)text_box_background.height, DARKGRAY);
+	DrawRectangleLines(static_cast<int>(text_box_background.x), static_cast<int>(text_box_background.y), static_cast<int>(text_box_background.width), static_cast<int>(text_box_background.height), DARKGRAY);
 
-	DrawText(enter_name.data(), (int)text_box_background.x + 5, (int)text_box_background.y + 8, 40, MAROON);
+	DrawText(enter_name.data(), static_cast<int>(text_box_background.x) + 5, static_cast<int>(text_box_background.y) + 8, 40, MAROON);
 	DrawText(std::format("INPUT CHARS: {}/{}", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH).data(), 600, 600, 20, YELLOW);
 
 	if (enter_name.length() > 0)
@@ -87,7 +87,7 @@ bool HighscoreManager::LoadHighscoresFromDisk()
 
 void HighscoreManager::ReadEntryFromLine(const std::string& line)
 {
-	size_t comma = line.find(',');
+	const size_t comma = line.find(',');
 	if (comma != std::string::npos)
 	{
 		entries.emplace_back(line.substr(0, comma), std::stoi(line.substr(comma + 1)));
@@ -127,11 +127,11 @@ void HighscoreManager::InsertNewHighscore(const std::string& name, size_t score)
 
 void HighscoreManager::NewHighscoreInput()
 {
-	while (int key = GetCharPressed())
+	while (const int key = GetCharPressed())
 	{
 		if (HighscoreManager::IsValidHighscoreInput(key) && enter_name.length() < HighscoreManager::NAME_MAX_LENGTH)
 		{
-			enter_name += (char)key;
+			enter_name += static_cast<char>(key);
 		}
 	}
 

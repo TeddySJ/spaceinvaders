@@ -96,7 +96,7 @@ void Gameplay::UpdateAliensShooting()
 	shootTimer += 1;
 	if (shootTimer == 60)
 	{
-		int randomAlienIndex = std::rand() % aliens.size();
+		const int randomAlienIndex = std::rand() % aliens.size();
 		enemy_projectiles.emplace_back(aliens[randomAlienIndex].GetPosition(), 15.f);
 		shootTimer = 0;
 	}
@@ -110,7 +110,7 @@ bool Gameplay::CheckGameOverCriteria() const
 	}
 	
 	if (std::ranges::any_of(aliens, [this](const auto& alien)
-		{ return alien.GetPosition().y >= player.GetPosition().y; }))
+		noexcept { return alien.GetPosition().y >= player.GetPosition().y; } ))
 	{
 		return true;
 	}
@@ -133,11 +133,11 @@ void Gameplay::HandleCollisions()
 
 void Gameplay::PruneEntities()
 {
-	std::erase_if(player_projectiles, [](const auto& e) { return !e.IsActive(); });
-	std::erase_if(enemy_projectiles, [](const auto& e) { return !e.IsActive(); });
-	std::erase_if(walls, [](const auto& e) { return !e.IsActive(); });
+	std::erase_if(player_projectiles, [](const auto& e) noexcept { return !e.IsActive(); });
+	std::erase_if(enemy_projectiles, [](const auto& e) noexcept { return !e.IsActive(); });
+	std::erase_if(walls, [](const auto& e) noexcept { return !e.IsActive(); });
 
-	size_t removed_aliens = std::erase_if(aliens, [](const auto& e) { return !e.IsActive(); });
+	const size_t removed_aliens = std::erase_if(aliens, [](const auto& e) noexcept { return !e.IsActive(); });
 	score += 100 * removed_aliens;
 }
 
@@ -145,9 +145,9 @@ void Gameplay::SpawnAliens()
 {
 	const AlienFormationConfig alien_formation_config{};
 
-	for (int row : std::views::iota(0, alien_formation_config.height)) 
+	for (const int row : std::views::iota(0, alien_formation_config.height)) 
 	{
-		for (int col : std::views::iota(0, alien_formation_config.width)) 
+		for (const int col : std::views::iota(0, alien_formation_config.width))
 		{
 			aliens.emplace_back(Vector2{alien_formation_config.start_x + (col * alien_formation_config.spacing), alien_formation_config.start_y + (row * alien_formation_config.spacing)});
 		}
@@ -156,12 +156,12 @@ void Gameplay::SpawnAliens()
 
 void Gameplay::SpawnWalls()
 {
-	auto window_width = static_cast<float>(GetScreenWidth());
-	auto window_height = static_cast<float>(GetScreenHeight());
-	float wallCount = 5;
-	auto wall_distance = window_width / (wallCount + 1.f);
+	const auto window_width = static_cast<float>(GetScreenWidth());
+	const auto window_height = static_cast<float>(GetScreenHeight());
+	const float wallCount = 5;
+	const auto wall_distance = window_width / (wallCount + 1.f);
 
-	for (int i : std::views::iota(0, wallCount))
+	for (const int i : std::views::iota(0, wallCount))
 	{
 		walls.emplace_back(Vector2{ wall_distance * (i + 1) , window_height - 250 });
 	}

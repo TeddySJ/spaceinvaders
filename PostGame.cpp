@@ -1,7 +1,7 @@
 #include "PostGame.h"
 #include "StartScreen.h"
 
-PostGame::PostGame(size_t score) noexcept
+PostGame::PostGame(size_t score)
 	: highscore_manager{ score }
 {
 }

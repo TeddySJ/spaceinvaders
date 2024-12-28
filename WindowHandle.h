@@ -15,5 +15,5 @@ public:
 	RaylibWindowHandle(RaylibWindowHandle&&) = default;
 	RaylibWindowHandle& operator=(RaylibWindowHandle&&) = default;
 
-	void SetTargetFPS(int fps) const;
+	void SetTargetFPS(int fps) const noexcept;
 };

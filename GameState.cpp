@@ -3,19 +3,17 @@
 #include "PostGame.h"
 #include <stdexcept>
 
-void GameState::Render(const SpaceInvadersResourceManager&) const
-{
-}
-
 void GameState::HandleInput()
 {
+	// Default empty virtual implementation - a state does not necessarily require input handling
 }
 
 void GameState::Update()
 {
+	// Default empty virtual implementation - a state does not necessarily require running an Update
 }
 
-void GameState::QueueStateChange(std::unique_ptr<StateChangeTransition> new_state)
+void GameState::QueueStateChange(std::unique_ptr<StateChangeTransition> new_state) noexcept
 {
 	next_state = std::move(new_state);
 }

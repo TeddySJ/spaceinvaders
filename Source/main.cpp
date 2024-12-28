@@ -9,15 +9,15 @@ int main(void)
         Game().Run();
         return EXIT_SUCCESS;
     }
-    catch (HighscoreSaveException& e)
+    catch (const HighscoreSaveException& e)
     {
         std::cout << e.what();
     }
-    catch (RaylibWindowCreationError& e)
+    catch (const RaylibWindowCreationError& e)
     {
         std::cout << e.what();
     }
-    catch (RaylibTextureCreationError& e)
+    catch (const RaylibTextureCreationError& e)
     {
         std::cout << "Exited due to texture loading error. Texture path: " << e.what();
     }

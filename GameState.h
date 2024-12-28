@@ -11,7 +11,7 @@ class GameState
 public:
 	virtual ~GameState() = default;
 
-	virtual void Render(const SpaceInvadersResourceManager& resources) const;
+	virtual void Render(const SpaceInvadersResourceManager& resources) const = 0;
 	virtual void HandleInput();
 	virtual void Update();
 
@@ -20,7 +20,7 @@ public:
 
 protected:
 	GameState() = default;
-	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state);
+	void QueueStateChange(std::unique_ptr<StateChangeTransition> new_state) noexcept;
 
 private:
 	std::optional<std::unique_ptr<StateChangeTransition>> next_state;

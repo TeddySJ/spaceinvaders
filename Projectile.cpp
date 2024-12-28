@@ -5,7 +5,7 @@ Projectile::Projectile(Vector2 position, float speed) noexcept
 {
 }
 
-void Projectile::Update()
+void Projectile::Update() noexcept
 {
 	position.y += speed;
 

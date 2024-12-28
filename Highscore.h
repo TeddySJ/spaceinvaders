@@ -20,9 +20,9 @@ public:
 
 	void NewHighscoreInput();
 
-	void RenderList() const noexcept;
+	void RenderList() const;
 
-	void RenderNameEntry() const noexcept;
+	void RenderNameEntry() const;
 
 	bool IsInNameEntry() const noexcept;
 

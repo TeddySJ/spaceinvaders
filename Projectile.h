@@ -11,7 +11,7 @@ class Projectile : public ICollidable
 public:
 	Projectile(Vector2 position, float speed) noexcept;
 
-	void Update();
+	void Update() noexcept;
 	void Render(const SpaceInvadersResourceManager& resources) const;
 
 	Rectangle GetCollisionRect() const noexcept override;

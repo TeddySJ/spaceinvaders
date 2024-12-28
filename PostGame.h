@@ -5,7 +5,7 @@
 class PostGame : public GameState
 {
 public:
-	explicit PostGame(size_t score) noexcept;
+	explicit PostGame(size_t score);
 
 	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;

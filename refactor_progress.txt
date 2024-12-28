@@ -102,10 +102,6 @@ X Refactor so that Alien, Player, Projectile, etc does not need the resource man
 * Algorithms! Replace for-loops and such with algorithms when applicapble
 X Gameplay.cpp
 
-* Try some Const-chasing in the rendering code and see if you can get all/most rendering functions to become const
-
-* Text formatting should use std-formatting instead of c-style
-
-* Look for single-argument constructors that can be explicit
+* Fix all the Core Guideline warnings!
 
 * Add "final" to all non-inherited classes
