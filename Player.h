@@ -29,8 +29,6 @@ public:
 	AnimatedSprite animated_sprite{ PLAYER_TEXTURE_PATH, TEXTURE_SIZE, RENDER_SIZE, RENDER_OFFSET, ANIMATION_FRAMES, SECONDS_PER_FRAME };
 	AnimatedSpriteRenderer animated_sprite_renderer{};
 
-	EntityType type = EntityType::PLAYER;
-
 	Player();
 
 	void Render(const SpaceInvadersResourceManager& resources) const;

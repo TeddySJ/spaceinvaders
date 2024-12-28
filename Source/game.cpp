@@ -18,9 +18,7 @@ void Game::Run()
 	while (!WindowShouldClose())
 	{
 		HandleInput();
-
 		Update();
-
 		Render();
 	}
 }
@@ -28,7 +26,6 @@ void Game::Run()
 void Game::Update()
 {
 	current_state->Update();
-
 	if (current_state->StateShouldChange())
 	{
 		ChangeState(current_state->GetStateTransition());
@@ -40,7 +37,7 @@ void Game::HandleInput()
 	current_state->HandleInput();
 }
 
-void Game::Render()
+void Game::Render() const
 {
 	BeginDrawing();
 	ClearBackground(BLACK);

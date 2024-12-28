@@ -19,23 +19,22 @@ void Gameplay::Render(const SpaceInvadersResourceManager& resources) const
 
 	player.Render(resources);
 
-	// TODO: Make the below const auto& when const-refactoring of the render pipeline is completed!
-	for (auto& projectile : player_projectiles) 
+	for (const auto& projectile : player_projectiles) 
 	{
 		projectile.Render(resources);
 	}
 
-	for (auto& projectile : enemy_projectiles) 
+	for (const auto& projectile : enemy_projectiles)
 	{
 		projectile.Render(resources);
 	}
 
-	for (auto& wall : walls) 
+	for (const auto& wall : walls)
 	{
 		wall.Render(resources);
 	}
 
-	for (auto& alien : aliens) 
+	for (const auto& alien : aliens)
 	{
 		alien.Render(resources);
 	}
@@ -50,19 +49,13 @@ void Gameplay::HandleInput()
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
-		player_shot_queued = true;
+		player_projectiles.emplace_back(player.position, -15);
 	}
 }
 
 void Gameplay::Update()
 {
 	player.Update();
-
-	if (player_shot_queued)
-	{
-		player_projectiles.emplace_back(player.position, -15, EntityType::PLAYER_PROJECTILE);
-		player_shot_queued = false;
-	}
 
 	std::ranges::for_each(aliens, &Alien::Update);
 	std::ranges::for_each(player_projectiles, &Projectile::Update);
@@ -91,7 +84,7 @@ void Gameplay::UpdateAliensShooting()
 	if (shootTimer == 60)
 	{
 		int randomAlienIndex = std::rand() % aliens.size();
-		enemy_projectiles.emplace_back(aliens[randomAlienIndex].position, 15, EntityType::ENEMY_PROJECTILE);
+		enemy_projectiles.emplace_back(aliens[randomAlienIndex].position, 15);
 		shootTimer = 0;
 	}
 }

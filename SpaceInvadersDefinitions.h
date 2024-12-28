@@ -1,14 +1,6 @@
 #pragma once
 #include "raylib.h"
 
-enum struct EntityType
-{
-	PLAYER,
-	ENEMY,
-	PLAYER_PROJECTILE,
-	ENEMY_PROJECTILE
-};
-
 constexpr double target_frame_rate = 60;
 constexpr double target_time_per_frame = 1 / target_frame_rate;
 

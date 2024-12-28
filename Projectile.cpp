@@ -1,7 +1,7 @@
 #include "Projectile.h"
 
-Projectile::Projectile(Vector2 position, int speed, EntityType type)
-	: position{ position }, speed{ speed }, type{ type }
+Projectile::Projectile(Vector2 position, int speed)
+	: position{ position }, speed{ speed }
 {
 }
 

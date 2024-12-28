@@ -32,7 +32,7 @@ struct Game
 
 	void Update();
 	void HandleInput();
-	void Render();
+	void Render() const;
 
 	void ChangeState(const StateChangeTransition& new_state);
 	std::unique_ptr<GameState> current_state;

@@ -13,7 +13,6 @@ public:
 	Vector2 position;
 	int speed;
 	bool active = true;
-	EntityType type;
 
 	static constexpr Vector2 RENDER_SIZE{ 50, 50 };
 	static constexpr Vector2 RENDER_OFFSET{ 25, 25 };
@@ -25,7 +24,7 @@ public:
 
 	Vector2 collider_size{ 10, 20 };
 
-	Projectile(Vector2 position, int speed, EntityType type);
+	Projectile(Vector2 position, int speed);
 
 	void Update();
 	void Render(const SpaceInvadersResourceManager& resources) const;

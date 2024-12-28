@@ -32,7 +32,6 @@ public:
 	Background background{ 600 };
 
 	Player player{};
-	bool player_shot_queued = false;
 
 	void Render(const SpaceInvadersResourceManager& resources) const override;
 	void HandleInput() override;
