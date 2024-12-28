@@ -13,22 +13,6 @@ void Player::Render(const SpaceInvadersResourceManager& resources) const
 	animated_sprite_renderer.Render(resources, animated_sprite, position);
 }
 
-void Player::Input() noexcept
-{
-	if (IsKeyDown(KEY_LEFT))
-	{
-		direction = -1;
-	}
-	else if (IsKeyDown(KEY_RIGHT))
-	{
-		direction = 1;
-	}
-	else
-	{
-		direction = 0;
-	}
-}
-
 void Player::Update()
 {
 	animated_sprite_renderer.Update(animated_sprite, SpaceInvaderUtils::target_time_per_frame);
@@ -39,6 +23,11 @@ void Player::Update()
 	position.x = std::clamp(position.x, playfield_rect.x + half_collider, SpaceInvaderUtils::RectRight(playfield_rect) - half_collider);
 }
 
+void Player::SetDirection(float new_direction)
+{
+	direction = new_direction;
+}
+
 Rectangle Player::GetCollisionRect() const
 {
 	return { position.x - COLLIDER_SIZE.x / 2, position.y - COLLIDER_SIZE.y / 2, COLLIDER_SIZE.x, COLLIDER_SIZE.y };
@@ -47,5 +36,5 @@ Rectangle Player::GetCollisionRect() const
 
 void Player::OnCollision()
 {
-	lives--;
+	lives -= 1;
 }

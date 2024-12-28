@@ -47,7 +47,18 @@ void Gameplay::HandleInput()
 		GameOver();
 	}
 
-	player.Input();
+	if (IsKeyDown(KEY_LEFT))
+	{
+		player.SetDirection(-1);
+	}
+	else if (IsKeyDown(KEY_RIGHT))
+	{
+		player.SetDirection(1);
+	}
+	else
+	{
+		player.SetDirection(0);
+	}
 
 	if (IsKeyPressed(KEY_SPACE))
 	{

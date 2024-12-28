@@ -10,11 +10,6 @@ SpaceInvadersResourceManager::SpaceInvadersResourceManager()
 
 const Texture2D& SpaceInvadersResourceManager::GetTexture2D(const std::string_view& path) const
 {
-	if (!textures.contains(path))
-	{
-		throw std::exception(); // TODO: Improve exception
-	}
-
 	return textures.at(path).GetTexture();
 }
 

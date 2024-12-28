@@ -5,6 +5,7 @@
 #include "CollisionInterface.h"
 #include "AnimatedSprite.h"
 #include "AnimatedSpriteRenderer.h"
+#include <functional>
 
 struct Player : ICollidable
 {
@@ -19,6 +20,7 @@ public:
 
 	static constexpr float PLAYER_DISTANCE_FROM_BOTTOM = 70;
 	static constexpr float PLAYER_SPEED = 7;
+	static constexpr float PROJECTILE_SPEED = 15;
 
 	static constexpr Vector2 COLLIDER_SIZE{ 60, 30 };
 
@@ -33,8 +35,8 @@ public:
 	Player();
 
 	void Render(const SpaceInvadersResourceManager& resources) const;
-	void Input() noexcept;
 	void Update();
+	void SetDirection(float new_direction);
 
 	Rectangle GetCollisionRect() const override;
 	void OnCollision() override;
