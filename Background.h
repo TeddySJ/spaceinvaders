@@ -4,7 +4,7 @@
 #include "SpaceInvadersDefinitions.h"
 #include <vector>
 
-class Background
+class Background final
 {
 public:
 	explicit Background(size_t starAmount) noexcept;

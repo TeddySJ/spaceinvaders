@@ -2,7 +2,7 @@
 
 #include "Sprite.h"
 
-class AnimatedSprite final : public Sprite
+class AnimatedSprite : public Sprite
 {
 public: 
 	Vector2 cell_size;

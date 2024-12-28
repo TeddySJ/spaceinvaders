@@ -17,7 +17,7 @@
 #include <PostGame.h>
 #include <memory>
 
-class Game
+class Game final
 {
 public:
 	Game();

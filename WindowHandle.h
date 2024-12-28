@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include <string_view>
 
-class RaylibWindowHandle
+class RaylibWindowHandle final
 {
 
 public:

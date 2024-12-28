@@ -197,7 +197,6 @@
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Highscore.h" />
-    <ClInclude Include="ManagedSound.h" />
     <ClInclude Include="ManagedTexture.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PostGame.h" />

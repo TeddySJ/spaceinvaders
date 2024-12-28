@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include <string_view>
 
-class ManagedTexture2D
+class ManagedTexture2D final
 {
 	Texture2D texture;
 

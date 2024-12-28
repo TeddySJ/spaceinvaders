@@ -6,7 +6,7 @@
 #include "Sprite.h"
 #include "SpriteRenderer.h"
 
-class Projectile : public ICollidable
+class Projectile final : public ICollidable
 {
 public:
 	Projectile(Vector2 position, float speed) noexcept;

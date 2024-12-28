@@ -1,7 +1,7 @@
 #pragma once
 #include "AnimatedSprite.h"
 
-class AnimatedSpriteRenderer
+class AnimatedSpriteRenderer final
 {
 public:
 	void Update(const AnimatedSprite& sprite, double delta_time) noexcept;

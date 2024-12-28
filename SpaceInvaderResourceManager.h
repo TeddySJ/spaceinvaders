@@ -4,7 +4,7 @@
 #include <string_view>
 #include <unordered_map>
 
-class SpaceInvadersResourceManager
+class SpaceInvadersResourceManager final
 {
 public:
 	SpaceInvadersResourceManager();

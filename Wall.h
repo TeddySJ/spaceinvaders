@@ -6,7 +6,7 @@
 #include "Sprite.h"
 #include "SpriteRenderer.h"
 
-class Wall : public ICollidable
+class Wall final : public ICollidable
 {
 public:
 	explicit Wall(Vector2 position) noexcept;

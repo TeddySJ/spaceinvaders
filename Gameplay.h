@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 
-class Gameplay : public GameState
+class Gameplay final : public GameState
 {
 public:
 	Gameplay();
@@ -49,7 +49,7 @@ private:
 	void SpawnWalls();
 };
 
-class TransitionToGameplay : public StateChangeTransition
+class TransitionToGameplay final : public StateChangeTransition
 {
 public:
 	std::unique_ptr<GameState> ConstructState() const override;

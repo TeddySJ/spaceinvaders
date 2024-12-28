@@ -7,7 +7,7 @@
 #include "Sprite.h"
 #include "SpriteRenderer.h"
 
-class Alien : public ICollidable
+class Alien final: public ICollidable
 {
 public:
 

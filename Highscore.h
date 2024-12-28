@@ -4,7 +4,7 @@
 #include <raylib.h>
 
 
-class HighscoreManager
+class HighscoreManager final
 {
 public:
 	struct HighscoreEntry

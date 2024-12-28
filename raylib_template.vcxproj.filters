@@ -107,9 +107,6 @@
     <ClInclude Include="ManagedTexture.h">
       <Filter>Header Files\RaylibHandles</Filter>
     </ClInclude>
-    <ClInclude Include="ManagedSound.h">
-      <Filter>Header Files\RaylibHandles</Filter>
-    </ClInclude>
     <ClInclude Include="Highscore.h">
       <Filter>Header Files</Filter>
     </ClInclude>

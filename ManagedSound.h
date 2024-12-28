@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include <string_view>
 
-class ManagedSound
+class ManagedSound final
 {
 	Sound sound;
 

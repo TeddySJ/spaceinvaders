@@ -2,7 +2,7 @@
 #include "GameState.h"
 #include "Highscore.h"
 
-class PostGame : public GameState
+class PostGame final : public GameState
 {
 public:
 	explicit PostGame(size_t score);
@@ -16,7 +16,7 @@ private:
 
 };
 
-class TransitionToPostGame : public StateChangeTransition
+class TransitionToPostGame final : public StateChangeTransition
 {
 public:
 	explicit TransitionToPostGame(size_t score) noexcept;

@@ -7,7 +7,7 @@
 #include "AnimatedSpriteRenderer.h"
 #include <functional>
 
-class Player : public ICollidable
+class Player final : public ICollidable
 {
 public:
 	Player() noexcept;
