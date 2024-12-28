@@ -15,7 +15,7 @@ public:
 	virtual void HandleInput();
 	virtual void Update();
 
-	bool StateShouldChange();
+	bool StateShouldChange() const noexcept;
 	const StateChangeTransition& GetStateTransition() const;
 
 protected:
@@ -33,3 +33,4 @@ public:
 
 	virtual std::unique_ptr<GameState> ConstructState() const = 0;
 };
+

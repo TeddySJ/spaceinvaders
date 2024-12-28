@@ -39,12 +39,6 @@
     <ClCompile Include="Source\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AudioDeviceHandle.cpp">
-      <Filter>Source Files\RaylibHandles</Filter>
-    </ClCompile>
-    <ClCompile Include="ManagedSound.cpp">
-      <Filter>Source Files\RaylibHandles</Filter>
-    </ClCompile>
     <ClCompile Include="ManagedTexture.cpp">
       <Filter>Source Files\RaylibHandles</Filter>
     </ClCompile>
@@ -163,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="StartScreen.h">
       <Filter>Header Files\StateManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomExceptions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

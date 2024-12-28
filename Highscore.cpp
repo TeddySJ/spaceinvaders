@@ -3,8 +3,10 @@
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+#include "CustomExceptions.h"
+#include <string>
 
-HighscoreManager::HighscoreManager(int score)
+HighscoreManager::HighscoreManager(size_t score)
 	: score_from_game{ score }
 {
 	if (!LoadHighscoresFromDisk())
@@ -20,7 +22,7 @@ void HighscoreManager::CheckScore() noexcept
 	entering_new_highscore = ScoreMakesTheList(score_from_game);
 }
 
-bool HighscoreManager::ScoreMakesTheList(int score) const noexcept
+bool HighscoreManager::ScoreMakesTheList(size_t score) const noexcept
 {
 	return score > entries.back().score;
 }
@@ -34,7 +36,7 @@ void HighscoreManager::RenderList() const noexcept
 	for (int i = 0; i < entries.size(); i++)
 	{
 		DrawText(entries[i].name.data(), 50, 140 + (i * 40), 40, YELLOW);
-		DrawText(TextFormat("%i", entries[i].score), 350, 140 + (i * 40), 40, YELLOW); // TODO: Use std::format
+		DrawText(std::to_string(entries[i].score).data(), 350, 140 + (i * 40), 40, YELLOW);
 	}
 }
 
@@ -46,7 +48,7 @@ void HighscoreManager::RenderNameEntry() const noexcept
 	DrawRectangleLines((int)text_box_background.x, (int)text_box_background.y, (int)text_box_background.width, (int)text_box_background.height, DARKGRAY);
 
 	DrawText(enter_name.data(), (int)text_box_background.x + 5, (int)text_box_background.y + 8, 40, MAROON);
-	DrawText(TextFormat("INPUT CHARS: %i/%i", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH), 600, 600, 20, YELLOW);
+	DrawText(std::format("INPUT CHARS: {}/{}", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH).data(), 600, 600, 20, YELLOW);
 
 	if (enter_name.length() > 0)
 	{
@@ -98,7 +100,7 @@ void HighscoreManager::SaveHighscoresToDisk() const
 
 	if (!file)
 	{
-		throw std::exception(); // TODO: Improve exception
+		throw HighscoreSaveException();
 	}
 
 	for (const auto& entry : entries) 
@@ -107,7 +109,7 @@ void HighscoreManager::SaveHighscoresToDisk() const
 	}
 }
 
-void HighscoreManager::InsertNewHighscore(const std::string& name, int score)
+void HighscoreManager::InsertNewHighscore(const std::string& name, size_t score)
 {
 	auto insertPos = std::find_if(entries.begin(), entries.end(),
 		[score](const auto& entry) { return score > entry.score; });

@@ -27,7 +27,7 @@ private:
 		float start_y = 50;
 	};
 
-	int score;
+	size_t score;
 	float shootTimer = 0;
 
 	std::vector<Projectile> player_projectiles;

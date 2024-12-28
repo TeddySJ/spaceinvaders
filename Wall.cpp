@@ -1,4 +1,5 @@
 #include "Wall.h"
+#include <string>
 
 Wall::Wall(Vector2 position) noexcept
 	: position{ position }
@@ -8,7 +9,7 @@ Wall::Wall(Vector2 position) noexcept
 void Wall::Render(const SpaceInvadersResourceManager& resources) const
 {
 	sprite_renderer.Render(resources, sprite, position);
-	DrawText(TextFormat("%i", health), position.x - 21, position.y + 10, 40, RED); // TODO: Use std::format
+	DrawText(std::to_string(health).data(), static_cast<int>(position.x - 21), static_cast<int>(position.y + 10), 40, RED);
 }
 
 Rectangle Wall::GetCollisionRect() const noexcept

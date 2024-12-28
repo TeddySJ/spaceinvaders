@@ -1,7 +1,7 @@
 #include "PostGame.h"
 #include "StartScreen.h"
 
-PostGame::PostGame(int score) noexcept
+PostGame::PostGame(size_t score) noexcept
 	: highscore_manager{ score }
 {
 }
@@ -40,7 +40,7 @@ std::unique_ptr<GameState> TransitionToPostGame::ConstructState() const
 	return std::make_unique<PostGame>(score);
 }
 
-TransitionToPostGame::TransitionToPostGame(int score) noexcept
+TransitionToPostGame::TransitionToPostGame(size_t score) noexcept
 	: score{ score }
 {
 }

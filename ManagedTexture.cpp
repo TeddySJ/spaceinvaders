@@ -1,12 +1,12 @@
 #include "ManagedTexture.h"
-#include <stdexcept>
+#include "CustomExceptions.h"
 
 ManagedTexture2D::ManagedTexture2D(std::string_view path)
 {
 	texture = LoadTexture(path.data());
 	if (texture.id <= 0)
 	{
-		throw std::exception(); // TODO: Improve exception
+		throw RaylibTextureCreationError(path);
 	}
 }
 

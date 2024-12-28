@@ -1,13 +1,25 @@
 #include "game.h"
 #include <iostream>
+#include "CustomExceptions.h"
 
 int main(void)
 {    
-    // TODO: Complete exception handling
     try
     {
         Game().Run();
         return EXIT_SUCCESS;
+    }
+    catch (HighscoreSaveException& e)
+    {
+        std::cout << e.what();
+    }
+    catch (RaylibWindowCreationError& e)
+    {
+        std::cout << e.what();
+    }
+    catch (RaylibTextureCreationError& e)
+    {
+        std::cout << "Exited due to texture loading error. Texture path: " << e.what();
     }
     catch (...)
     {

@@ -13,7 +13,7 @@ public:
     virtual ~ICollidable() = default;
 
     template<std::ranges::input_range R1, std::ranges::input_range R2>
-    static void CheckCollisions(R1&& range1, R2&& range2)
+    static void CheckCollisions(R1& range1, R2& range2)
     {
         for (auto& obj1 : range1)
         {
@@ -29,7 +29,7 @@ public:
     }
 
     template<std::ranges::input_range R1>
-    static void CheckCollisions(R1&& range1, ICollidable& c2)
+    static void CheckCollisions(R1& range1, ICollidable& c2)
     {
         const auto c2rect = c2.GetCollisionRect();
         for (auto& obj1 : range1)

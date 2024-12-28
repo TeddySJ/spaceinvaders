@@ -62,7 +62,7 @@ void Gameplay::HandleInput()
 
 	if (IsKeyPressed(KEY_SPACE))
 	{
-		player_projectiles.emplace_back(player.GetPosition(), -15);
+		player_projectiles.emplace_back(player.GetPosition(), -15.f);
 	}
 }
 
@@ -97,7 +97,7 @@ void Gameplay::UpdateAliensShooting()
 	if (shootTimer == 60)
 	{
 		int randomAlienIndex = std::rand() % aliens.size();
-		enemy_projectiles.emplace_back(aliens[randomAlienIndex].GetPosition(), 15);
+		enemy_projectiles.emplace_back(aliens[randomAlienIndex].GetPosition(), 15.f);
 		shootTimer = 0;
 	}
 }

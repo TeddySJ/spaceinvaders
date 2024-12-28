@@ -10,13 +10,13 @@ public:
 	struct HighscoreEntry
 	{
 		std::string name;
-		int score;
+		size_t score;
 	};
 
 
-	explicit HighscoreManager(int score);
+	explicit HighscoreManager(size_t score);
 
-	void InsertNewHighscore(const std::string& name, int score);
+	void InsertNewHighscore(const std::string& name, size_t score);
 
 	void NewHighscoreInput();
 
@@ -39,7 +39,7 @@ private:
 
 	bool entering_new_highscore = false;
 	std::string enter_name = "";
-	int score_from_game;
+	size_t score_from_game;
 
 	Rectangle text_box_background = { 600, 500, 225, 50 };
 
@@ -51,6 +51,6 @@ private:
 
 	void CheckScore() noexcept;
 
-	[[nodiscard]] bool ScoreMakesTheList(int score) const noexcept;
+	[[nodiscard]] bool ScoreMakesTheList(size_t score) const noexcept;
 
 };

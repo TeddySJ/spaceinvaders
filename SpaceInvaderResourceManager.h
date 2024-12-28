@@ -1,5 +1,4 @@
 #pragma once
-#include "ManagedSound.h"
 #include "ManagedTexture.h"
 #include <vector>
 #include <string_view>
@@ -15,6 +14,4 @@ public:
 
 private:
 	std::unordered_map<std::string_view, ManagedTexture2D> textures;
-	ManagedSound hit_sound{ "./hitHurt.ogg" };
-
 };
