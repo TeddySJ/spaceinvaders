@@ -12,7 +12,7 @@ class Player final : public ICollidable
 public:
 	Player() noexcept;
 
-	void Render(const SpaceInvadersResourceManager& resources) const;
+	void Render(const RaylibResourceManager& resources) const;
 	void Update();
 	void SetDirection(float new_direction) noexcept;
 

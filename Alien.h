@@ -25,7 +25,7 @@ public:
 
 	void Update() noexcept;
 	void MoveToNextRow() noexcept;
-	void Render(const SpaceInvadersResourceManager& resources) const;
+	void Render(const RaylibResourceManager& resources) const;
 
 	Rectangle GetCollisionRect() const noexcept override;
 	void OnCollision() noexcept override;

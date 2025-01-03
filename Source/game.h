@@ -28,7 +28,7 @@ private:
 	static constexpr int screenHeight = 1080;
 
 	RaylibWindowHandle window_handle{screenWidth, screenHeight, "SPACE INVADERS"};
-	SpaceInvadersResourceManager resources{};
+	RaylibResourceManager resources{};
 
 	void Update();
 	void HandleInput();

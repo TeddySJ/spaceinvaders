@@ -11,7 +11,7 @@ class GameState
 public:
 	virtual ~GameState() = default;
 
-	virtual void Render(const SpaceInvadersResourceManager& resources) const = 0;
+	virtual void Render(const RaylibResourceManager& resources) const = 0;
 	virtual void HandleInput();
 	virtual void Update();
 

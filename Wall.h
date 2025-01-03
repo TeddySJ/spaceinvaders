@@ -11,7 +11,7 @@ class Wall final : public ICollidable
 public:
 	explicit Wall(Vector2 position) noexcept;
 
-	void Render(const SpaceInvadersResourceManager& resources) const;
+	void Render(const RaylibResourceManager& resources) const;
 
 	Rectangle GetCollisionRect() const noexcept override;
 	void OnCollision() noexcept override;

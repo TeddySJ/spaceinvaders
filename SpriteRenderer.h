@@ -4,5 +4,5 @@
 class SpriteRenderer final
 {
 public:
-	void Render(const SpaceInvadersResourceManager& resources, const Sprite& sprite, Vector2 position) const;
+	void Render(const RaylibResourceManager& resources, const Sprite& sprite, Vector2 position) const;
 };

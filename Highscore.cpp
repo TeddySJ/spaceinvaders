@@ -33,10 +33,15 @@ void HighscoreManager::RenderList() const
 
 	DrawText("LEADERBOARD", 50, 100, 40, YELLOW);
 
+	for (int row = 0; const auto& entry : entries)
+	{
+		DrawText(entry.name.data(), 50, 140 + (row * 40), 40, YELLOW);
+		DrawText(std::to_string(entry.score).data(), 350, 140 + (row * 40), 40, YELLOW);
+		row++;
+	}
+
 	for (int i = 0; i < entries.size(); i++)
 	{
-		DrawText(entries[i].name.data(), 50, 140 + (i * 40), 40, YELLOW);
-		DrawText(std::to_string(entries[i].score).data(), 350, 140 + (i * 40), 40, YELLOW);
 	}
 }
 

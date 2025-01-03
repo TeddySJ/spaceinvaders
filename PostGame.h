@@ -7,7 +7,7 @@ class PostGame final : public GameState
 public:
 	explicit PostGame(size_t score);
 
-	void Render(const SpaceInvadersResourceManager& resources) const override;
+	void Render(const RaylibResourceManager& resources) const override;
 	void HandleInput() override;
 
 private:

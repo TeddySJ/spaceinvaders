@@ -190,7 +190,6 @@
     <ClInclude Include="Alien.h" />
     <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="AnimatedSpriteRenderer.h" />
-    <ClInclude Include="AudioDeviceHandle.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="CollisionInterface.h" />
     <ClInclude Include="CustomExceptions.h" />

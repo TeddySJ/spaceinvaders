@@ -6,7 +6,7 @@ PostGame::PostGame(size_t score)
 {
 }
 
-void PostGame::Render(const SpaceInvadersResourceManager&) const
+void PostGame::Render(const RaylibResourceManager&) const
 {
 	if (highscore_manager.IsInNameEntry())
 	{

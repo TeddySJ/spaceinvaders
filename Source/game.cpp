@@ -11,6 +11,11 @@ Game::Game()
 	: current_state{ std::make_unique<StartScreen>() }
 {
 	window_handle.SetTargetFPS(60);
+
+	resources.LoadTexture("./Assets/Alien.png");
+	resources.LoadTexture("./Assets/ship_spritesheet.png");
+	resources.LoadTexture("./Assets/Barrier.png");
+	resources.LoadTexture("./Assets/Laser.png");
 }
 
 void Game::Run()

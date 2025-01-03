@@ -6,7 +6,7 @@ Wall::Wall(Vector2 position) noexcept
 {
 }
 
-void Wall::Render(const SpaceInvadersResourceManager& resources) const
+void Wall::Render(const RaylibResourceManager& resources) const
 {
 	sprite_renderer.Render(resources, sprite, position);
 	DrawText(std::to_string(health).data(), static_cast<int>(position.x - 21), static_cast<int>(position.y + 10), 40, RED);

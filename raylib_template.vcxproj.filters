@@ -98,9 +98,6 @@
     <ClInclude Include="WindowHandle.h">
       <Filter>Header Files\RaylibHandles</Filter>
     </ClInclude>
-    <ClInclude Include="AudioDeviceHandle.h">
-      <Filter>Header Files\RaylibHandles</Filter>
-    </ClInclude>
     <ClInclude Include="SpaceInvaderResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

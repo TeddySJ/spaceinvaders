@@ -8,7 +8,7 @@ Player::Player() noexcept
 	position = { playfield_rect.x + playfield_rect.width / 2, SpaceInvaderUtils::RectBottom(playfield_rect) - PLAYER_DISTANCE_FROM_BOTTOM};
 }
 
-void Player::Render(const SpaceInvadersResourceManager& resources) const
+void Player::Render(const RaylibResourceManager& resources) const
 {
 	animated_sprite_renderer.Render(resources, animated_sprite, position);
 }

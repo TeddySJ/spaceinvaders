@@ -4,13 +4,14 @@
 #include <random>
 #include <ranges>
 
+[[gsl::suppress(26455)]]
 Gameplay::Gameplay()
 {
 	SpawnWalls();
 	SpawnAliens();
 }
 
-void Gameplay::Render(const SpaceInvadersResourceManager& resources) const
+void Gameplay::Render(const RaylibResourceManager& resources) const
 {
 	background.Render();
 
@@ -93,12 +94,12 @@ void Gameplay::Update()
 
 void Gameplay::UpdateAliensShooting()
 {
-	shootTimer += 1;
-	if (shootTimer == 60)
+	shoot_timer += 1;
+	if (shoot_timer == 60)
 	{
 		const int randomAlienIndex = std::rand() % aliens.size();
 		enemy_projectiles.emplace_back(aliens[randomAlienIndex].GetPosition(), 15.f);
-		shootTimer = 0;
+		shoot_timer = 0;
 	}
 }
 

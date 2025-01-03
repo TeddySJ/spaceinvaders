@@ -14,7 +14,7 @@ class Gameplay final : public GameState
 public:
 	Gameplay();
 
-	void Render(const SpaceInvadersResourceManager& resources) const override;
+	void Render(const RaylibResourceManager& resources) const override;
 	void HandleInput() override;
 	void Update() override;
 
@@ -28,7 +28,7 @@ private:
 	};
 
 	size_t score;
-	float shootTimer = 0;
+	float shoot_timer = 0;
 
 	std::vector<Projectile> player_projectiles;
 	std::vector<Projectile> enemy_projectiles;

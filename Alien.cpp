@@ -23,7 +23,7 @@ void Alien::MoveToNextRow() noexcept
 	x_direction *= -1;
 }
 
-void Alien::Render(const SpaceInvadersResourceManager& resources) const
+void Alien::Render(const RaylibResourceManager& resources) const
 {
 	sprite_renderer.Render(resources, sprite, position);
 }	

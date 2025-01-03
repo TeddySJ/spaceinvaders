@@ -15,7 +15,7 @@ void Projectile::Update() noexcept
 	}
 }
 
-void Projectile::Render(const SpaceInvadersResourceManager& resources) const
+void Projectile::Render(const RaylibResourceManager& resources) const
 {
 	sprite_renderer.Render(resources, sprite, position);
 }

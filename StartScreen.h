@@ -6,7 +6,7 @@
 class StartScreen final : public GameState
 {
 public:
-	void Render(const SpaceInvadersResourceManager& resources) const override;
+	void Render(const RaylibResourceManager& resources) const override;
 	void HandleInput() override;
 };
 

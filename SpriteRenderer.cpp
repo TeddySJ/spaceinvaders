@@ -1,6 +1,6 @@
 #include "SpriteRenderer.h"
 
-void SpriteRenderer::Render(const SpaceInvadersResourceManager& resources, const Sprite& sprite, Vector2 position) const
+void SpriteRenderer::Render(const RaylibResourceManager& resources, const Sprite& sprite, Vector2 position) const
 {
 	DrawTexturePro(resources.GetTexture2D(sprite.texture_path),
 		GetSpriteSourceRectangle(sprite),

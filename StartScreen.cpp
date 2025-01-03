@@ -1,6 +1,6 @@
 #include "StartScreen.h"
 
-void StartScreen::Render(const SpaceInvadersResourceManager&) const
+void StartScreen::Render(const RaylibResourceManager&) const
 {
 	DrawText("SPACE INVADERS", 200, 100, 160, YELLOW);
 	DrawText("PRESS SPACE TO BEGIN", 200, 350, 40, YELLOW);

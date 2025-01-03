@@ -4,11 +4,9 @@
 #include <string_view>
 #include <unordered_map>
 
-class SpaceInvadersResourceManager final
+class RaylibResourceManager final
 {
 public:
-	SpaceInvadersResourceManager();
-
 	const Texture2D& GetTexture2D(const std::string_view& path) const;
 	void LoadTexture(const std::string_view& path);
 
