@@ -17,5 +17,5 @@ public:
 	explicit ManagedTexture2D(std::string_view path);
 	~ManagedTexture2D();
 	
-	const Texture2D& GetTexture() const noexcept;
+	[[nodiscard]] const Texture2D& GetTexture() const noexcept;
 };

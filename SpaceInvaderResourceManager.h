@@ -7,7 +7,7 @@
 class RaylibResourceManager final
 {
 public:
-	const Texture2D& GetTexture2D(const std::string_view& path) const;
+	[[nodiscard]] const Texture2D& GetTexture2D(const std::string_view& path) const;
 	void LoadTexture(const std::string_view& path);
 
 private:
