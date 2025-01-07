@@ -4,6 +4,10 @@
 #include <random>
 #include <ranges>
 
+/* SUPPRESSED WARNING: 
+*  "The C++ Core Guidelines suggest that default constructors shouldn't do anything that can throw. When the default constructor can throw, all code that relies on a properly instantiated object may also throw."
+*  This warning is geared towards objects of "smaller" responsibilities - constructing a game state is something where exceptions can be expected to possibly occur
+*/ 
 [[gsl::suppress(26455)]]
 Gameplay::Gameplay()
 {
