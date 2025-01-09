@@ -11,11 +11,12 @@ public:
 	ManagedTexture2D(const ManagedTexture2D&) = delete;
 	ManagedTexture2D& operator=(const ManagedTexture2D&) = delete;
 
-	ManagedTexture2D(ManagedTexture2D&&) = default;
-	ManagedTexture2D& operator=(ManagedTexture2D&&) = default;
+	ManagedTexture2D(ManagedTexture2D&&) noexcept;
+	ManagedTexture2D& operator=(ManagedTexture2D&&) noexcept;
 
 	explicit ManagedTexture2D(std::string_view path);
 	~ManagedTexture2D();
 	
 	[[nodiscard]] const Texture2D& GetTexture() const noexcept;
+	[[nodiscard]] bool IsValid() const noexcept;
 };

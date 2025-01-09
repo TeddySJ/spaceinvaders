@@ -12,8 +12,8 @@ public:
 	RaylibWindowHandle(const RaylibWindowHandle&) = delete;
 	RaylibWindowHandle& operator=(const RaylibWindowHandle&) = delete;
 
-	RaylibWindowHandle(RaylibWindowHandle&&) = default;
-	RaylibWindowHandle& operator=(RaylibWindowHandle&&) = default;
+	RaylibWindowHandle(RaylibWindowHandle&&) = delete;
+	RaylibWindowHandle& operator=(RaylibWindowHandle&&) = delete;
 
 	void SetTargetFPS(int fps) const noexcept;
 };
