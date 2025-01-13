@@ -22,7 +22,7 @@ public:
 
 	void RenderList() const;
 
-	void RenderNameEntry() const;
+	void RenderNameInput() const;
 
 	bool IsInNameEntry() const noexcept;
 
@@ -48,8 +48,6 @@ private:
 	void ReadEntryFromLine(const std::string& line);
 
 	void SaveHighscoresToDisk() const;
-
-	void CheckScore() noexcept;
 
 	[[nodiscard]] bool ScoreMakesTheList(size_t score) const noexcept;
 

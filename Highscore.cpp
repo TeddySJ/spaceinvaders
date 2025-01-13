@@ -14,11 +14,6 @@ HighscoreManager::HighscoreManager(size_t score)
 		entries = { {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0}, {"Empty", 0} };
 	}
 
-	CheckScore();
-}
-
-void HighscoreManager::CheckScore() noexcept
-{
 	entering_new_highscore = ScoreMakesTheList(score_from_game);
 }
 
@@ -29,35 +24,46 @@ bool HighscoreManager::ScoreMakesTheList(size_t score) const noexcept
 
 void HighscoreManager::RenderList() const
 {
-	DrawText("PRESS ENTER TO CONTINUE", 600, 200, 40, YELLOW);
+	constexpr auto continuetext_pos_x = 600;
+	constexpr auto continuetext_pos_y = 200;
+	DrawText("PRESS ENTER TO CONTINUE", continuetext_pos_x, continuetext_pos_y, 40, YELLOW);
 
-	DrawText("LEADERBOARD", 50, 100, 40, YELLOW);
+	constexpr auto leaderboardtext_pos_x = 50;
+	constexpr auto leaderboardtext_pos_y = 100;
+	DrawText("LEADERBOARD", leaderboardtext_pos_x, leaderboardtext_pos_y, 40, YELLOW);
+
+	constexpr auto leaderboard_name_startpos_x = 50;
+	constexpr auto leaderboard_score_startpos_x = 350;
+	constexpr auto leaderboard_entry_startpos_y = 140;
+	constexpr auto leaderboard_vertical_margin = 40;
 
 	for (int row = 0; const auto& entry : entries)
 	{
-		DrawText(entry.name.data(), 50, 140 + (row * 40), 40, YELLOW);
-		DrawText(std::to_string(entry.score).data(), 350, 140 + (row * 40), 40, YELLOW);
+		DrawText(entry.name.c_str(), leaderboard_name_startpos_x, leaderboard_entry_startpos_y + (row * leaderboard_vertical_margin), 40, YELLOW);
+		DrawText(std::to_string(entry.score).c_str(), leaderboard_score_startpos_x, leaderboard_entry_startpos_y + (row * leaderboard_vertical_margin), 40, YELLOW);
 		row++;
-	}
-
-	for (int i = 0; i < entries.size(); i++)
-	{
 	}
 }
 
-void HighscoreManager::RenderNameEntry() const
+void HighscoreManager::RenderNameInput() const
 {
-	DrawText("NEW HIGHSCORE!", 600, 300, 60, YELLOW);
+	constexpr auto title_pos_x = 600;
+	constexpr auto title_pos_y = 300;
+	DrawText("NEW HIGHSCORE!", title_pos_x, title_pos_y, 60, YELLOW);
 
 	DrawRectangleRec(text_box_background, LIGHTGRAY);
 	DrawRectangleLines(static_cast<int>(text_box_background.x), static_cast<int>(text_box_background.y), static_cast<int>(text_box_background.width), static_cast<int>(text_box_background.height), DARKGRAY);
 
 	DrawText(enter_name.data(), static_cast<int>(text_box_background.x) + 5, static_cast<int>(text_box_background.y) + 8, 40, MAROON);
-	DrawText(std::format("INPUT CHARS: {}/{}", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH).data(), 600, 600, 20, YELLOW);
+	auto s = std::format("INPUT CHARS: {}/{}", enter_name.length(), HighscoreManager::NAME_MAX_LENGTH);
+	DrawText(s.c_str(), 600, 600, 20, YELLOW);
+
+	constexpr auto continuetext_pos_x = 600;
+	constexpr auto continuetext_pos_y = 800;
 
 	if (enter_name.length() > 0)
 	{
-		DrawText("PRESS ENTER TO CONTINUE", 600, 800, 40, YELLOW);
+		DrawText("PRESS ENTER TO CONTINUE", continuetext_pos_x, continuetext_pos_y, 40, YELLOW);
 	}
 }
 

@@ -12,7 +12,7 @@ public:
 	ManagedTexture2D& operator=(const ManagedTexture2D&) = delete;
 
 	ManagedTexture2D(ManagedTexture2D&&) noexcept;
-	ManagedTexture2D& operator=(ManagedTexture2D&&) noexcept;
+	ManagedTexture2D& operator=(ManagedTexture2D&&) = delete;
 
 	explicit ManagedTexture2D(std::string_view path);
 	~ManagedTexture2D();

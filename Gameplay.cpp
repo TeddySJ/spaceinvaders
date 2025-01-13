@@ -148,13 +148,11 @@ void Gameplay::PruneEntities()
 
 void Gameplay::SpawnAliens()
 {
-	const AlienFormationConfig alien_formation_config{};
-
-	for (const int row : std::views::iota(0, alien_formation_config.height)) 
+	for (const int row : std::views::iota(0, alien_formation_height)) 
 	{
-		for (const int col : std::views::iota(0, alien_formation_config.width))
+		for (const int col : std::views::iota(0, alien_formation_width))
 		{
-			aliens.emplace_back(Vector2{alien_formation_config.start_x + (col * alien_formation_config.spacing), alien_formation_config.start_y + (row * alien_formation_config.spacing)});
+			aliens.emplace_back(Vector2{alien_formation_start_x + (col * alien_formation_spacing), alien_formation_start_y + (row * alien_formation_spacing)});
 		}
 	}
 }

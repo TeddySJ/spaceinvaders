@@ -6,7 +6,7 @@ class RaylibWindowHandle final
 {
 
 public:
-	RaylibWindowHandle(int screenWidth, int screenHeight, const std::string_view& title);
+	RaylibWindowHandle(int screenWidth, int screenHeight, std::string_view title);
 	~RaylibWindowHandle();
 
 	RaylibWindowHandle(const RaylibWindowHandle&) = delete;

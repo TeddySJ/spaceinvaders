@@ -19,13 +19,13 @@ public:
 	void Update() override;
 
 private:
-	struct AlienFormationConfig {
-		int width = 8;
-		int height = 5;
-		int spacing = 80;
-		float start_x = 550;
-		float start_y = 50;
-	};
+	static constexpr auto alien_formation_width = 8;
+	static constexpr auto alien_formation_height = 5;
+	static constexpr auto alien_formation_spacing = 80;
+	static constexpr float alien_formation_start_x = 550;
+	static constexpr float alien_formation_start_y = 50;
+
+	static constexpr auto background_star_amount = 600;
 
 	size_t score;
 	float shoot_timer = 0;
@@ -34,7 +34,7 @@ private:
 	std::vector<Projectile> enemy_projectiles;
 	std::vector<Wall> walls;
 	std::vector<Alien> aliens;
-	Background background{ 600 };
+	Background background{ background_star_amount };
 
 	Player player{};
 

@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include "CustomExceptions.h"
 
-RaylibWindowHandle::RaylibWindowHandle(int screenWidth, int screenHeight, const std::string_view& title)
+RaylibWindowHandle::RaylibWindowHandle(int screenWidth, int screenHeight, std::string_view title)
 {
 	InitWindow(screenWidth, screenHeight, title.data());
 	if (!IsWindowReady())
@@ -17,7 +17,7 @@ RaylibWindowHandle::~RaylibWindowHandle()
 	CloseWindow();
 }
 
-void RaylibWindowHandle::SetTargetFPS(const int fps) const noexcept
+void RaylibWindowHandle::SetTargetFPS(int fps) const noexcept
 {
 	RLAPI::SetTargetFPS(fps);
 }

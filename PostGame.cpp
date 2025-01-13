@@ -10,7 +10,7 @@ void PostGame::Render(const RaylibResourceManager&) const
 {
 	if (highscore_manager.IsInNameEntry())
 	{
-		highscore_manager.RenderNameEntry();
+		highscore_manager.RenderNameInput();
 	}
 	else
 	{

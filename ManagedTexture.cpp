@@ -12,10 +12,7 @@ ManagedTexture2D::ManagedTexture2D(std::string_view path)
 
 ManagedTexture2D::~ManagedTexture2D()
 {
-	if (IsValid())
-	{
-		UnloadTexture(texture);
-	}
+	UnloadTexture(texture);	
 }
 
 const Texture2D& ManagedTexture2D::GetTexture() const noexcept
@@ -31,12 +28,4 @@ bool ManagedTexture2D::IsValid() const noexcept
 ManagedTexture2D::ManagedTexture2D(ManagedTexture2D&& other) noexcept {
     texture = other.texture;
     other.texture.id = 0;
-}
-
-ManagedTexture2D& ManagedTexture2D::operator=(ManagedTexture2D&& other) noexcept {
-    if (this != &other) {
-        texture = other.texture;
-        other.texture.id = 0;
-    }
-    return *this;
 }

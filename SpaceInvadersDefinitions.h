@@ -22,4 +22,5 @@ namespace SpaceInvaderUtils
 	constexpr auto RectTop(Rectangle r) noexcept { return r.y; }
 	constexpr auto RectBottom(Rectangle r) noexcept { return r.y + r.height; }
 	constexpr auto RectCenter(Rectangle r) noexcept { return Vector2{ r.x + r.width / 2, r.y + r.height / 2 }; }
+
 }
